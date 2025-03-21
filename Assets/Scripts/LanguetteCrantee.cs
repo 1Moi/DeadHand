@@ -5,52 +5,38 @@ using System.Collections.Generic;
 public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
     [Header("Liste des crans")]
-    public List<Vector3> cransLanguette;  // Liste des positions de la languette
-    public List<Vector3> cransImage;      // Liste des positions de l’image attachée
+    public List<Vector3> cransLanguette;
+    public List<Vector3> cransImage;
     private Vector3 offset;
 
     [Header("Options")]
-    public int cranDeDepart = 0;          // Index du cran où commence la languette
-    public bool isHorizontal = true;      // Déplacement horizontal (Z) ou vertical (X)
-    public bool isOnRightPage = true;     // La languette est-elle sur la page de droite ?
-    public float vitesseDeplacement = 0.005f; // Sensibilité du mouvement
-    public float vitesseRetour = 10f;     // Vitesse du snap vers un cran
-    [Tooltip("Facteur de résistance (entre 0 et 1) lorsque la languette dépasse les limites")]
-    public float resistanceFactor = 0.2f; // 0 = très forte résistance, 1 = pas de résistance
+    public int cranDeDepart = 0;
+    public bool isHorizontal = true;
+    public bool isOnRightPage = true;
+    public float vitesseDeplacement = 0.005f;
+    public float vitesseRetour = 10f;
+    [Tooltip("Facteur de résistance (0 = forte résistance, 1 = pas de résistance)")]
+    public float resistanceFactor = 0.2f; // Empêche de trop dépasser
 
     [Header("Image attachée ?")]
-    public bool hasAttachedImage = false; // La languette déplace-t-elle une image ?
-    public Transform imageAttachée;       // Référence vers l'image à déplacer (optionnel)
+    public bool hasAttachedImage = false;
+    public Transform imageAttachée;
 
     [Header("Puzzle Manager")]
-    public PuzzleManager puzzleManager;   // Référence vers le PuzzleManager
-    public int puzzleStepIndex; // Référence vers l'étape du puzzle
+    public PuzzleManager puzzleManager;
+    public int puzzleStepIndex;
+
+    private Vector3 startPos;
+    private bool isDragging = false;
 
     private void Start()
     {
-        if (cransLanguette.Count == 0)
+        if (cransLanguette.Count == 0) return;
+
+        if (hasAttachedImage && (cransImage.Count == 0 || cransLanguette.Count != cransImage.Count))
         {
-            //Debug.LogError("La liste des crans de la languette est vide !");
+            Debug.LogError("Les listes cransLanguette et cransImage doivent être de la même taille !");
             return;
-        }
-
-        if (hasAttachedImage)
-        {
-            if (cransImage.Count == 0)
-            {
-                //Debug.LogError("La liste des cransImage est vide alors que hasAttachedImage est true !");
-                return;
-            }
-            if (cransLanguette.Count != cransImage.Count)
-            {
-                //Debug.LogError("Les listes cransLanguette et cransImage ne sont pas de la même taille !");
-                return;
-            }
-        }
-
-        if (transform.parent != null)
-        {
-            //Debug.Log("La languette est un enfant d'un autre objet ! Utilisation de localPosition.");
         }
 
         cranDeDepart = Mathf.Clamp(cranDeDepart, 0, cransLanguette.Count - 1);
@@ -60,6 +46,8 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             imageAttachée.localPosition = cransImage[cranDeDepart];
         }
+
+        startPos = transform.localPosition;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -73,9 +61,8 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
             offset = transform.position - worldPoint;
         }
 
-        //Debug.Log("Languette cliquée à : " + transform.position);
+        isDragging = true;
     }
-
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -85,31 +72,47 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         if (plane.Raycast(ray, out float distance))
         {
             Vector3 newPosition = ray.GetPoint(distance) + offset;
-            newPosition.z = transform.position.z; // Empêche tout déplacement en profondeur
+            newPosition.z = transform.position.z;
 
-            if (isHorizontal) // Déplacement uniquement sur X
+            if (isHorizontal)
             {
-                float minX = Mathf.Min(cransLanguette[0].x, cransLanguette[cransLanguette.Count - 1].x);
-                float maxX = Mathf.Max(cransLanguette[0].x, cransLanguette[cransLanguette.Count - 1].x);
-                newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
-                newPosition.y = transform.position.y; // Bloque Y pour éviter un mouvement parasite
+                float minX = Mathf.Min(cransLanguette[0].x, cransLanguette[^1].x);
+                float maxX = Mathf.Max(cransLanguette[0].x, cransLanguette[^1].x);
+
+                // Appliquer la résistance aux extrêmes
+                if (newPosition.x < minX)
+                    newPosition.x = Mathf.Lerp(newPosition.x, minX, 1 - resistanceFactor);
+                if (newPosition.x > maxX)
+                    newPosition.x = Mathf.Lerp(newPosition.x, maxX, 1 - resistanceFactor);
+
+                newPosition.y = transform.position.y;
             }
-            else // Déplacement uniquement sur Y
+            else
             {
-                float minY = Mathf.Min(cransLanguette[0].y, cransLanguette[cransLanguette.Count - 1].y);
-                float maxY = Mathf.Max(cransLanguette[0].y, cransLanguette[cransLanguette.Count - 1].y);
-                newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
-                newPosition.x = transform.position.x; // Bloque X pour éviter un mouvement parasite
+                float minY = Mathf.Min(cransLanguette[0].y, cransLanguette[^1].y);
+                float maxY = Mathf.Max(cransLanguette[0].y, cransLanguette[^1].y);
+
+                if (newPosition.y < minY)
+                    newPosition.y = Mathf.Lerp(newPosition.y, minY, 1 - resistanceFactor);
+                if (newPosition.y > maxY)
+                    newPosition.y = Mathf.Lerp(newPosition.y, maxY, 1 - resistanceFactor);
+
+                newPosition.x = transform.position.x;
             }
 
             transform.position = newPosition;
-            //Debug.Log("Nouvelle position de la languette : " + transform.position);
+
+            if (hasAttachedImage && imageAttachée != null)
+            {
+                int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
+                imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, cransImage[cranLePlusProcheIndex], Time.deltaTime * vitesseRetour);
+            }
         }
     }
 
-
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
         StopAllCoroutines();
         StartCoroutine(SnapToCran(cranLePlusProcheIndex));
@@ -145,10 +148,12 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         while (Vector3.Distance(transform.localPosition, targetLanguette) > 0.01f)
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetLanguette, Time.deltaTime * vitesseRetour);
+
             if (hasAttachedImage && imageAttachée != null)
             {
                 imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, targetImage, Time.deltaTime * vitesseRetour);
             }
+
             yield return null;
         }
 
