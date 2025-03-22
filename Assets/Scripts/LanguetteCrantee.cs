@@ -27,7 +27,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     public int puzzleStepIndex;
 
     private Vector3 startPos;
-    private bool isDragging = false;
+    //private bool isDragging = false;
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
             offset = transform.position - worldPoint;
         }
 
-        isDragging = true;
+        //isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -112,7 +112,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        isDragging = false;
+        //isDragging = false;
         int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
         StopAllCoroutines();
         StartCoroutine(SnapToCran(cranLePlusProcheIndex));

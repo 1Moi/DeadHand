@@ -156,4 +156,17 @@ public class SlidingPuzzle : MonoBehaviour
     {
         return transform.position + new Vector3(gridPos.x * tileSize, -gridPos.y * tileSize, 0);
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        for (int y = 0; y < rows; y++)
+        {
+            for (int x = 0; x < columns; x++)
+            {
+                Vector3 pos = transform.position + new Vector3(x * tileSize, -y * tileSize, 0);
+                Gizmos.DrawWireCube(pos, new Vector3(tileSize, tileSize, 0));
+            }
+        }
+    }
 }
