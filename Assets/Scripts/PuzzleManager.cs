@@ -16,15 +16,15 @@ public class PuzzleManager : MonoBehaviour
         public List<LanguetteCrantee> languettePuzzles;
         public List<int> cransCorrects;
 
-        [Header("État du puzzle")]
+        [Header("ï¿½tat du puzzle")]
         public bool isUnlocked = false;
         public bool isSolved = false;
         public bool canCheckIfSolved = true;
 
-        [Header("Contrôle visuel (ex: cadenas)")]
+        [Header("Contrï¿½le visuel (ex: cadenas)")]
         public GameObject lockVisual;
 
-        [Header("Récompense (clé)")]
+        [Header("Rï¿½compense (clï¿½)")]
         public string unlockKey;
 
 
@@ -65,17 +65,17 @@ public class PuzzleManager : MonoBehaviour
             if (isCurrentlySolved)
             {
                 isSolved = true;
-                Debug.Log("Enigme résolue : " + stepName);
+                Debug.Log("Enigme rï¿½solue : " + stepName);
             }
 
             return isCurrentlySolved;
         }
     }
 
-    [Header("Liste des énigmes")]
+    [Header("Liste des ï¿½nigmes")]
     public List<PuzzleStep> puzzleSteps;
 
-    [Header("Liste des clés obtenues")]
+    [Header("Liste des clï¿½s obtenues")]
     public Dictionary<string, bool> keysObtained = new Dictionary<string, bool>();
 
     [Header("Cheat Mode (Playtest seulement)")]
@@ -95,7 +95,7 @@ public class PuzzleManager : MonoBehaviour
                 if (!keysObtained.ContainsKey(key))
                 {
                     keysObtained[key] = true;
-                    Debug.LogWarning("Clé débloquée par cheat : " + key);
+                    Debug.LogWarning("Clï¿½ dï¿½bloquï¿½e par cheat : " + key);
                 }
             }
         }
@@ -111,24 +111,24 @@ public class PuzzleManager : MonoBehaviour
         }
 
         PuzzleStep step = puzzleSteps[puzzleStepIndex];
-        Debug.Log("Vérification de l'énigme " + puzzleStepIndex);
+        Debug.Log("Vï¿½rification de l'ï¿½nigme " + puzzleStepIndex);
 
         if (step.isUnlocked && !step.isSolved && step.CheckIfSolved())
         {
             //UnlockNextPuzzle(step);
             step.UpdateLockState();
 
-            Debug.LogWarning("Énigme résolue : " + step.stepName);
+            Debug.LogWarning("ï¿½nigme rï¿½solue : " + step.stepName);
 
             if (!string.IsNullOrEmpty(step.unlockKey))
             {
                 keysObtained[step.unlockKey] = true;
-                Debug.LogWarning("Clé obtenue : " + step.unlockKey);
+                Debug.LogWarning("Clï¿½ obtenue : " + step.unlockKey);
             }
         }
         else if(step.isUnlocked && !step.isSolved)
         {
-            Debug.LogWarning("Énigme non résolue : " + step.stepName);
+            Debug.LogWarning("ï¿½nigme non rï¿½solue : " + step.stepName);
         }
     }
 
