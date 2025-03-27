@@ -3585,6 +3585,7 @@ MonoBehaviour:
     canCheckIfSolved: 1
     lockVisual: {fileID: 0}
     unlockKey: BlueKey
+  RewardAnimation: {fileID: 1538051851}
   cheatMode: 1
   keysToCheatUnlock:
   - RedKey
@@ -6410,6 +6411,11 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &1538051851 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4239666237878925545, guid: 05585e1856b723a4f9e533c2206160dc, type: 3}
+  m_PrefabInstance: {fileID: 8359775565249882770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1553683029
 GameObject:
   m_ObjectHideFlags: 0
@@ -8772,6 +8778,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4239666237878925545, guid: 05585e1856b723a4f9e533c2206160dc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7407685373027530216, guid: 05585e1856b723a4f9e533c2206160dc, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8858,7 +8868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9099949112383059952, guid: 05585e1856b723a4f9e533c2206160dc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9157757144578178932, guid: 05585e1856b723a4f9e533c2206160dc, type: 3}
       propertyPath: m_IsActive

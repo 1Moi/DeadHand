@@ -72,16 +72,17 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    [Header("Liste des �nigmes")]
+    [Header("Liste des enigmes")]
     public List<PuzzleStep> puzzleSteps;
 
-    [Header("Liste des cl�s obtenues")]
+    [Header("Liste des cles obtenues")]
     public Dictionary<string, bool> keysObtained = new Dictionary<string, bool>();
+    public GameObject RewardAnimation;
 
     [Header("Cheat Mode (Playtest seulement)")]
     public bool cheatMode = false;
     public List<string> keysToCheatUnlock;
-
+    
 
     void Start()
     {
@@ -111,24 +112,25 @@ public class PuzzleManager : MonoBehaviour
         }
 
         PuzzleStep step = puzzleSteps[puzzleStepIndex];
-        Debug.Log("V�rification de l'�nigme " + puzzleStepIndex);
+        Debug.Log("Vérification de l'énigme " + puzzleStepIndex);
 
         if (step.isUnlocked && !step.isSolved && step.CheckIfSolved())
         {
             //UnlockNextPuzzle(step);
             step.UpdateLockState();
 
-            Debug.LogWarning("�nigme r�solue : " + step.stepName);
+            Debug.LogWarning("énigme résolue : " + step.stepName);
 
             if (!string.IsNullOrEmpty(step.unlockKey))
             {
                 keysObtained[step.unlockKey] = true;
-                Debug.LogWarning("Cl� obtenue : " + step.unlockKey);
+                RewardAnimation.SetActive(true);
+                Debug.LogWarning("Clé obtenue : " + step.unlockKey);
             }
         }
         else if(step.isUnlocked && !step.isSolved)
         {
-            Debug.LogWarning("�nigme non r�solue : " + step.stepName);
+            Debug.LogWarning("énigme non résolue : " + step.stepName);
         }
     }
 
