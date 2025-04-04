@@ -29,10 +29,25 @@ public class SlidingPuzzle : MonoBehaviour
     public int puzzleStepIndex;
 
     private Transform[,] grid;
+    private bool isMoving = false;
+
+    private List<Vector2Int> initialEmptySlots;
+    private List<Vector3> initialPositions;
 
     void Start()
     {
+        StoreInitialState();
         SetupGrid();
+    }
+
+    void StoreInitialState()
+    {
+        initialEmptySlots = new List<Vector2Int>(emptySlots);
+        initialPositions = new List<Vector3>();
+        foreach (var piece in puzzlePieces)
+        {
+            initialPositions.Add(piece.position);
+        }
     }
 
     void SetupGrid()
@@ -57,7 +72,7 @@ public class SlidingPuzzle : MonoBehaviour
 
     public void OnPieceClicked(Transform piece)
     {
-        if (!canMovePieces) return;
+        if (!canMovePieces || isMoving) return;
 
         Vector2Int pieceGridPos = GetGridPosition(piece);
         List<Vector2Int> emptyAdjacents = GetAllAdjacentEmptySlots(pieceGridPos);
@@ -73,6 +88,8 @@ public class SlidingPuzzle : MonoBehaviour
 
     IEnumerator MovePieceSmooth(Vector2Int startPos, Transform piece, Vector2Int targetPos)
     {
+        isMoving = true;
+
         grid[targetPos.y, targetPos.x] = piece;
         grid[startPos.y, startPos.x] = null;
 
@@ -95,6 +112,19 @@ public class SlidingPuzzle : MonoBehaviour
 
         if (puzzleManager != null)
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
+
+        isMoving = false;
+    }
+
+    public void ResetPuzzle()
+    {
+        StopAllCoroutines();
+        for (int i = 0; i < puzzlePieces.Count; i++)
+        {
+            puzzlePieces[i].position = initialPositions[i];
+        }
+        emptySlots = new List<Vector2Int>(initialEmptySlots);
+        SetupGrid();
     }
 
     public Vector2Int GetGridPosition(Transform piece)

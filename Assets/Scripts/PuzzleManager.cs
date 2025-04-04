@@ -16,15 +16,15 @@ public class PuzzleManager : MonoBehaviour
         public List<LanguetteCrantee> languettePuzzles;
         public List<int> cransCorrects;
 
-        [Header("�tat du puzzle")]
+        [Header("état du puzzle")]
         public bool isUnlocked = false;
         public bool isSolved = false;
         public bool canCheckIfSolved = true;
 
-        [Header("Contr�le visuel (ex: cadenas)")]
+        [Header("Contrôle visuel (ex: cadenas)")]
         public GameObject lockVisual;
 
-        [Header("R�compense (cl�)")]
+        [Header("Récompense (clef)")]
         public string unlockKey;
 
 
@@ -65,22 +65,27 @@ public class PuzzleManager : MonoBehaviour
             if (isCurrentlySolved)
             {
                 isSolved = true;
-                Debug.Log("Enigme r�solue : " + stepName);
+                Debug.Log("Enigme résolue : " + stepName);
             }
 
             return isCurrentlySolved;
         }
     }
 
-    [Header("Liste des �nigmes")]
+    [Header("Liste des énigmes")]
     public List<PuzzleStep> puzzleSteps;
 
-    [Header("Liste des cl�s obtenues")]
+    [Header("Liste des clefs obtenues")]
     public Dictionary<string, bool> keysObtained = new Dictionary<string, bool>();
 
     [Header("Cheat Mode (Playtest seulement)")]
     public bool cheatMode = false;
     public List<string> keysToCheatUnlock;
+
+    [Header("animation de recompense")]
+    public RewardAnimator rewardAnimator;
+
+
 
 
     void Start()
@@ -95,7 +100,7 @@ public class PuzzleManager : MonoBehaviour
                 if (!keysObtained.ContainsKey(key))
                 {
                     keysObtained[key] = true;
-                    Debug.LogWarning("Cl� d�bloqu�e par cheat : " + key);
+                    Debug.LogWarning("Clef débloquée par cheat : " + key);
                 }
             }
         }
@@ -111,24 +116,29 @@ public class PuzzleManager : MonoBehaviour
         }
 
         PuzzleStep step = puzzleSteps[puzzleStepIndex];
-        Debug.Log("V�rification de l'�nigme " + puzzleStepIndex);
+        Debug.Log("V�rification de l'énigme " + puzzleStepIndex);
 
         if (step.isUnlocked && !step.isSolved && step.CheckIfSolved())
         {
             //UnlockNextPuzzle(step);
             step.UpdateLockState();
 
-            Debug.LogWarning("�nigme r�solue : " + step.stepName);
+            Debug.LogWarning("énigme r�solue : " + step.stepName);
 
             if (!string.IsNullOrEmpty(step.unlockKey))
             {
                 keysObtained[step.unlockKey] = true;
-                Debug.LogWarning("Cl� obtenue : " + step.unlockKey);
+                Debug.LogWarning("Clef obtenue : " + step.unlockKey);
+
+                if (rewardAnimator != null)
+                    rewardAnimator.ShowReward(step.unlockKey);
+                else
+                    Debug.LogError("RewardAnimator non assigné !");
             }
         }
         else if(step.isUnlocked && !step.isSolved)
         {
-            Debug.LogWarning("�nigme non r�solue : " + step.stepName);
+            Debug.LogWarning("énigme non résolue : " + step.stepName);
         }
     }
 
