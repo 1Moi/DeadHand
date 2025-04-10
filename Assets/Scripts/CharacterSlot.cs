@@ -23,6 +23,9 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool isSelectable = true;
     public bool isSelectedByDefault = false;
 
+    [Header("Cases liées à ce personnage (Parents)")]
+    public List<GameObject> comicCaseParents;
+
     private static List<CharacterSlot> selectedSlots = new List<CharacterSlot>();
 
     private int currentJobIndex = 0;
@@ -31,6 +34,8 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Vector3 originalScale;
     private Quaternion originalRotation;
     private bool hovering = false;
+
+    public PuzzleManager puzzleManager; // lien vers PuzzleManager pour rafraîchir automatiquement
 
     void Start()
     {
@@ -44,6 +49,8 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         outlineRendererHover.enabled = false;
         outlineRendererSelected.enabled = false;
+
+        HideAllCases();
 
         if (isSelectedByDefault)
         {
@@ -73,6 +80,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!isSelectable) return;
         hovering = true;
         if (!isSelected && outlineRendererHover != null)
             outlineRendererHover.enabled = true;
@@ -80,6 +88,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!isSelectable) return;
         hovering = false;
         if (!isSelected && outlineRendererHover != null)
             outlineRendererHover.enabled = false;
@@ -99,7 +108,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!isSelected) return;
+        if (!isSelectable || !isSelected) return;
         float dragDistance = eventData.position.y - dragStart.y;
 
         if (Mathf.Abs(dragDistance) > switchThreshold)
@@ -107,6 +116,14 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             int direction = dragDistance > 0 ? 1 : -1;
             SwitchJob(direction);
             dragStart = eventData.position;
+
+            if (puzzleManager != null)
+            {
+                for (int i = 0; i < puzzleManager.puzzleSteps.Count; i++)
+                {
+                    puzzleManager.CheckSinglePuzzle(i);
+                }
+            }
         }
     }
 
@@ -151,6 +168,8 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void SelectThisSlot(bool forceKeep = false)
     {
+        if (!isSelectable) return;
+
         if (!isSelected)
         {
             isSelected = true;
@@ -158,6 +177,8 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             outlineRendererSelected.enabled = true;
             if (!selectedSlots.Contains(this))
                 selectedSlots.Add(this);
+
+            ShowAllCases();
         }
 
         if (!forceKeep)
@@ -178,6 +199,36 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (outlineRendererHover != null) outlineRendererHover.enabled = false;
         if (outlineRendererSelected != null) outlineRendererSelected.enabled = false;
         selectedSlots.Remove(this);
+
+        HideAllCases();
+    }
+
+    private void ShowAllCases()
+    {
+        foreach (var parent in comicCaseParents)
+        {
+            if (parent != null)
+            {
+                parent.SetActive(true);
+                Transform bwChild = parent.transform.Find(parent.name + "BW");
+                if (bwChild != null)
+                    bwChild.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    private void HideAllCases()
+    {
+        foreach (var parent in comicCaseParents)
+        {
+            if (parent != null)
+            {
+                parent.SetActive(false);
+                Transform bwChild = parent.transform.Find(parent.name + "BW");
+                if (bwChild != null)
+                    bwChild.gameObject.SetActive(false);
+            }
+        }
     }
 
     public bool IsSelected() => isSelected;

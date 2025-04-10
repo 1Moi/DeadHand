@@ -16,6 +16,14 @@ public class PuzzleManager : MonoBehaviour
         public List<LanguetteCrantee> languettePuzzles;
         public List<int> cransCorrects;
 
+        [Header("Puzzle Métiers")]
+        public List<CharacterSlot> characterSlots;
+        public List<int> correctJobIndexes;
+        public List<GameObject> comicPanels;
+
+        [Header("Résolution : récompense ou affichage")]
+        public bool unlocksKey = true;
+
         [Header("état du puzzle")]
         public bool isUnlocked = false;
         public bool isSolved = false;
@@ -26,7 +34,6 @@ public class PuzzleManager : MonoBehaviour
 
         [Header("Récompense (clef)")]
         public string unlockKey;
-
 
         public void UpdateLockState()
         {
@@ -40,6 +47,18 @@ public class PuzzleManager : MonoBehaviour
             {
                 if (languettePuzzle != null)
                     languettePuzzle.enabled = isUnlocked;
+            }
+
+            foreach (var character in characterSlots)
+            {
+                if (character != null)
+                    character.isSelectable = isUnlocked;
+            }
+
+            foreach (var panel in comicPanels)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
             }
         }
 
@@ -62,10 +81,49 @@ public class PuzzleManager : MonoBehaviour
                 }
             }
 
+            for (int i = 0; i < characterSlots.Count; i++)
+            {
+                if (characterSlots[i].GetCurrentJobIndex() != correctJobIndexes[i])
+                {
+                    isCurrentlySolved = false;
+                    break;
+                }
+            }
+
             if (isCurrentlySolved)
             {
                 isSolved = true;
-                Debug.Log("Enigme résolue : " + stepName);
+                Debug.Log("Énigme résolue : " + stepName);
+
+                if (!unlocksKey)
+                {
+                    // Désactiver la sélection et désélectionner tous les personnages
+                    foreach (var slot in characterSlots)
+                    {
+                        if (slot != null)
+                        {
+                            slot.Deselect();
+                            slot.isSelectable = false;
+                        }
+                    }
+
+                    // Afficher toutes les cases en couleur
+                    foreach (var panel in comicPanels)
+                    {
+                        if (panel != null)
+                        {
+                            panel.SetActive(true);
+
+                            foreach (Transform child in panel.transform)
+                            {
+                                if (child.name.EndsWith("BW"))
+                                    child.gameObject.SetActive(false);
+                                else if (child.name.EndsWith("RGB"))
+                                    child.gameObject.SetActive(true);
+                            }
+                        }
+                    }
+                }
             }
 
             return isCurrentlySolved;
@@ -84,9 +142,6 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("animation de recompense")]
     public RewardAnimator rewardAnimator;
-
-
-
 
     void Start()
     {
@@ -108,7 +163,6 @@ public class PuzzleManager : MonoBehaviour
 
     public void CheckSinglePuzzle(int puzzleStepIndex)
     {
-
         if (puzzleStepIndex < 0 || puzzleStepIndex >= puzzleSteps.Count)
         {
             Debug.LogError("Index du puzzle step invalide.");
@@ -116,16 +170,15 @@ public class PuzzleManager : MonoBehaviour
         }
 
         PuzzleStep step = puzzleSteps[puzzleStepIndex];
-        Debug.Log("V�rification de l'énigme " + puzzleStepIndex);
+        Debug.Log("Vérification de l'énigme " + puzzleStepIndex);
 
         if (step.isUnlocked && !step.isSolved && step.CheckIfSolved())
         {
-            //UnlockNextPuzzle(step);
             step.UpdateLockState();
 
-            Debug.LogWarning("énigme r�solue : " + step.stepName);
+            Debug.LogWarning("Énigme résolue : " + step.stepName);
 
-            if (!string.IsNullOrEmpty(step.unlockKey))
+            if (step.unlocksKey && !string.IsNullOrEmpty(step.unlockKey))
             {
                 keysObtained[step.unlockKey] = true;
                 Debug.LogWarning("Clef obtenue : " + step.unlockKey);
@@ -136,23 +189,11 @@ public class PuzzleManager : MonoBehaviour
                     Debug.LogError("RewardAnimator non assigné !");
             }
         }
-        else if(step.isUnlocked && !step.isSolved)
+        else if (step.isUnlocked && !step.isSolved)
         {
-            Debug.LogWarning("énigme non résolue : " + step.stepName);
+            Debug.LogWarning("Énigme non résolue : " + step.stepName);
         }
     }
-
-    /*
-    void UnlockNextPuzzle(PuzzleStep solvedStep)
-    {
-        int currentIndex = puzzleSteps.IndexOf(solvedStep);
-        if (currentIndex + 1 < puzzleSteps.Count)
-        {
-            puzzleSteps[currentIndex + 1].isUnlocked = true;
-            puzzleSteps[currentIndex + 1].UpdateLockState();
-        }
-    }
-    */
 
     public bool HasKey(string key)
     {
