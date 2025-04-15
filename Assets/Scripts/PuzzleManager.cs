@@ -52,7 +52,7 @@ public class PuzzleManager : MonoBehaviour
             foreach (var character in characterSlots)
             {
                 if (character != null)
-                    character.isSelectable = isUnlocked;
+                    return;
             }
 
             foreach (var panel in comicPanels)
@@ -95,33 +95,11 @@ public class PuzzleManager : MonoBehaviour
                 isSolved = true;
                 Debug.Log("Énigme résolue : " + stepName);
 
-                if (!unlocksKey)
+                foreach (var slot in characterSlots)
                 {
-                    // Désactiver la sélection et désélectionner tous les personnages
-                    foreach (var slot in characterSlots)
+                    if (slot != null)
                     {
-                        if (slot != null)
-                        {
-                            slot.Deselect();
-                            slot.isSelectable = false;
-                        }
-                    }
-
-                    // Afficher toutes les cases en couleur
-                    foreach (var panel in comicPanels)
-                    {
-                        if (panel != null)
-                        {
-                            panel.SetActive(true);
-
-                            foreach (Transform child in panel.transform)
-                            {
-                                if (child.name.EndsWith("BW"))
-                                    child.gameObject.SetActive(false);
-                                else if (child.name.EndsWith("RGB"))
-                                    child.gameObject.SetActive(true);
-                            }
-                        }
+                        slot.DeselectFinal();
                     }
                 }
             }

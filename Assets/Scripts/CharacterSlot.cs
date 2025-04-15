@@ -20,7 +20,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public float pivotIntensity = 10f;
 
     [Header("État")]
-    public bool isSelectable = true;
+    [SerializeField] private bool isSelectable = true;
     public bool isSelectedByDefault = false;
 
     [Header("Cases liées à ce personnage (Parents)")]
@@ -30,12 +30,12 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private int currentJobIndex = 0;
     private Vector2 dragStart;
-    private bool isSelected = false;
+    [SerializeField] private bool isSelected = false;
     private Vector3 originalScale;
     private Quaternion originalRotation;
     private bool hovering = false;
 
-    public PuzzleManager puzzleManager; // lien vers PuzzleManager pour rafraîchir automatiquement
+    public PuzzleManager puzzleManager;
 
     void Start()
     {
@@ -80,7 +80,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isSelectable) return;
+        if (!isSelectable || isSelectedByDefault) return; // <- Ajoute cette condition aussi
         hovering = true;
         if (!isSelected && outlineRendererHover != null)
             outlineRendererHover.enabled = true;
@@ -234,4 +234,44 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool IsSelected() => isSelected;
 
     public int GetCurrentJobIndex() => currentJobIndex;
+
+    public void DeselectFinal()
+    {
+        isSelectable = false;
+        isSelected = false;
+        hovering = false;
+
+        outlineRendererHover.enabled = false;
+        outlineRendererSelected.enabled = false;
+        selectedSlots.Remove(this);
+
+        StopAllCoroutines();
+
+        if (characterRenderer != null && jobSprites.Count > currentJobIndex)
+        {
+            characterRenderer.sprite = jobSprites[currentJobIndex];
+            characterRenderer.color = Color.white;
+        }
+
+        transform.localScale = originalScale;
+        transform.rotation = originalRotation;
+
+        HideAllCases();
+
+        foreach (var parent in comicCaseParents)
+        {
+            if (parent != null)
+            {
+                parent.SetActive(true);
+                foreach (Transform child in parent.transform)
+                {
+                    if (child.name.EndsWith("BW"))
+                        child.gameObject.SetActive(false);
+                    else if (child.name.EndsWith("RGB"))
+                        child.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
 }

@@ -384,8 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineSprite: {fileID: 274460799}
-  baseColor: {r: 0.9450981, g: 0.5921569, b: 0.87843144, a: 1}
-  hoverColor: {r: 0.9433962, g: 0.5918476, b: 0.8788355, a: 1}
+  baseColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
+  hoverColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
   colorChangeSpeed: 5
   fadeOutDelay: 0.05
 --- !u!1 &144198166
@@ -2100,8 +2100,8 @@ Transform:
   m_GameObject: {fileID: 328532736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.407, y: 2.1709, z: 0}
-  m_LocalScale: {x: 1.0409261, y: 0.28002155, z: 0.53802925}
+  m_LocalPosition: {x: -7.407, y: 2.6596, z: 0}
+  m_LocalScale: {x: 1.0409261, y: 0.34535056, z: 0.53802925}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 943128918}
@@ -3293,7 +3293,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 83664c85919709042be58715738c04cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38e73fae1bfd25c4b8bca8a4f0cd8919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3313,8 +3313,8 @@ Transform:
   m_GameObject: {fileID: 449078881}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.19, y: 1.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 7.19, y: 1.49, z: 0}
+  m_LocalScale: {x: 0.257504, y: 0.257504, z: 0.257504}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 477490268}
@@ -3792,8 +3792,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineSprite: {fileID: 134726948}
-  baseColor: {r: 0.94509804, g: 0.5921569, b: 0.8784314, a: 1}
-  hoverColor: {r: 0.9450981, g: 0.5921569, b: 0.87843144, a: 1}
+  baseColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
+  hoverColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
   colorChangeSpeed: 5
   fadeOutDelay: 0.05
 --- !u!1 &586916431
@@ -4257,7 +4257,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a510026b607b9a9458eeb52a44e0ead8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 444e340e066b93c41b25a58a7f4de1b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7760,7 +7760,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4518019063371096547, guid: b90d208bb228264499653b32add0f24c, type: 3}
       propertyPath: isSelectable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4518019063371096547, guid: b90d208bb228264499653b32add0f24c, type: 3}
       propertyPath: puzzleManager
@@ -8478,8 +8478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineSprite: {fileID: 480000269}
-  baseColor: {r: 0.94509804, g: 0.5921569, b: 0.8784314, a: 1}
-  hoverColor: {r: 0.9450981, g: 0.5921569, b: 0.87843144, a: 1}
+  baseColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
+  hoverColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
   colorChangeSpeed: 5
   fadeOutDelay: 0.05
 --- !u!1 &1370134735
@@ -9029,7 +9029,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Il \xE9tait une fois, dans une \xE9cole des plus singuli\xE8res,\nun projet
     \xE9trange et grandiose qui se pr\xE9parait. \nCe projet, qui allait bient\xF4t
-    prendre forme, r\xE9unirait trois enfants aux \xE2mes particuli\xE8res :\n Alexandra
+    prendre forme, r\xE9unirait trois enfants aux \xE2mes particuli\xE8res : Alexandra
     , Vika , Vera, et leur professeur, un homme sage et myst\xE9rieux, nomm\xE9 Sergei."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -9057,8 +9057,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
-  m_fontSizeBase: 21
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9093,7 +9093,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 44.616417, y: 0, z: -419.69672, w: -103.98466}
+  m_margin: {x: 44.616417, y: 0, z: -419.69672, w: -108.06732}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10821,7 +10821,7 @@ Transform:
   m_GameObject: {fileID: 1896499149}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.3700027, y: 4.12, z: 0}
+  m_LocalPosition: {x: -7.47, y: 3.84, z: 0}
   m_LocalScale: {x: 0.61993, y: 0.61993, z: 0.61993}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11227,7 +11227,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Au fil des jours, le ch\xE2teau grandissait, et les enfants travaillaient
     avec joie, leurs rires r\xE9sonnant dans la pi\xE8ce.\nAlexandra, plus timide,
-    se tenait \xE0 l\u2019\xE9cart tandis que Vera , plus contemplative, aidait Vika,
+    se tenait \xE0 l\u2019\xE9cart tandis que Vera, plus contemplative, aidait Vika,
     son amie au grand coeur, \xE0 la construction du ch\xE2teau."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -12133,8 +12133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineSprite: {fileID: 1850202456}
-  baseColor: {r: 0.94509804, g: 0.5921569, b: 0.8784314, a: 1}
-  hoverColor: {r: 0.9450981, g: 0.5921569, b: 0.87843144, a: 1}
+  baseColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
+  hoverColor: {r: 0.5254902, g: 0.058823533, b: 0.0627451, a: 1}
   colorChangeSpeed: 5
   fadeOutDelay: 0.05
 --- !u!1 &2101785684
