@@ -15,12 +15,12 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     public bool isOnRightPage = true;
     public float vitesseDeplacement = 0.005f;
     public float vitesseRetour = 10f;
-    [Tooltip("Facteur de résistance (0 = forte résistance, 1 = pas de résistance)")]
-    public float resistanceFactor = 0.2f; // Empêche de trop dépasser
+    [Tooltip("Facteur de rÃ©sistance (0 = forte rÃ©sistance, 1 = pas de rÃ©sistance)")]
+    public float resistanceFactor = 0.2f; // EmpÃªche de trop dÃ©passer
 
-    [Header("Image attachée ?")]
+    [Header("Image attachÃ©e ?")]
     public bool hasAttachedImage = false;
-    public Transform imageAttachée;
+    public Transform imageAttachÃ©e;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
@@ -35,16 +35,16 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         if (hasAttachedImage && (cransImage.Count == 0 || cransLanguette.Count != cransImage.Count))
         {
-            Debug.LogError("Les listes cransLanguette et cransImage doivent être de la même taille !");
+            Debug.LogError("Les listes cransLanguette et cransImage doivent Ãªtre de la mÃªme taille !");
             return;
         }
 
         cranDeDepart = Mathf.Clamp(cranDeDepart, 0, cransLanguette.Count - 1);
         transform.localPosition = cransLanguette[cranDeDepart];
 
-        if (hasAttachedImage && imageAttachée != null)
+        if (hasAttachedImage && imageAttachÃ©e != null)
         {
-            imageAttachée.localPosition = cransImage[cranDeDepart];
+            imageAttachÃ©e.localPosition = cransImage[cranDeDepart];
         }
 
         startPos = transform.localPosition;
@@ -79,7 +79,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
                 float minX = Mathf.Min(cransLanguette[0].x, cransLanguette[^1].x);
                 float maxX = Mathf.Max(cransLanguette[0].x, cransLanguette[^1].x);
 
-                // Appliquer la résistance aux extrêmes
+                // Appliquer la rÃ©sistance aux extrÃªmes
                 if (newPosition.x < minX)
                     newPosition.x = Mathf.Lerp(newPosition.x, minX, 1 - resistanceFactor);
                 if (newPosition.x > maxX)
@@ -102,10 +102,10 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
             transform.position = newPosition;
 
-            if (hasAttachedImage && imageAttachée != null)
+            if (hasAttachedImage && imageAttachÃ©e != null)
             {
                 int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
-                imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, cransImage[cranLePlusProcheIndex], Time.deltaTime * vitesseRetour);
+                imageAttachÃ©e.localPosition = Vector3.Lerp(imageAttachÃ©e.localPosition, cransImage[cranLePlusProcheIndex], Time.deltaTime * vitesseRetour);
             }
         }
     }
@@ -149,18 +149,18 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetLanguette, Time.deltaTime * vitesseRetour);
 
-            if (hasAttachedImage && imageAttachée != null)
+            if (hasAttachedImage && imageAttachÃ©e != null)
             {
-                imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, targetImage, Time.deltaTime * vitesseRetour);
+                imageAttachÃ©e.localPosition = Vector3.Lerp(imageAttachÃ©e.localPosition, targetImage, Time.deltaTime * vitesseRetour);
             }
 
             yield return null;
         }
 
         transform.localPosition = targetLanguette;
-        if (hasAttachedImage && imageAttachée != null)
+        if (hasAttachedImage && imageAttachÃ©e != null)
         {
-            imageAttachée.localPosition = targetImage;
+            imageAttachÃ©e.localPosition = targetImage;
         }
     }
 
