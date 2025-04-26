@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
-[RequireComponent(typeof(Book))]
+
+[RequireComponent(typeof(RawBook))]
 public class AutoFlip : MonoBehaviour {
     public FlipMode Mode;
     public float PageFlipTime = 1;
     public float TimeBetweenPages = 1;
     public float DelayBeforeStarting = 0;
     public bool AutoStartFlip=true;
-    public Book ControledBook;
     public int AnimationFramesCount = 40;
     bool isFlipping = false;
     // Use this for initialization
+    [SerializeField] private RawBook ControledBook;
     void Start () {
         if (!ControledBook)
-            ControledBook = GetComponent<Book>();
+            ControledBook = GetComponent<RawBook>();
         if (AutoStartFlip)
             StartFlipping();
         ControledBook.OnFlip.AddListener(new UnityEngine.Events.UnityAction(PageFlipped));
@@ -29,7 +30,7 @@ public class AutoFlip : MonoBehaviour {
     public void FlipRightPage()
     {
         if (isFlipping) return;
-        if (ControledBook.currentPage >= ControledBook.TotalPageCount) return;
+        if (ControledBook.currentPage >= ControledBook.TotalPageCount - 1) return;
         isFlipping = true;
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
@@ -42,7 +43,7 @@ public class AutoFlip : MonoBehaviour {
     public void FlipLeftPage()
     {
         if (isFlipping) return;
-        if (ControledBook.currentPage <= 0) return;
+        if (ControledBook.currentPage <= 1) return;
         isFlipping = true;
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
