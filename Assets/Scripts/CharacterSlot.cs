@@ -15,7 +15,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [Header("Effets visuels")]
     public float switchThreshold = 50f;
-    public float hoverScale = 1.05f;
+    public float hoverScale = 1.15f;
     public float transitionSpeed = 10f;
     public float pivotIntensity = 10f;
 
@@ -239,7 +239,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         isSelectable = false;
         isSelected = false;
-        hovering = false;
+        hovering = true;
 
         outlineRendererHover.enabled = false;
         outlineRendererSelected.enabled = false;
@@ -252,10 +252,11 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             characterRenderer.sprite = jobSprites[currentJobIndex];
             characterRenderer.color = Color.white;
         }
-
-        transform.localScale = originalScale;
-        transform.rotation = originalRotation;
-
+        /*
+        Vector3 targetScale = originalScale * hoverScale;
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * transitionSpeed);
+        */
         HideAllCases();
 
         foreach (var parent in comicCaseParents)

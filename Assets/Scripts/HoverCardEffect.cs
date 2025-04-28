@@ -28,7 +28,9 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private Vector3 originalScale;
     private Quaternion originalRotation;
     private SpriteRenderer outlineRenderer;
+    [SerializeField]
     private int baseRGBSortingOrder;
+    [SerializeField]
     private int baseOutlineOrder;
 
     private bool hovering = false;
