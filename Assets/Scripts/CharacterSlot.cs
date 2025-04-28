@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Sprites métiers (ordre défini)")]
+    [Header("Sprites mï¿½tiers (ordre dï¿½fini)")]
     public List<Sprite> jobSprites;
 
-    [Header("Références")]
+    [Header("Rï¿½fï¿½rences")]
     public SpriteRenderer characterRenderer;  // sprite visible
     public SpriteRenderer outlineRendererHover;    // contour pour le hover
-    public SpriteRenderer outlineRendererSelected; // contour pour la sélection
+    public SpriteRenderer outlineRendererSelected; // contour pour la sï¿½lection
 
     [Header("Effets visuels")]
     public float switchThreshold = 50f;
@@ -19,11 +19,14 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public float transitionSpeed = 10f;
     public float pivotIntensity = 10f;
 
-    [Header("État")]
+    [Header("ï¿½tat")]
     [SerializeField] private bool isSelectable = true;
     public bool isSelectedByDefault = false;
 
-    [Header("Cases liées à ce personnage (Parents)")]
+    [Header("Cases liï¿½es ï¿½ ce personnage (Parents)")]
+    [SerializeField] private AudioClip audioDrag;
+    [SerializeField] private AudioClip audioClick;
+    [SerializeField] private float volume;
     public List<GameObject> comicCaseParents;
 
     private static List<CharacterSlot> selectedSlots = new List<CharacterSlot>();
@@ -97,6 +100,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerClick(PointerEventData eventData)
     {
         if (!isSelectable || isSelectedByDefault || isSelected) return;
+        GlobalSoundManager.PlaySound(audioClick, volume); 
         SelectThisSlot();
     }
 
@@ -122,6 +126,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 for (int i = 0; i < puzzleManager.puzzleSteps.Count; i++)
                 {
                     puzzleManager.CheckSinglePuzzle(i);
+                    GlobalSoundManager.PlaySound(audioDrag, volume); 
                 }
             }
         }

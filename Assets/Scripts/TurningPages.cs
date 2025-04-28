@@ -8,8 +8,12 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
 
     [Header("Camera")]
     public bool NextOrPrevious = false;
+
+    [SerializeField] private AudioClip audioPage;
+    [SerializeField] private float volume;
+
     public Camera pageCamera;
-    public float pageTurnDistance = 100f; // Distance du déplacement
+    public float pageTurnDistance = 100f; // Distance du dï¿½placement
 
     private int direction = -1;
 
@@ -23,7 +27,8 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
         if (canTurnPage)
         {
             pageCamera.transform.position += new Vector3(pageTurnDistance * direction, 0, 0);
-            Debug.Log("Page tournée.");
+            Debug.Log("Page tournï¿½e.");
+            GlobalSoundManager.PlaySound(audioPage, volume); 
         }
         else
         {

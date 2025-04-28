@@ -21,6 +21,10 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     [Header("Image attachée ?")]
     public bool hasAttachedImage = false;
     public Transform imageAttachée;
+    
+    [Header("Audio")]
+    public AudioClip audioNouveauCran;
+    public float volume;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
@@ -105,6 +109,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
             if (hasAttachedImage && imageAttachée != null)
             {
                 int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
+
                 imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, cransImage[cranLePlusProcheIndex], Time.deltaTime * vitesseRetour);
             }
         }
@@ -121,6 +126,8 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
         }
+
+        GlobalSoundManager.PlaySound(audioNouveauCran, volume);
     }
 
     private int TrouverCranProche(Vector3 currentPos)

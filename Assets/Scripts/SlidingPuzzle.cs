@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 public class SlidingPuzzle : MonoBehaviour
 {
-    [Header("Paramètres de la grille")]
+    [Header("Paramï¿½tres de la grille")]
     public int rows = 3;
     public int columns = 3;
     public float tileSize = 1f;
 
-    [Header("Paramètres d'interaction")]
+    [Header("Paramï¿½tres d'interaction")]
     public bool canMovePieces = true;
 
-    [Header("Paramètres visuels")]
+    [Header("Paramï¿½tres visuels")]
     public float moveDuration = 0.2f;
 
-    [Header("Pièces du puzzle")]
+    [Header("Piï¿½ces du puzzle")]
     public List<Transform> puzzlePieces;
 
     [Header("Positions initiales des tuiles")]
@@ -23,6 +23,10 @@ public class SlidingPuzzle : MonoBehaviour
 
     [Header("Cases vides initiales")]
     public List<Vector2Int> emptySlots;
+
+    [SerializeField] private AudioClip audioPiece;
+    [SerializeField] private AudioClip audioErase;
+    [SerializeField] private float volume;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
@@ -76,6 +80,8 @@ public class SlidingPuzzle : MonoBehaviour
 
         Vector2Int pieceGridPos = GetGridPosition(piece);
         List<Vector2Int> emptyAdjacents = GetAllAdjacentEmptySlots(pieceGridPos);
+        GlobalSoundManager.PlaySound(audioPiece, volume);
+        Debug.Log("object Puute");
 
         if (emptyAdjacents.Count > 0)
         {
@@ -125,6 +131,7 @@ public class SlidingPuzzle : MonoBehaviour
         }
         emptySlots = new List<Vector2Int>(initialEmptySlots);
         SetupGrid();
+        GlobalSoundManager.PlaySound(audioErase, volume);
     }
 
     public Vector2Int GetGridPosition(Transform piece)
