@@ -5,6 +5,7 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
 {
     [Header("Can turn the page")]
     public bool canTurnPage = false;
+    public AutoFlip autoFlip;
 
     [Header("Camera")]
     public bool NextOrPrevious = false;
@@ -28,6 +29,11 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
         {
             pageCamera.transform.position += new Vector3(pageTurnDistance * direction, 0, 0);
             Debug.Log("Page tourn�e.");
+
+            if (direction > 0)
+                autoFlip.FlipRightPage();
+            else
+                autoFlip.FlipLeftPage();
             GlobalSoundManager.PlaySound(audioPage, volume); 
         }
         else
