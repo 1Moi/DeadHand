@@ -5,8 +5,10 @@ public class GlobalSoundManager : MonoBehaviour
 {
     private static GlobalSoundManager instance;
 
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioSource musicAudioSource;
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioSource musicAudioSource;
 
     void Awake()
     {
