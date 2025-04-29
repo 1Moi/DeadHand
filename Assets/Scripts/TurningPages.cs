@@ -18,6 +18,8 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
 
     private int direction = -1;
 
+    private bool hovering = false;
+
     void Start()
     {
         direction = NextOrPrevious ? 1 : -1;
@@ -40,5 +42,29 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
         {
             Debug.LogWarning("Impossible de tourner la page.");
         }
+    }
+
+    void OnMouseOver()
+    {
+        Debug.Log("eeeeeee");
+        if (hovering == false)
+        {
+            hovering = true;
+            transform.localScale = transform.localScale + new Vector3(0.25f * direction, 0.25f, 0);
+            transform.position = transform.position + new Vector3(-0.65f * direction, 1, 0);
+        }
+
+    }
+    void OnMouseExit()
+    {
+        if (hovering == true)
+        {
+            Debug.Log("AAAAAAAA");
+            hovering = false;
+            transform.localScale = transform.localScale + new Vector3(-0.25f * direction, -0.25f, 0);
+            transform.position = transform.position + new Vector3(0.65f * direction, -1, 0);
+            
+        }
+        
     }
 }

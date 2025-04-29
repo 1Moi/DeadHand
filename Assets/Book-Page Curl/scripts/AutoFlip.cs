@@ -12,6 +12,7 @@ public class AutoFlip : MonoBehaviour {
     bool isFlipping = false;
     // Use this for initialization
     [SerializeField] private RawBook ControledBook;
+    [SerializeField] private GameObject MangeClick;
     void Start () {
         if (!ControledBook)
             ControledBook = GetComponent<RawBook>();
@@ -22,6 +23,7 @@ public class AutoFlip : MonoBehaviour {
     void PageFlipped()
     {
         isFlipping = false;
+        MangeClick.SetActive(false);
     }
 	public void StartFlipping()
     {
@@ -32,6 +34,7 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage >= ControledBook.TotalPageCount - 1) return;
         isFlipping = true;
+        MangeClick.SetActive(true);
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
@@ -45,6 +48,7 @@ public class AutoFlip : MonoBehaviour {
         if (isFlipping) return;
         if (ControledBook.currentPage <= 1) return;
         isFlipping = true;
+        MangeClick.SetActive(true);
         float frameTime = PageFlipTime / AnimationFramesCount;
         float xc = (ControledBook.EndBottomRight.x + ControledBook.EndBottomLeft.x) / 2;
         float xl = ((ControledBook.EndBottomRight.x - ControledBook.EndBottomLeft.x) / 2) * 0.9f;
