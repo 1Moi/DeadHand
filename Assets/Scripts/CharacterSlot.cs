@@ -3,28 +3,26 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    [Header("Sprites m�tiers (ordre d�fini)")]
+    [Header("Sprites métiers (ordre défini)")]
     public List<Sprite> jobSprites;
 
-    [Header("R�f�rences")]
-    public SpriteRenderer characterRenderer;  // sprite visible
-    public SpriteRenderer outlineRendererHover;    // contour pour le hover
-    public SpriteRenderer outlineRendererSelected; // contour pour la s�lection
+    [Header("Références")]
+    public SpriteRenderer characterRenderer;
+    public SpriteRenderer outlineRendererHover;
+    public SpriteRenderer outlineRendererSelected;
 
     [Header("Effets visuels")]
-    public float switchThreshold = 50f;
     public float hoverScale = 1.15f;
     public float transitionSpeed = 10f;
     public float pivotIntensity = 10f;
 
-    [Header("�tat")]
+    [Header("État")]
     [SerializeField] private bool isSelectable = true;
     public bool isSelectedByDefault = false;
 
-    [Header("Cases li�es � ce personnage (Parents)")]
-    [SerializeField] private AudioClip audioDrag;
+    [Header("Audio & Visuels")]
     [SerializeField] private AudioClip audioClick;
     [SerializeField] private float volume;
     public List<GameObject> comicCaseParents;
@@ -32,13 +30,14 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private static List<CharacterSlot> selectedSlots = new List<CharacterSlot>();
 
     private int currentJobIndex = 0;
-    private Vector2 dragStart;
-    [SerializeField] private bool isSelected = false;
+    private bool isSelected = false;
     private Vector3 originalScale;
     private Quaternion originalRotation;
     private bool hovering = false;
 
+    [Header("Puzzle Manager & Index")]
     public PuzzleManager puzzleManager;
+    public int stepIndex = -1;
 
     void Start()
     {
@@ -46,9 +45,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         originalRotation = transform.rotation;
 
         if (characterRenderer != null && jobSprites.Count > 0)
-        {
             characterRenderer.sprite = jobSprites[currentJobIndex];
-        }
 
         outlineRendererHover.enabled = false;
         outlineRendererSelected.enabled = false;
@@ -56,9 +53,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         HideAllCases();
 
         if (isSelectedByDefault)
-        {
             SelectThisSlot(forceKeep: true);
-        }
     }
 
     void Update()
@@ -83,7 +78,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!isSelectable || isSelectedByDefault) return; // <- Ajoute cette condition aussi
+        if (!isSelectable) return;
         hovering = true;
         if (!isSelected && outlineRendererHover != null)
             outlineRendererHover.enabled = true;
@@ -99,42 +94,25 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!isSelectable || isSelectedByDefault || isSelected) return;
-        GlobalSoundManager.PlaySound(audioClick, volume); 
-        SelectThisSlot();
-    }
+        if (!isSelectable) return;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (!isSelectable || !isSelected) return;
-        dragStart = eventData.position;
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (!isSelectable || !isSelected) return;
-        float dragDistance = eventData.position.y - dragStart.y;
-
-        if (Mathf.Abs(dragDistance) > switchThreshold)
+        // Si déjà sélectionné, clic gauche/droit change le job
+        if (isSelected)
         {
-            int direction = dragDistance > 0 ? 1 : -1;
+            int direction = eventData.button == PointerEventData.InputButton.Right ? -1 : 1;
             SwitchJob(direction);
-            dragStart = eventData.position;
 
-            if (puzzleManager != null)
+            if (puzzleManager != null && stepIndex >= 0 && stepIndex < puzzleManager.puzzleSteps.Count)
             {
-                for (int i = 0; i < puzzleManager.puzzleSteps.Count; i++)
-                {
-                    puzzleManager.CheckSinglePuzzle(i);
-                    GlobalSoundManager.PlaySound(audioDrag, volume); 
-                }
+                puzzleManager.CheckSinglePuzzle(stepIndex);
+                GlobalSoundManager.PlaySound(audioClick, volume);
             }
         }
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        // rien pour le moment
+        else
+        {
+            GlobalSoundManager.PlaySound(audioClick, volume);
+            SelectThisSlot();
+        }
     }
 
     void SwitchJob(int direction)
@@ -191,9 +169,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             foreach (var slot in selectedSlots.ToArray())
             {
                 if (slot != this && !slot.isSelectedByDefault)
-                {
                     slot.Deselect();
-                }
             }
         }
     }
@@ -201,10 +177,9 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void Deselect()
     {
         isSelected = false;
-        if (outlineRendererHover != null) outlineRendererHover.enabled = false;
-        if (outlineRendererSelected != null) outlineRendererSelected.enabled = false;
+        outlineRendererHover.enabled = false;
+        outlineRendererSelected.enabled = false;
         selectedSlots.Remove(this);
-
         HideAllCases();
     }
 
@@ -236,8 +211,6 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
-    public bool IsSelected() => isSelected;
-
     public int GetCurrentJobIndex() => currentJobIndex;
 
     public void DeselectFinal()
@@ -257,11 +230,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             characterRenderer.sprite = jobSprites[currentJobIndex];
             characterRenderer.color = Color.white;
         }
-        /*
-        Vector3 targetScale = originalScale * hoverScale;
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * transitionSpeed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * transitionSpeed);
-        */
+
         HideAllCases();
 
         foreach (var parent in comicCaseParents)
@@ -279,5 +248,4 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             }
         }
     }
-
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -45,6 +46,9 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
             }
 
             Debug.Log("Cadenas ouvert avec la clé : " + requiredKey);
+
+            if (objectToUnlock != null)
+                objectToUnlock.SetActive(false);
 
             //delete the gameobject
             Destroy(gameObject);

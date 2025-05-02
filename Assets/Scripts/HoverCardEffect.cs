@@ -17,6 +17,7 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [Header("Références visuelles")]
     public SpriteRenderer caseBWRenderer;
     public SpriteRenderer caseRGBRenderer;
+    public SpriteRenderer Buble;
 
     [Header("Transition vers la case")]
     public Image fadePanel; // UI Panel noir avec alpha 0 au début
@@ -25,6 +26,8 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public float fadeHoldDuration = 0.3f;
     public Vector3 cameraTargetPosition;
 
+    public GameObject Caneva;
+
     private Vector3 originalScale;
     private Quaternion originalRotation;
     private SpriteRenderer outlineRenderer;
@@ -32,6 +35,8 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private int baseRGBSortingOrder;
     [SerializeField]
     private int baseOutlineOrder;
+    [SerializeField]
+    private int baseBubleSortingOrder;
 
     private bool hovering = false;
 
@@ -68,12 +73,15 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
         // Toujours afficher le hover visuel, mais outline seulement si RGB actif
         if (caseRGBRenderer != null && caseRGBRenderer.gameObject.activeSelf)
         {
-            caseRGBRenderer.sortingOrder = 50;
+            caseRGBRenderer.sortingOrder = 60;
+
+            if (Buble !=  null)
+                Buble.sortingOrder = 70;
 
             if (zoomable && outlineSprite != null && outlineRenderer != null)
             {
                 outlineSprite.SetActive(true);
-                outlineRenderer.sortingOrder = 45;
+                outlineRenderer.sortingOrder = 55;
             }
         }
     }
@@ -84,6 +92,9 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (caseRGBRenderer != null)
             caseRGBRenderer.sortingOrder = baseRGBSortingOrder;
+
+        if (Buble != null)
+            Buble.sortingOrder = baseBubleSortingOrder;
 
         if (outlineSprite != null && outlineRenderer != null)
         {
@@ -117,6 +128,7 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
             yield return null;
         }
 
+        Caneva.SetActive(false);
         Camera.main.transform.position = new Vector3(cameraTargetPosition.x, cameraTargetPosition.y, Camera.main.transform.position.z);
 
         yield return new WaitForSeconds(fadeHoldDuration);

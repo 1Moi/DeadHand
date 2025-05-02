@@ -4,6 +4,11 @@ using UnityEngine.EventSystems;
 
 public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    public enum ButtonType { NewGame, Option, Quit }
+
+    [Header("Type de bouton")]
+    public ButtonType buttonType = ButtonType.NewGame;
+
     [Header("Couleurs")]
     public Color defaultColor = Color.white;
     public Color hoverColor = Color.yellow;
@@ -14,22 +19,25 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public GameObject Livre;
     public GameObject StartGameButton;
     public GameObject OptionButton;
+    public GameObject QuitButton;
     public GameObject Fils;
     public GameObject Titre;
     public GameObject optionCanvas;
 
     [Header("Paramètres de Transition")]
-    public Vector3 targetPosition;
-    public Quaternion targetRotation;
+    public Vector3 targetLocalPosition;
+    public Quaternion targetLocalRotation;
     public float transitionSpeed = 1f;
     public float fadeDuration = 1f;
     public float slideDuration = 0.5f;
     public float slideTargetX = -25f;
-    public float delayBeforeLivreMove = 0.2f; // ⬅ Délai avant que le Livre ne commence à bouger
+    public float delayBeforeLivreMove = 0.2f;
+    public GameObject ClickBlocker;
 
-    [Header("Configuration du Bouton")]
-    [SerializeField]
-    private bool isNewGameOrOption; // true = NewGame, false = Option
+    [Header("Colliders à désactiver")]
+    public Collider2D[] collidersToDisable;
+
+    private bool isTransitioning = false;
 
     void Start()
     {
@@ -44,25 +52,32 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (isTransitioning) return;
         spriteRenderer.color = hoverColor;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (isTransitioning) return;
         spriteRenderer.color = defaultColor;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (isTransitioning) return;
         spriteRenderer.color = pressedColor;
 
-        if (isNewGameOrOption)
+        switch (buttonType)
         {
-            StartCoroutine(LaunchNewGameSequence());
-        }
-        else
-        {
-            OptionMenu();
+            case ButtonType.NewGame:
+                StartCoroutine(LaunchNewGameSequence());
+                break;
+            case ButtonType.Option:
+                OptionMenu();
+                break;
+            case ButtonType.Quit:
+                QuitGame();
+                break;
         }
 
         StartCoroutine(ResetAfterDelay(0.1f));
@@ -82,23 +97,42 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    private void QuitGame()
+    {
+        Debug.Log("Quitter le jeu...");
+        Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+    }
+
     private IEnumerator LaunchNewGameSequence()
     {
-        // 1. Fade out titre et fils
-        SpriteRenderer titreSR = Titre.GetComponent<SpriteRenderer>();
-        SpriteRenderer filsSR = Fils.GetComponent<SpriteRenderer>();
-        StartCoroutine(FadeOutSprite(titreSR));
-        StartCoroutine(FadeOutSprite(filsSR));
+        isTransitioning = true;
+        DisableAllColliders();
 
-        // 2. Slide les boutons à gauche
+        SpriteRenderer titreSR = Titre?.GetComponent<SpriteRenderer>();
+        SpriteRenderer filsSR = Fils?.GetComponent<SpriteRenderer>();
+        if (titreSR) StartCoroutine(FadeOutSprite(titreSR));
+        if (filsSR) StartCoroutine(FadeOutSprite(filsSR));
+
         yield return StartCoroutine(SlideOutButton(StartGameButton));
         yield return StartCoroutine(SlideOutButton(OptionButton));
+        yield return StartCoroutine(SlideOutButton(QuitButton)); // ← slide sans fade
 
-        // 3. Attendre un délai configurable avant de bouger le livre
         yield return new WaitForSeconds(delayBeforeLivreMove);
+        yield return StartCoroutine(MoveLivreLocal());
 
-        // 4. Bouger le livre
-        yield return StartCoroutine(MoveLivre());
+        isTransitioning = false;
+    }
+
+    private void DisableAllColliders()
+    {
+        foreach (var col in collidersToDisable)
+        {
+            if (col != null) col.enabled = false;
+        }
     }
 
     private IEnumerator FadeOutSprite(SpriteRenderer sr)
@@ -139,23 +173,26 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         tr.localPosition = targetPos;
     }
 
-    private IEnumerator MoveLivre()
+    private IEnumerator MoveLivreLocal()
     {
         float elapsed = 0f;
-        Vector3 startPos = Livre.transform.position;
-        Quaternion startRot = Livre.transform.rotation;
+        Vector3 startPos = Livre.transform.localPosition;
+        Quaternion startRot = Livre.transform.localRotation;
         float duration = 1f / transitionSpeed;
 
         while (elapsed < duration)
         {
             float t = elapsed / duration;
-            Livre.transform.position = Vector3.Lerp(startPos, targetPosition, t);
-            Livre.transform.rotation = Quaternion.Slerp(startRot, targetRotation, t);
+            Livre.transform.localPosition = Vector3.Lerp(startPos, targetLocalPosition, t);
+            Livre.transform.localRotation = Quaternion.Slerp(startRot, targetLocalRotation, t);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        Livre.transform.position = targetPosition;
-        Livre.transform.rotation = targetRotation;
+        Livre.transform.localPosition = targetLocalPosition;
+        Livre.transform.localRotation = targetLocalRotation;
+
+        if (ClickBlocker != null)
+            Destroy(ClickBlocker);
     }
 }

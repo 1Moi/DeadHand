@@ -46,7 +46,6 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
 
     void OnMouseOver()
     {
-        Debug.Log("eeeeeee");
         if (hovering == false)
         {
             hovering = true;
@@ -59,7 +58,6 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
     {
         if (hovering == true)
         {
-            Debug.Log("AAAAAAAA");
             hovering = false;
             transform.localScale = transform.localScale + new Vector3(-0.25f * direction, -0.25f, 0);
             transform.position = transform.position + new Vector3(0.65f * direction, -1, 0);

@@ -20,6 +20,7 @@ public class PuzzleManager : MonoBehaviour
         public List<CharacterSlot> characterSlots;
         public List<int> correctJobIndexes;
         public List<GameObject> comicPanels;
+        public GameObject Enviro;
 
         [Header("Résolution : récompense ou affichage")]
         public bool unlocksKey = true;
@@ -90,7 +91,7 @@ public class PuzzleManager : MonoBehaviour
                 }
             }
 
-            if (isCurrentlySolved)
+            if (isCurrentlySolved && Enviro != null)
             {
                 isSolved = true;
                 Debug.Log("Énigme résolue : " + stepName);
@@ -101,6 +102,15 @@ public class PuzzleManager : MonoBehaviour
                     {
                         slot.DeselectFinal();
                     }
+                }
+
+                // Désactiver les enfants nommés Case0BW et activer ceux nommés Case0RGB
+                foreach (Transform child in Enviro.transform)
+                {
+                    if (child.name.Contains("Case0BW"))
+                        child.gameObject.SetActive(false);
+                    else if (child.name.Contains("Case0RGB"))
+                        child.gameObject.SetActive(true);
                 }
             }
 
