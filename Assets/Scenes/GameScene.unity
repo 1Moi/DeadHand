@@ -2447,7 +2447,10 @@ MonoBehaviour:
   canTurnPage: 1
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 0
-  audioPage: {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100
@@ -10804,7 +10807,10 @@ MonoBehaviour:
   canTurnPage: 1
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 0
-  audioPage: {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100
@@ -11801,7 +11807,10 @@ MonoBehaviour:
   canTurnPage: 1
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 1
-  audioPage: {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100
@@ -15990,7 +15999,10 @@ MonoBehaviour:
   canTurnPage: 1
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 0
-  audioPage: {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100
@@ -21815,7 +21827,10 @@ MonoBehaviour:
   canTurnPage: 1
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 1
-  audioPage: {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100
@@ -25427,7 +25442,10 @@ MonoBehaviour:
   canTurnPage: 0
   autoFlip: {fileID: 1630953157}
   NextOrPrevious: 1
-  audioPage: {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  audioPage:
+  - {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
+  - {fileID: 8300000, guid: 867b173e133c72b44889d134dafb2eb4, type: 3}
+  - {fileID: 8300000, guid: 3fc52c32fad61ae4b9a4d9c74cf67786, type: 3}
   volume: 1
   pageCamera: {fileID: 961739752}
   pageTurnDistance: 100

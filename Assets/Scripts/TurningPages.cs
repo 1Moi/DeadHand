@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class TurningPages : MonoBehaviour, IPointerDownHandler
 {
     [Header("Can turn the page")]
@@ -10,7 +11,8 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
     [Header("Camera")]
     public bool NextOrPrevious = false;
 
-    [SerializeField] private AudioClip audioPage;
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] audioPage;
     [SerializeField] private float volume;
 
     public Camera pageCamera;
@@ -36,7 +38,11 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
                 autoFlip.FlipRightPage();
             else
                 autoFlip.FlipLeftPage();
-            GlobalSoundManager.PlaySound(audioPage, volume); 
+            if (audioPage.Length > 0)
+            {
+                int index = Random.Range(0, audioPage.Length);
+                GlobalSoundManager.PlaySound(audioPage[index], volume);
+            }
         }
         else
         {
