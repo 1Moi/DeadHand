@@ -80,8 +80,7 @@ public class SlidingPuzzle : MonoBehaviour
 
         Vector2Int pieceGridPos = GetGridPosition(piece);
         List<Vector2Int> emptyAdjacents = GetAllAdjacentEmptySlots(pieceGridPos);
-        GlobalSoundManager.PlaySound(audioPiece, volume);
-        Debug.Log("object Puute");
+        GlobalSoundManager.PlaySFX(audioPiece);
 
         if (emptyAdjacents.Count > 0)
         {
@@ -131,7 +130,7 @@ public class SlidingPuzzle : MonoBehaviour
         }
         emptySlots = new List<Vector2Int>(initialEmptySlots);
         SetupGrid();
-        GlobalSoundManager.PlaySound(audioErase, volume);
+        GlobalSoundManager.PlaySFX(audioErase);
     }
 
     public Vector2Int GetGridPosition(Transform piece)

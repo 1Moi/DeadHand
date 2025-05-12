@@ -105,12 +105,12 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             if (puzzleManager != null && stepIndex >= 0 && stepIndex < puzzleManager.puzzleSteps.Count)
             {
                 puzzleManager.CheckSinglePuzzle(stepIndex);
-                GlobalSoundManager.PlaySound(audioClick, volume);
+                GlobalSoundManager.PlaySFX(audioClick);
             }
         }
         else
         {
-            GlobalSoundManager.PlaySound(audioClick, volume);
+            GlobalSoundManager.PlaySFX(audioClick);
             SelectThisSlot();
         }
     }

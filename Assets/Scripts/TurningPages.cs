@@ -41,7 +41,7 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
             if (audioPage.Length > 0)
             {
                 int index = Random.Range(0, audioPage.Length);
-                GlobalSoundManager.PlaySound(audioPage[index], volume);
+                GlobalSoundManager.PlaySFX(audioPage[index]);
             }
         }
         else
