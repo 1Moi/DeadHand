@@ -119,7 +119,7 @@ public class OptionMenu : MonoBehaviour
 
     public void SetSFXVolume0()
     {
-        musicVolume = 0f;
+        sfxVolume = 0f;
         ApplyVolumes();
         UpdateUI();
     }
