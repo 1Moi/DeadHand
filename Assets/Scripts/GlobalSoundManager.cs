@@ -8,10 +8,12 @@ public class GlobalSoundManager : MonoBehaviour
     [SerializeField] private AudioSource musicAudioSource;
     [SerializeField] private AudioSource sfxAudioSource;
     [SerializeField] private AudioSource ambianceAudioSource;
+    [SerializeField] private AudioSource uiAudioSource;
 
     private float musicVolume = 1f;
     private float sfxVolume = 1f;
     private float ambianceVolume = 1f;
+    private float uiVolume = 1f;
 
     void Awake()
     {
@@ -65,5 +67,17 @@ public class GlobalSoundManager : MonoBehaviour
     {
         instance.ambianceVolume = volume;
         instance.ambianceAudioSource.volume = volume;
+    }
+
+    // UI
+    public static void PlayUI(AudioClip uiClip)
+    {
+        instance.uiAudioSource.PlayOneShot(uiClip, instance.uiVolume);
+    }
+
+    public static void SetUIVolume(float volume)
+    {
+        instance.uiVolume = volume;
+        instance.uiAudioSource.volume = volume;
     }
 }
