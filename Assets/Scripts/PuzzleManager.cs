@@ -81,7 +81,7 @@ public class PuzzleManager : MonoBehaviour
                 isCurrentlySolved &= slidingPuzzle.IsPuzzleSolved(correctTilePositions);
                 if (isCurrentlySolved && GoToCranCall != null && LanguetteGoToCall == 0)
                 { 
-                    GoToCranCall.CallLanguetteGotoCran();
+                    GoToCranCall.CallLanguetteGotoCran(0);
                     LanguetteGoToCall++;
                 }
             }

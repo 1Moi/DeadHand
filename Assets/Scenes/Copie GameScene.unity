@@ -2096,7 +2096,7 @@ MonoBehaviour:
   cransLanguette:
   - {x: 6.6500015, y: -6.57, z: 0}
   - {x: 6.6500015, y: -1.53, z: 0}
-  - {x: 6.6500015, y: 5, z: 0}
+  - {x: 6.650002, y: 5, z: 0}
   cransImage:
   - {x: 3.5726929, y: -1.92, z: -0.014099803}
   - {x: 3.5726929, y: 1.3067968, z: -0.014099803}
@@ -2126,6 +2126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetPosition: {x: 6.6500015, y: -1.53, z: 0}
+  MauvaisePosition: {x: 6.650002, y: 5, z: 0}
+  lalou: {fileID: 796221719}
   RewardRec: {fileID: 1874379249}
 --- !u!1 &181127643
 GameObject:
@@ -12227,7 +12229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01169fe6f3ead294e995d3e4bb24a488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
   Languette: {fileID: 163955089}
 --- !u!1 &798136433
 GameObject:

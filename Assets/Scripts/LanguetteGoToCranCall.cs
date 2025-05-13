@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class LanguetteGoToCranCall : MonoBehaviour
 {
-    public int index;
     public LanguetteCrantee Languette;
 
-    public void CallLanguetteGotoCran()
+    public void CallLanguetteGotoCran(int index)
     {
-        Languette.GoToCran(0);
+        Languette.GoToCran(index);
     }
 
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class LanguetteChateau : MonoBehaviour
 {
     public Vector3 TargetPosition;
+    public Vector3 MauvaisePosition;
+    public LanguetteGoToCranCall lalou;
     public GameObject RewardRec;
 
     // Start is called before the first frame update
@@ -18,6 +20,9 @@ public class LanguetteChateau : MonoBehaviour
     {
        if (transform.localPosition == TargetPosition)
             RewardRec.SetActive(true);
+       if (transform.localPosition == MauvaisePosition)
+            lalou.CallLanguetteGotoCran(1);
     }
+
     
 }
