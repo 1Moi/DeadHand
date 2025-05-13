@@ -126,8 +126,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
         }
-
-        GlobalSoundManager.PlaySound(audioNouveauCran, volume);
+        GlobalSoundManager.PlaySFX(audioNouveauCran); 
     }
 
     private int TrouverCranProche(Vector3 currentPos)

@@ -1,30 +1,69 @@
-using System.Resources;
 using UnityEngine;
 
 public class GlobalSoundManager : MonoBehaviour
 {
     private static GlobalSoundManager instance;
 
-    [SerializeField]
-    private AudioSource audioSource;
-    [SerializeField]
-    private AudioSource musicAudioSource;
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource musicAudioSource;
+    [SerializeField] private AudioSource sfxAudioSource;
+    [SerializeField] private AudioSource ambianceAudioSource;
+
+    private float musicVolume = 1f;
+    private float sfxVolume = 1f;
+    private float ambianceVolume = 1f;
 
     void Awake()
     {
         if (!instance)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject); // Persistance entre les scènes
+        }
         else
+        {
             Destroy(gameObject);
+        }
     }
 
-    public static void PlaySound(AudioClip audioClip, float volume)
-        => instance.audioSource.PlayOneShot(audioClip, volume);
-    
-    public static void PlayMusic(AudioClip music, float volume)
+    // Musique
+    public static void PlayMusic(AudioClip music)
     {
         instance.musicAudioSource.clip = music;
-        instance.musicAudioSource.volume = volume;
+        instance.musicAudioSource.volume = instance.musicVolume;
+        instance.musicAudioSource.loop = true;
         instance.musicAudioSource.Play();
+    }
+
+    public static void SetMusicVolume(float volume)
+    {
+        instance.musicVolume = volume;
+        instance.musicAudioSource.volume = volume;
+    }
+
+    // Effets sonores
+    public static void PlaySFX(AudioClip sfxClip)
+    {
+        instance.sfxAudioSource.PlayOneShot(sfxClip, instance.sfxVolume);
+    }
+
+    public static void SetSFXVolume(float volume)
+    {
+        instance.sfxVolume = volume;
+    }
+
+    // Ambiance
+    public static void PlayAmbiance(AudioClip ambianceClip)
+    {
+        instance.ambianceAudioSource.clip = ambianceClip;
+        instance.ambianceAudioSource.volume = instance.ambianceVolume;
+        instance.ambianceAudioSource.loop = true;
+        instance.ambianceAudioSource.Play();
+    }
+
+    public static void SetAmbianceVolume(float volume)
+    {
+        instance.ambianceVolume = volume;
+        instance.ambianceAudioSource.volume = volume;
     }
 }
