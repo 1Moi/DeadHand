@@ -9,26 +9,26 @@ public class LeverButton : MonoBehaviour, IPointerDownHandler
     public float downDuration = 0.3f;
 
     public SpriteRenderer spriteRenderer;
-
     public GridManager gridManager;
-    public GameObject validationPrefab; // Ce que tu veux instancier
-    public Transform validationContainer; // Optionnel : pour organiser la hiérarchie
+
+    private bool isAnimating = false;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (spriteRenderer == null) return;
+        if (isAnimating || spriteRenderer == null || gridManager == null) return;
 
-        StopAllCoroutines();
         StartCoroutine(LeverAnimation());
 
-        Vector3 pos = gridManager.GetCurrentCellWorldPosition();
-        Instantiate(validationPrefab, pos, Quaternion.identity, validationContainer);
+        bool activated = gridManager.ToggleValidator();
+        Debug.Log(activated ? "Case validée" : "Case désactivée");
     }
 
     private IEnumerator LeverAnimation()
     {
+        isAnimating = true;
         spriteRenderer.sprite = leverDown;
         yield return new WaitForSeconds(downDuration);
         spriteRenderer.sprite = leverUp;
+        isAnimating = false;
     }
 }

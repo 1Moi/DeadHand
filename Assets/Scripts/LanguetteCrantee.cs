@@ -174,4 +174,24 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         return TrouverCranProche(transform.localPosition);
     }
+
+    public void GoToCran(int index)
+    {
+        if (index < 0 || index >= cransLanguette.Count)
+        {
+            Debug.LogWarning($"Index de cran invalide : {index}");
+            return;
+        }
+
+        StopAllCoroutines();
+        StartCoroutine(SnapToCran(index));
+
+        // Met à jour le puzzle si applicable
+        if (puzzleManager != null)
+        {
+            puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
+        }
+
+        GlobalSoundManager.PlaySound(audioNouveauCran, volume);
+    }
 }
