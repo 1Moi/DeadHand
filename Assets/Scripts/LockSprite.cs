@@ -15,6 +15,8 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
 
     [Header("Objet à débloquer (facultatif)")]
     public GameObject objectToUnlock;
+    [Tooltip("true : active, false : desactive")]
+    public bool setActiveFalseOrTrue = true;
 
     [Header("Page qui peut maintenant tourner")]
     public GameObject pageToTurn;
@@ -23,6 +25,7 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Cadenas touché : " + gameObject.name);
         if (isUnlocked)
         {
             Debug.Log("Cadenas déjà ouvert.");

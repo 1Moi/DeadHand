@@ -16,6 +16,7 @@ public class PuzzleManager : MonoBehaviour
         public List<LanguetteCrantee> languettePuzzles;
         public List<int> cransCorrects;
 
+        
         [Header("Puzzle Métiers")]
         public List<CharacterSlot> characterSlots;
         public List<int> correctJobIndexes;
@@ -36,8 +37,9 @@ public class PuzzleManager : MonoBehaviour
         [Header("Récompense (clef)")]
         public string unlockKey;
 
-        [Header("pas bon code")]
+        [Header("script moche")]
         public LanguetteGoToCranCall GoToCranCall;
+        private int LanguetteGoToCall = 0;
 
         public void UpdateLockState()
         {
@@ -70,14 +72,18 @@ public class PuzzleManager : MonoBehaviour
         {
             if (!canCheckIfSolved || isSolved)
                 return false;
+            
 
             bool isCurrentlySolved = true;
 
             if (slidingPuzzle != null)
             {
                 isCurrentlySolved &= slidingPuzzle.IsPuzzleSolved(correctTilePositions);
-                if (isCurrentlySolved && GoToCranCall != null)
+                if (isCurrentlySolved && GoToCranCall != null && LanguetteGoToCall == 0)
+                { 
                     GoToCranCall.CallLanguetteGotoCran();
+                    LanguetteGoToCall++;
+                }
             }
 
             for (int i = 0; i < languettePuzzles.Count; i++)
