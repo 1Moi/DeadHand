@@ -36,6 +36,9 @@ public class PuzzleManager : MonoBehaviour
         [Header("Récompense (clef)")]
         public string unlockKey;
 
+        [Header("pas bon code")]
+        public LanguetteGoToCranCall GoToCranCall;
+
         public void UpdateLockState()
         {
             if (lockVisual != null)
@@ -71,7 +74,11 @@ public class PuzzleManager : MonoBehaviour
             bool isCurrentlySolved = true;
 
             if (slidingPuzzle != null)
+            {
                 isCurrentlySolved &= slidingPuzzle.IsPuzzleSolved(correctTilePositions);
+                if (isCurrentlySolved && GoToCranCall != null)
+                    GoToCranCall.CallLanguetteGotoCran();
+            }
 
             for (int i = 0; i < languettePuzzles.Count; i++)
             {
