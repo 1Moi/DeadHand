@@ -396,7 +396,7 @@ public class OptionMenu : MonoBehaviour
         GlobalSoundManager.SetSFXVolume(sfxVolume);
         GlobalSoundManager.SetAmbianceVolume(ambianceVolume);
         GlobalSoundManager.SetUIVolume(UIVolume);
-        GlobalSoundManager.PlaySFX(Clickage);
+        GlobalSoundManager.PlayUI(Clickage);
     }
 
     private void UpdateUI()
