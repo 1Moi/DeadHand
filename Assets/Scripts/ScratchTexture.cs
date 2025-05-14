@@ -15,7 +15,7 @@ public class ScratchTexture : MonoBehaviour
     private int totalPixels;
     private int scratchedPixels;
     private bool autoScratchTriggered = false;
-    private bool isScratchDisabled = false;
+    //private bool isScratchDisabled = false;
     private Coroutine autoScratchCoroutine;
 
     private void Start()
@@ -132,7 +132,7 @@ public class ScratchTexture : MonoBehaviour
 
     IEnumerator ScratchFromCenterOutward()
     {
-        isScratchDisabled = true;
+        //isScratchDisabled = true;
 
         Color32[] pixels = maskTexture.GetPixels32();
         Vector2 center = new Vector2(width / 2, height / 2);

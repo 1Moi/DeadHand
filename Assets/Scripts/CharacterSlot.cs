@@ -12,6 +12,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public SpriteRenderer characterRenderer;
     public SpriteRenderer outlineRendererHover;
     public SpriteRenderer outlineRendererSelected;
+    public List<GameObject> arrowIndicators;
 
     [Header("Effets visuels")]
     public float hoverScale = 1.15f;
@@ -102,12 +103,16 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             int direction = eventData.button == PointerEventData.InputButton.Right ? -1 : 1;
             SwitchJob(direction);
 
+            // 🔄 Relancer clignotement au cas où il aurait été interrompu
+            ShowArrows();
+
             if (puzzleManager != null && stepIndex >= 0 && stepIndex < puzzleManager.puzzleSteps.Count)
             {
                 puzzleManager.CheckSinglePuzzle(stepIndex);
                 GlobalSoundManager.PlaySFX(audioClick);
             }
         }
+
         else
         {
             GlobalSoundManager.PlaySFX(audioClick);
@@ -162,6 +167,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 selectedSlots.Add(this);
 
             ShowAllCases();
+            ShowArrows();
         }
 
         if (!forceKeep)
@@ -181,6 +187,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         outlineRendererSelected.enabled = false;
         selectedSlots.Remove(this);
         HideAllCases();
+        HideArrows();
     }
 
     private void ShowAllCases()
@@ -211,6 +218,83 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
     }
 
+    private void ShowArrows()
+    {
+        foreach (var arrow in arrowIndicators)
+        {
+            if (arrow != null)
+                arrow.SetActive(true);
+        }
+
+        if (arrowBlinkCoroutine != null)
+        {
+            StopCoroutine(arrowBlinkCoroutine); // 🔁 Restart propre
+            arrowBlinkCoroutine = null;
+        }
+
+        arrowBlinkCoroutine = StartCoroutine(BlinkArrows());
+    }
+
+    private void HideArrows()
+    {
+        foreach (var arrow in arrowIndicators)
+        {
+            if (arrow != null)
+            {
+                arrow.SetActive(false);
+                var sr = arrow.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    Color c = sr.color;
+                    c.a = 1f; // Reset alpha
+                    sr.color = c;
+                }
+            }
+        }
+
+        if (arrowBlinkCoroutine != null)
+        {
+            StopCoroutine(arrowBlinkCoroutine);
+            arrowBlinkCoroutine = null;
+        }
+    }
+
+
+    private Coroutine arrowBlinkCoroutine;
+
+    private IEnumerator BlinkArrows()
+    {
+        float blinkSpeed = 1f; // 1 cycle par seconde
+        float alpha = 0f;
+        bool increasing = true;
+
+        while (true)
+        {
+            alpha += (increasing ? 1 : -1) * Time.deltaTime * blinkSpeed;
+            alpha = Mathf.Clamp01(alpha);
+
+            foreach (var arrow in arrowIndicators)
+            {
+                if (arrow != null)
+                {
+                    var sr = arrow.GetComponent<SpriteRenderer>();
+                    if (sr != null)
+                    {
+                        Color c = sr.color;
+                        c.a = alpha;
+                        sr.color = c;
+                    }
+                }
+            }
+
+            if (alpha >= 1f) increasing = false;
+            else if (alpha <= 0f) increasing = true;
+
+            yield return null;
+        }
+    }
+
+
     public int GetCurrentJobIndex() => currentJobIndex;
 
     public void DeselectFinal()
@@ -232,6 +316,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         }
 
         HideAllCases();
+        HideArrows();
 
         foreach (var parent in comicCaseParents)
         {
