@@ -27,6 +27,9 @@ public class GlobalSoundManager : MonoBehaviour
     private float ambianceVolume = 1f;
     private float uiVolume = 1f;
 
+    public float GetCurrentMusicVolume() => musicVolume;
+
+
     void Awake()
     {
         if (instance == null)
@@ -166,5 +169,11 @@ public class GlobalSoundManager : MonoBehaviour
         if (instance.chapter3MusicSource != null)
             instance.chapter3MusicSource.volume = volume * instance.chapter3MusicTargetVolume;
     }
+
+    public float GetMusicVolume()
+    {
+        return musicVolume;
+    }
+
 
 }
