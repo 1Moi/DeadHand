@@ -37,6 +37,10 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [Header("Colliders à désactiver")]
     public Collider2D[] collidersToDisable;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+    [SerializeField] private float volume;
+
     private bool isTransitioning = false;
 
     void Start()
@@ -64,6 +68,10 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        
+        int index = Random.Range(0, AudioClick.Length);
+        GlobalSoundManager.PlayUI(AudioClick[index]);
+
         if (isTransitioning) return;
         spriteRenderer.color = pressedColor;
 

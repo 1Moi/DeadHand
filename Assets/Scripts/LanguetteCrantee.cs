@@ -21,10 +21,10 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     [Header("Image attachée ?")]
     public bool hasAttachedImage = false;
     public Transform imageAttachée;
-    
+
     [Header("Audio")]
-    public AudioClip audioNouveauCran;
-    public float volume;
+    [SerializeField] private AudioClip[] AudioDrag;
+    [SerializeField] private float volume;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
@@ -70,6 +70,9 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+        int index = Random.Range(0, AudioDrag.Length);
+        GlobalSoundManager.PlaySFX(AudioDrag[index]);
+
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
         Plane plane = new Plane(Vector3.forward, transform.position);
 
@@ -126,7 +129,6 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
         }
-        GlobalSoundManager.PlaySFX(audioNouveauCran); 
     }
 
     private int TrouverCranProche(Vector3 currentPos)
@@ -191,7 +193,5 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);
         }
-
-        GlobalSoundManager.PlaySFX(audioNouveauCran);
     }
 }

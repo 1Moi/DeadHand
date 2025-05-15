@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PuzzleManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip AudioWinKey;
+
     [System.Serializable]
     public class PuzzleStep
     {
@@ -40,6 +42,10 @@ public class PuzzleManager : MonoBehaviour
         [Header("script moche")]
         public LanguetteGoToCranCall GoToCranCall;
         private int LanguetteGoToCall = 0;
+
+        [Header("Audio")]
+        [SerializeField] private AudioClip[] AudioWin;
+        
 
         public void UpdateLockState()
         {
@@ -83,6 +89,9 @@ public class PuzzleManager : MonoBehaviour
                 { 
                     GoToCranCall.CallLanguetteGotoCran(0);
                     LanguetteGoToCall++;
+
+                    int indexAudio = Random.Range(0, AudioWin.Length);
+                    GlobalSoundManager.PlayUI(AudioWin[indexAudio]);
                 }
             }
 
@@ -106,6 +115,9 @@ public class PuzzleManager : MonoBehaviour
 
             if (isCurrentlySolved && Enviro != null)
             {
+                int indexAudio = Random.Range(0, AudioWin.Length);
+                GlobalSoundManager.PlayUI(AudioWin[indexAudio]);
+
                 isSolved = true;
                 Debug.Log("Énigme résolue : " + stepName);
 
@@ -181,6 +193,8 @@ public class PuzzleManager : MonoBehaviour
 
             if (step.unlocksKey && !string.IsNullOrEmpty(step.unlockKey))
             {
+                GlobalSoundManager.PlayUI(AudioWinKey);
+
                 keysObtained[step.unlockKey] = true;
                 Debug.LogWarning("Clef obtenue : " + step.unlockKey);
 

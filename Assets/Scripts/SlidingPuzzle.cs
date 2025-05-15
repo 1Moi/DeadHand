@@ -24,13 +24,18 @@ public class SlidingPuzzle : MonoBehaviour
     [Header("Cases vides initiales")]
     public List<Vector2Int> emptySlots;
 
-    [SerializeField] private AudioClip audioPiece;
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] audioPiece;
     [SerializeField] private AudioClip audioErase;
     [SerializeField] private float volume;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
     public int puzzleStepIndex;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioDrag;
+    
 
     private Transform[,] grid;
     private bool isMoving = false;
@@ -80,7 +85,9 @@ public class SlidingPuzzle : MonoBehaviour
 
         Vector2Int pieceGridPos = GetGridPosition(piece);
         List<Vector2Int> emptyAdjacents = GetAllAdjacentEmptySlots(pieceGridPos);
-        GlobalSoundManager.PlaySFX(audioPiece);
+
+        int indexAudio = Random.Range(0, audioPiece.Length);
+        GlobalSoundManager.PlaySFX(audioPiece[indexAudio]);
 
         if (emptyAdjacents.Count > 0)
         {

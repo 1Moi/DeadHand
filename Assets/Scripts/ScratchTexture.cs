@@ -18,6 +18,11 @@ public class ScratchTexture : MonoBehaviour
     //private bool isScratchDisabled = false;
     private Coroutine autoScratchCoroutine;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+    [SerializeField] private AudioClip[] AudioClean;
+    [SerializeField] private float volume;
+
     private void Start()
     {
         initializeValues();
@@ -46,6 +51,9 @@ public class ScratchTexture : MonoBehaviour
 
     public void ScratchAccordingToMousePosition(int xVal, int yVal)
     {
+        int index = Random.Range(0, AudioClick.Length);
+        GlobalSoundManager.PlaySFX(AudioClick[index]);
+
         int xPos, yPos, yRangeforScratch;
         Color32[] tempColorArray = maskTexture.GetPixels32();
         bool ischangedpixel = false;
@@ -133,6 +141,9 @@ public class ScratchTexture : MonoBehaviour
     IEnumerator ScratchFromCenterOutward()
     {
         //isScratchDisabled = true;
+
+        int indexAudio = Random.Range(0, AudioClean.Length);
+        GlobalSoundManager.PlaySFX(AudioClean[indexAudio]);
 
         Color32[] pixels = maskTexture.GetPixels32();
         Vector2 center = new Vector2(width / 2, height / 2);

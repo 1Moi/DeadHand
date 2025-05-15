@@ -20,6 +20,10 @@ public class PuzzleDial : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private SpriteRenderer sr;
     private Color defaultColor;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+    [SerializeField] private float volume;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -46,6 +50,9 @@ public class PuzzleDial : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        int index = Random.Range(0, AudioClick.Length);
+        GlobalSoundManager.PlaySFX(AudioClick[index]);
+
         RotateDial();
         StartCoroutine(ClickFeedback());
 

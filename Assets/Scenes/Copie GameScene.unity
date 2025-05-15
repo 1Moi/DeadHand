@@ -1277,7 +1277,7 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 876316956}
-  audioNouveauCran: {fileID: 8300000, guid: d5e829e7a8df0df40b8e60e3f5129acc, type: 3}
+  AudioDrag: []
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -2193,7 +2193,7 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1711365722}
-  audioNouveauCran: {fileID: 8300000, guid: d5e829e7a8df0df40b8e60e3f5129acc, type: 3}
+  AudioDrag: []
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 2
@@ -6353,6 +6353,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!212 &367608875
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6892,6 +6894,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!212 &382339440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7397,6 +7401,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!60 &402100868
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7964,6 +7970,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!212 &434878372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8367,6 +8375,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!212 &442089924
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9270,6 +9280,9 @@ MonoBehaviour:
   clickFeedbackColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   feedbackDuration: 0.1
   manager: {fileID: 796221718}
+  AudioClick:
+  - {fileID: 0}
+  volume: 0
 --- !u!212 &513536592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10323,7 +10336,7 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1553683030}
-  audioNouveauCran: {fileID: 8300000, guid: d5e829e7a8df0df40b8e60e3f5129acc, type: 3}
+  AudioDrag: []
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -11556,6 +11569,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &623882699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11914,6 +11929,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &629674147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13467,6 +13484,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!60 &741598391
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -14070,6 +14089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019153c8bb293de45a21b42b05bb4c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioWinKey: {fileID: 0}
   puzzleSteps:
   - stepName: Page 1 Personnage Decouverte
     slidingPuzzle: {fileID: 0}
@@ -14091,6 +14111,7 @@ MonoBehaviour:
     lockVisual: {fileID: 0}
     unlockKey: RedKey
     GoToCranCall: {fileID: 0}
+    AudioWin: []
   - stepName: Taquin Chateau
     slidingPuzzle: {fileID: 1903596676}
     correctTilePositions:
@@ -14115,6 +14136,7 @@ MonoBehaviour:
     lockVisual: {fileID: 0}
     unlockKey: GreenKey
     GoToCranCall: {fileID: 796221719}
+    AudioWin: []
   - stepName: LanguetteChateau
     slidingPuzzle: {fileID: 0}
     correctTilePositions: []
@@ -14132,6 +14154,7 @@ MonoBehaviour:
     lockVisual: {fileID: 0}
     unlockKey: BlueKey
     GoToCranCall: {fileID: 0}
+    AudioWin: []
   - stepName: CharacterSelect
     slidingPuzzle: {fileID: 0}
     correctTilePositions: []
@@ -14170,6 +14193,7 @@ MonoBehaviour:
     lockVisual: {fileID: 0}
     unlockKey: 
     GoToCranCall: {fileID: 0}
+    AudioWin: []
   cheatMode: 1
   keysToCheatUnlock:
   - RedKey
@@ -18565,6 +18589,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &1001595070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19199,6 +19225,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!212 &1028824539
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19794,6 +19822,10 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick:
+  - {fileID: 0}
+  - {fileID: 0}
+  volume: 0
 --- !u!1 &1068956244
 GameObject:
   m_ObjectHideFlags: 0
@@ -21917,6 +21949,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!60 &1199728998
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -23082,6 +23116,8 @@ MonoBehaviour:
   clickFeedbackColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   feedbackDuration: 0.1
   manager: {fileID: 796221718}
+  AudioClick: []
+  volume: 0
 --- !u!212 &1294772191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23534,6 +23570,10 @@ MonoBehaviour:
   - {fileID: 1343854866}
   - {fileID: 1068941929}
   - {fileID: 434878370}
+  AudioClick:
+  - {fileID: 0}
+  - {fileID: 0}
+  volume: 0
 --- !u!60 &1343854866
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -23999,7 +24039,7 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1795862963}
-  audioNouveauCran: {fileID: 8300000, guid: d5e829e7a8df0df40b8e60e3f5129acc, type: 3}
+  AudioDrag: []
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -26431,6 +26471,8 @@ MonoBehaviour:
   clickFeedbackColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   feedbackDuration: 0.1
   manager: {fileID: 796221718}
+  AudioClick: []
+  volume: 0
 --- !u!212 &1518929934
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28313,6 +28355,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &1646681328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28879,6 +28923,8 @@ MonoBehaviour:
   hoverSortingOrder: 50
   scaleDuration: 0.13
   flipDuration: 0.2
+  AudioClick: []
+  volume: 0
 --- !u!60 &1658760116
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -30489,6 +30535,8 @@ MonoBehaviour:
   clickFeedbackColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
   feedbackDuration: 0.1
   manager: {fileID: 796221718}
+  AudioClick: []
+  volume: 0
 --- !u!212 &1740137038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32932,11 +32980,12 @@ MonoBehaviour:
   - {x: 2, y: 2}
   emptySlots:
   - {x: 1, y: 1}
-  audioPiece: {fileID: 8300000, guid: d5416caee19f8b34bbbf76ce51240436, type: 3}
+  audioPiece: []
   audioErase: {fileID: 8300000, guid: 7a20be76de7d0c24e845a61f17a4f855, type: 3}
   volume: 0.25
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 1
+  AudioDrag: []
 --- !u!1 &1908731404
 GameObject:
   m_ObjectHideFlags: 0
@@ -33554,6 +33603,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &1964636674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33977,6 +34028,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &1984738824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35396,7 +35449,7 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 702668042}
-  audioNouveauCran: {fileID: 8300000, guid: d5e829e7a8df0df40b8e60e3f5129acc, type: 3}
+  AudioDrag: []
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -35719,6 +35772,8 @@ MonoBehaviour:
   delayBeforeLivreMove: 0.2
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
+  AudioClick: []
+  volume: 0
 --- !u!114 &2104567683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36296,6 +36351,14 @@ PrefabInstance:
     - target: {fileID: 8468290233378726983, guid: af7d409841b746f489afc1b6bb806143, type: 3}
       propertyPath: scratchRadius
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468290233378726983, guid: af7d409841b746f489afc1b6bb806143, type: 3}
+      propertyPath: AudioClean.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8468290233378726983, guid: af7d409841b746f489afc1b6bb806143, type: 3}
+      propertyPath: AudioClick.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8600612820851747437, guid: af7d409841b746f489afc1b6bb806143, type: 3}
       propertyPath: m_Name

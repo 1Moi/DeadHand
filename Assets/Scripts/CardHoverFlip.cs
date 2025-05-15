@@ -22,6 +22,10 @@ public class CardHoverFlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private bool isFlipping = false;
     public float flipDuration = 0.2f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+    [SerializeField] private float volume;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -51,6 +55,8 @@ public class CardHoverFlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (!isFlipping)
         {
             StartCoroutine(FlipCard());
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
         }
     }
 
