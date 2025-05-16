@@ -26,79 +26,27 @@ public class OptionMenu : MonoBehaviour
         ApplyVolumes();
     }
 
-    public void SetMusicVolume0()
+    public void SetSound(int valeur, string Name)
     {
-        musicVolume = 0f;
-        ApplyVolumes();
-        UpdateUI();
-    }
+        float volume = valeur / 10;
+        musicVolume = volume;
 
-    public void SetMusicVolume1()
-    {
-        musicVolume = 0.1f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume2()
-    {
-        musicVolume = 0.2f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume3()
-    {
-        musicVolume = 0.3f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume4()
-    {
-        musicVolume = 0.4f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume5()
-    {
-        musicVolume = 0.5f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume6()
-    {
-        musicVolume = 0.6f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume7()
-    {
-        musicVolume = 0.7f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume8()
-    {
-        musicVolume = 0.8f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume9()
-    {
-        musicVolume = 0.9f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetMusicVolume10()
-    {
-        musicVolume = 1f;
+        switch (Name)
+            {
+            case "Musique":
+                musicVolume = volume;
+                break;
+            case "SFX":
+                sfxVolume = volume;
+                break;
+            case "Ambiance":
+                ambianceVolume = volume;
+                break;
+            case "UI":
+                UIVolume = volume;
+                break;
+            }
+        
         ApplyVolumes();
         UpdateUI();
     }
@@ -117,79 +65,10 @@ public class OptionMenu : MonoBehaviour
         UpdateUI();
     }
 
-    public void SetSFXVolume0()
+    public void SetSFXVolume(int valeur)
     {
-        sfxVolume = 0f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume1()
-    {
-        sfxVolume = 0.1f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume2()
-    {
-        sfxVolume = 0.2f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume3()
-    {
-        sfxVolume = 0.3f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume4()
-    {
-        sfxVolume = 0.4f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume5()
-    {
-        sfxVolume = 0.5f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume6()
-    {
-        sfxVolume = 0.6f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume7()
-    {
-        sfxVolume = 0.7f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume8()
-    {
-        sfxVolume = 0.8f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume9()
-    {
-        sfxVolume = 0.9f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetSFXVolume10()
-    {
-        sfxVolume = 1f;
+        float volume = valeur / 10;
+        sfxVolume = volume;
         ApplyVolumes();
         UpdateUI();
     }
@@ -208,79 +87,10 @@ public class OptionMenu : MonoBehaviour
         UpdateUI();
     }
 
-    public void SetAmbianceVolume0()
+    public void SetAmbianceVolume(int valeur)
     {
-        ambianceVolume = 0f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume1()
-    {
-        ambianceVolume = 0.1f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume2()
-    {
-        ambianceVolume = 0.2f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume3()
-    {
-        ambianceVolume = 0.3f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume4()
-    {
-        ambianceVolume = 0.4f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume5()
-    {
-        ambianceVolume = 0.5f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume6()
-    {
-        ambianceVolume = 0.6f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume7()
-    {
-        ambianceVolume = 0.7f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume8()
-    {
-        ambianceVolume = 0.8f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume9()
-    {
-        ambianceVolume = 0.9f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume10()
-    {
-        ambianceVolume = 1f;
+        float volume = valeur / 10;
+        ambianceVolume = volume;
         ApplyVolumes();
         UpdateUI();
     }
@@ -299,79 +109,10 @@ public class OptionMenu : MonoBehaviour
         UpdateUI();
     }
 
-    public void SetUIVolume0()
+    public void SetUIVolume0(int valeur)
     {
-        UIVolume = 0f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume1()
-    {
-        UIVolume = 0.1f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume2()
-    {
-        UIVolume = 0.2f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume3()
-    {
-        UIVolume = 0.3f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume4()
-    {
-        UIVolume = 0.4f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume5()
-    {
-        UIVolume = 0.5f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume6()
-    {
-        UIVolume = 0.6f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume7()
-    {
-        UIVolume = 0.7f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume8()
-    {
-        UIVolume = 0.8f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume9()
-    {
-        UIVolume = 0.9f;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume10()
-    {
-        UIVolume = 1f;
+        float volume = valeur / 10;
+        UIVolume = volume;
         ApplyVolumes();
         UpdateUI();
     }

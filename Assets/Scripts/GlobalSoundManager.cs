@@ -22,10 +22,10 @@ public class GlobalSoundManager : MonoBehaviour
     [HideInInspector] public float chapter2MusicTargetVolume = 0f;
     [HideInInspector] public float chapter3MusicTargetVolume = 0f;
 
-    private float musicVolume = 1f;
-    private float sfxVolume = 1f;
-    private float ambianceVolume = 1f;
-    private float uiVolume = 1f;
+    public float musicVolume = 1f;
+    public float sfxVolume = 1f;
+    public float ambianceVolume = 1f;
+    public float uiVolume = 1f;
 
     public float GetCurrentMusicVolume() => musicVolume;
 

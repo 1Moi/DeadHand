@@ -16,7 +16,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     public float vitesseDeplacement = 0.005f;
     public float vitesseRetour = 10f;
     [Tooltip("Facteur de résistance (0 = forte résistance, 1 = pas de résistance)")]
-    public float resistanceFactor = 0.2f; // Empêche de trop dépasser
+    public float resistanceFactor = 0.2f;
 
     [Header("Image attachée ?")]
     public bool hasAttachedImage = false;
@@ -25,13 +25,13 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     [Header("Audio")]
     [SerializeField] private AudioClip[] AudioDrag;
     [SerializeField] private float volume;
+    private AudioSource dragAudioSource;
 
     [Header("Puzzle Manager")]
     public PuzzleManager puzzleManager;
     public int puzzleStepIndex;
 
     private Vector3 startPos;
-    //private bool isDragging = false;
 
     private void Start()
     {
@@ -52,6 +52,19 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         }
 
         startPos = transform.localPosition;
+
+        dragAudioSource = gameObject.AddComponent<AudioSource>();
+        dragAudioSource.loop = true;
+        dragAudioSource.playOnAwake = false;
+        dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+    }
+
+    private void Update()
+    {
+        if (dragAudioSource != null && dragAudioSource.isPlaying)
+        {
+            dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -61,18 +74,21 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         if (plane.Raycast(ray, out float distance))
         {
+            if (!dragAudioSource.isPlaying && AudioDrag.Length > 0)
+            {
+                int index = Random.Range(0, AudioDrag.Length);
+                dragAudioSource.clip = AudioDrag[index];
+                dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+                dragAudioSource.Play();
+            }
+
             Vector3 worldPoint = ray.GetPoint(distance);
             offset = transform.position - worldPoint;
         }
-
-        //isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        int index = Random.Range(0, AudioDrag.Length);
-        GlobalSoundManager.PlaySFX(AudioDrag[index]);
-
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
         Plane plane = new Plane(Vector3.forward, transform.position);
 
@@ -86,12 +102,8 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
                 float minX = Mathf.Min(cransLanguette[0].x, cransLanguette[^1].x);
                 float maxX = Mathf.Max(cransLanguette[0].x, cransLanguette[^1].x);
 
-                // Appliquer la résistance aux extrêmes
-                if (newPosition.x < minX)
-                    newPosition.x = Mathf.Lerp(newPosition.x, minX, 1 - resistanceFactor);
-                if (newPosition.x > maxX)
-                    newPosition.x = Mathf.Lerp(newPosition.x, maxX, 1 - resistanceFactor);
-
+                newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+                newPosition.x = Mathf.Lerp(newPosition.x, Mathf.Clamp(newPosition.x, minX, maxX), 1 - resistanceFactor);
                 newPosition.y = transform.position.y;
             }
             else
@@ -99,11 +111,8 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
                 float minY = Mathf.Min(cransLanguette[0].y, cransLanguette[^1].y);
                 float maxY = Mathf.Max(cransLanguette[0].y, cransLanguette[^1].y);
 
-                if (newPosition.y < minY)
-                    newPosition.y = Mathf.Lerp(newPosition.y, minY, 1 - resistanceFactor);
-                if (newPosition.y > maxY)
-                    newPosition.y = Mathf.Lerp(newPosition.y, maxY, 1 - resistanceFactor);
-
+                newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
+                newPosition.y = Mathf.Lerp(newPosition.y, Mathf.Clamp(newPosition.y, minY, maxY), 1 - resistanceFactor);
                 newPosition.x = transform.position.x;
             }
 
@@ -112,7 +121,6 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
             if (hasAttachedImage && imageAttachée != null)
             {
                 int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
-
                 imageAttachée.localPosition = Vector3.Lerp(imageAttachée.localPosition, cransImage[cranLePlusProcheIndex], Time.deltaTime * vitesseRetour);
             }
         }
@@ -120,10 +128,14 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //isDragging = false;
         int cranLePlusProcheIndex = TrouverCranProche(transform.localPosition);
         StopAllCoroutines();
         StartCoroutine(SnapToCran(cranLePlusProcheIndex));
+
+        if (dragAudioSource != null && dragAudioSource.isPlaying)
+        {
+            dragAudioSource.Stop();
+        }
 
         if (puzzleManager != null)
         {
@@ -166,6 +178,7 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         }
 
         transform.localPosition = targetLanguette;
+
         if (hasAttachedImage && imageAttachée != null)
         {
             imageAttachée.localPosition = targetImage;
@@ -188,7 +201,6 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         StopAllCoroutines();
         StartCoroutine(SnapToCran(index));
 
-        // Met à jour le puzzle si applicable
         if (puzzleManager != null)
         {
             puzzleManager.CheckSinglePuzzle(puzzleStepIndex);

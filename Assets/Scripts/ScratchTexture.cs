@@ -51,8 +51,7 @@ public class ScratchTexture : MonoBehaviour
 
     public void ScratchAccordingToMousePosition(int xVal, int yVal)
     {
-        int index = Random.Range(0, AudioClick.Length);
-        GlobalSoundManager.PlaySFX(AudioClick[index]);
+        
 
         int xPos, yPos, yRangeforScratch;
         Color32[] tempColorArray = maskTexture.GetPixels32();
@@ -75,6 +74,8 @@ public class ScratchTexture : MonoBehaviour
         {
             maskTexture.SetPixels32(tempColorArray);
             maskTexture.Apply();
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
         }
     }
 
@@ -149,9 +150,9 @@ public class ScratchTexture : MonoBehaviour
         Vector2 center = new Vector2(width / 2, height / 2);
         int maxRadius = Mathf.CeilToInt(Mathf.Sqrt(width * width + height * height));
 
-        for (int r = 0; r <= maxRadius; r += 10) 
+        for (int r = 0; r <= maxRadius; r += 10)
         {
-            // Dessine un disque de rayon `r`
+            // Dessine un disque de rayon r
             for (int dx = -r; dx <= r; dx++)
             {
                 int dyLimit = Mathf.FloorToInt(Mathf.Sqrt(r * r - dx * dx));
