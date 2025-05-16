@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Xml.Linq;
 
 
 public class OptionMenu : MonoBehaviour
@@ -8,7 +9,6 @@ public class OptionMenu : MonoBehaviour
     [Header("Audio")]
     public AudioClip Clickage;
     public float volume;
-
 
     [Range(0f, 1f)] public float musicVolume = 1f;
     [Range(0f, 1f)] public float sfxVolume = 1f;
@@ -28,8 +28,8 @@ public class OptionMenu : MonoBehaviour
 
     public void SetSound(int valeur, string Name)
     {
-        float volume = valeur / 10;
-        musicVolume = volume;
+        float ValeurBis = valeur;
+        float volume = ValeurBis / 10;
 
         switch (Name)
             {
@@ -51,82 +51,26 @@ public class OptionMenu : MonoBehaviour
         UpdateUI();
     }
 
-    public void IncreaseMusicVolume()
+    public void IncreaseVolume(int val, string Type)
     {
-        musicVolume = Mathf.Clamp01(musicVolume + 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
+        float Sign = val;
 
-    public void DecreaseMusicVolume()
-    {
-        musicVolume = Mathf.Clamp01(musicVolume - 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
+        switch (Type)
+        {
+            case "Musique":
+                musicVolume = Mathf.Clamp01(musicVolume + (Sign * 0.1f));
+                break;
+            case "SFX":
+                sfxVolume = Mathf.Clamp01(sfxVolume + (Sign * 0.1f));
+                break;
+            case "Ambiance":
+                ambianceVolume = Mathf.Clamp01(ambianceVolume + (Sign * 0.1f));
+                break;
+            case "UI":
+                UIVolume = Mathf.Clamp01(UIVolume + (Sign * 0.1f));
+                break;
+        }
 
-    public void SetSFXVolume(int valeur)
-    {
-        float volume = valeur / 10;
-        sfxVolume = volume;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void IncreaseSFXVolume()
-    {
-        sfxVolume = Mathf.Clamp01(sfxVolume + 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void DecreaseSFXVolume()
-    {
-        sfxVolume = Mathf.Clamp01(sfxVolume - 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetAmbianceVolume(int valeur)
-    {
-        float volume = valeur / 10;
-        ambianceVolume = volume;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void IncreaseAmbianceVolume()
-    {
-        ambianceVolume = Mathf.Clamp01(ambianceVolume + 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void DecreaseAmbianceVolume()
-    {
-        ambianceVolume = Mathf.Clamp01(ambianceVolume - 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void SetUIVolume0(int valeur)
-    {
-        float volume = valeur / 10;
-        UIVolume = volume;
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void IncreaseUIVolume()
-    {
-        UIVolume = Mathf.Clamp01(UIVolume + 0.1f);
-        ApplyVolumes();
-        UpdateUI();
-    }
-
-    public void DecreaseUIVolume()
-    {
-        UIVolume = Mathf.Clamp01(UIVolume - 0.1f);
         ApplyVolumes();
         UpdateUI();
     }

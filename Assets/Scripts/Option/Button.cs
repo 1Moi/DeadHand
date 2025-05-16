@@ -11,6 +11,7 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] private enum ButtonType {Musique, SFX, Ambiance, UI};
     [SerializeField] private ButtonType Name;
     [SerializeField] private OptionMenu OptionMenu;
+    [SerializeField] private bool SetOrAdd;
 
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -29,19 +30,15 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         int index = Random.Range(0, AudioClick.Length);
         GlobalSoundManager.PlaySFX(AudioClick[index]);
 
-        OptionMenu.SetSound(valeur, Name.ToString());
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!SetOrAdd)
+        {
+            Debug.Log("SetVolume");
+            OptionMenu.SetSound(valeur, Name.ToString());
+        }
+        else if (SetOrAdd)
+        {
+            Debug.Log("IncreaseVolume");
+            OptionMenu.IncreaseVolume(valeur, Name.ToString());
+        }
     }
 }

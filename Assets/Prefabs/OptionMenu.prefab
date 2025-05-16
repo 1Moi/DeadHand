@@ -265,6 +265,7 @@ MonoBehaviour:
   valeur: 5
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &155594858225652122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +405,7 @@ MonoBehaviour:
   valeur: 10
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &5700396190889470101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,6 +545,7 @@ MonoBehaviour:
   valeur: 8
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8856996091513344841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +685,7 @@ MonoBehaviour:
   valeur: 7
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8033777887473219079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,6 +825,7 @@ MonoBehaviour:
   valeur: 2
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &486297351673495549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +965,7 @@ MonoBehaviour:
   valeur: 0
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4475468198058135903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,6 +1105,7 @@ MonoBehaviour:
   valeur: 2
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &7870295415465091923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,8 +1192,8 @@ GameObject:
   - component: {fileID: 4873568759391699427}
   - component: {fileID: 9151737651315323701}
   - component: {fileID: 4063081499605065006}
-  - component: {fileID: 3899690515995940913}
-  - component: {fileID: 5480926248853643107}
+  - component: {fileID: 1761134421931557988}
+  - component: {fileID: 3671537127801582608}
   m_Layer: 5
   m_Name: ButtonMusiqueDown
   m_TagString: Untagged
@@ -1251,7 +1258,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3899690515995940913
+--- !u!114 &1761134421931557988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1260,94 +1267,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 989142207939012015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4063081499605065006}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: DecreaseSFXVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 74938183914428457}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5480926248853643107
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: -1
+  Name: 1
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &3671537127801582608
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989142207939012015}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1066763223504090462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1460,7 @@ MonoBehaviour:
   valeur: 2
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &3778561351272534207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1600,7 @@ MonoBehaviour:
   valeur: 1
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8933999750917136090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,6 +1740,7 @@ MonoBehaviour:
   valeur: 10
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &6015222784572981990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1904,6 +1880,7 @@ MonoBehaviour:
   valeur: 7
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &3892266695858490218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,6 +2020,7 @@ MonoBehaviour:
   valeur: 0
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &6061747226724698382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2182,6 +2160,7 @@ MonoBehaviour:
   valeur: 10
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &5198741395417997698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2434,7 @@ MonoBehaviour:
   valeur: 5
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &1933155018452739925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,7 +2544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.47619152, y: 9.523804}
+  m_AnchoredPosition: {x: -0.47619152, y: -1.85}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &2931584101614310073
@@ -2728,6 +2708,7 @@ MonoBehaviour:
   valeur: 1
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &3873617777546143412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,6 +2848,7 @@ MonoBehaviour:
   valeur: 4
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &5906385852247366474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2953,8 +2935,8 @@ GameObject:
   - component: {fileID: 8447558849574059907}
   - component: {fileID: 363893998539702117}
   - component: {fileID: 5573814048425404887}
-  - component: {fileID: 7199162292468479289}
-  - component: {fileID: 5651065168936526111}
+  - component: {fileID: 9191236304491687625}
+  - component: {fileID: 6077298549033458717}
   m_Layer: 5
   m_Name: ButtonMusiqueUp
   m_TagString: Untagged
@@ -3019,7 +3001,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7199162292468479289
+--- !u!114 &9191236304491687625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3028,82 +3010,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 2512129569857361400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5573814048425404887}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: IncreaseUIVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5651065168936526111
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: 1
+  Name: 3
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &6077298549033458717
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2512129569857361400}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2687980633075528276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3115,8 +3075,8 @@ GameObject:
   - component: {fileID: 4891756892800131519}
   - component: {fileID: 4246739720581512285}
   - component: {fileID: 5287877111353964285}
-  - component: {fileID: 2855225252723122951}
-  - component: {fileID: 392203570391609692}
+  - component: {fileID: 1712646240914570902}
+  - component: {fileID: 916299281769646373}
   m_Layer: 5
   m_Name: ButtonMusiqueDown
   m_TagString: Untagged
@@ -3181,7 +3141,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2855225252723122951
+--- !u!114 &1712646240914570902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3190,94 +3150,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 2687980633075528276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5287877111353964285}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: DecreaseAmbianceVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 74938183914428457}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &392203570391609692
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: -1
+  Name: 2
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &916299281769646373
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2687980633075528276}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2788067874654610467
 GameObject:
   m_ObjectHideFlags: 0
@@ -3489,6 +3415,7 @@ MonoBehaviour:
   valeur: 4
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &525948426410104015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3628,6 +3555,7 @@ MonoBehaviour:
   valeur: 3
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &1285140523100780086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3767,6 +3695,7 @@ MonoBehaviour:
   valeur: 4
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4669559144008654206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3906,6 +3835,7 @@ MonoBehaviour:
   valeur: 8
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8534832472001838173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4045,6 +3975,7 @@ MonoBehaviour:
   valeur: 10
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &2917776452947701540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4131,8 +4062,8 @@ GameObject:
   - component: {fileID: 95590588637122958}
   - component: {fileID: 2565384282941841599}
   - component: {fileID: 5515074687251781963}
-  - component: {fileID: 5230442878159805984}
-  - component: {fileID: 7888125749436981814}
+  - component: {fileID: 884062744754972465}
+  - component: {fileID: 8064077279541898550}
   m_Layer: 5
   m_Name: ButtonMusiqueDown
   m_TagString: Untagged
@@ -4197,7 +4128,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5230442878159805984
+--- !u!114 &884062744754972465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4206,94 +4137,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 4232216480210166180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 5515074687251781963}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: DecreaseUIVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 74938183914428457}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7888125749436981814
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: -1
+  Name: 3
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &8064077279541898550
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4232216480210166180}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &4247970122558512150
 GameObject:
   m_ObjectHideFlags: 0
@@ -4358,6 +4255,7 @@ MonoBehaviour:
   valeur: 5
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &6080271627378018232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4497,6 +4395,7 @@ MonoBehaviour:
   valeur: 9
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &2023896827232846556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4636,6 +4535,7 @@ MonoBehaviour:
   valeur: 9
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8925099546866103887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4775,6 +4675,7 @@ MonoBehaviour:
   valeur: 6
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8435380196373277435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4914,6 +4815,7 @@ MonoBehaviour:
   valeur: 3
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &602670730649005257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5053,6 +4955,7 @@ MonoBehaviour:
   valeur: 8
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8480532385883876730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,8 +5042,8 @@ GameObject:
   - component: {fileID: 2652843992438219711}
   - component: {fileID: 4357044552328654149}
   - component: {fileID: 3366313124731393857}
-  - component: {fileID: 1481536710209543576}
-  - component: {fileID: 997183395884903739}
+  - component: {fileID: 4049328087125094743}
+  - component: {fileID: 296467129993405593}
   m_Layer: 5
   m_Name: ButtonMusiqueUp
   m_TagString: Untagged
@@ -5205,7 +5108,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1481536710209543576
+--- !u!114 &4049328087125094743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5214,106 +5117,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 5005617772594073748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 3366313124731393857}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: IncreaseMusicVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 74938183914428457}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8300000, guid: 8e455fb8a9203b8498a1e410f191fa2a, type: 3}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &997183395884903739
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: 1
+  Name: 0
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &296467129993405593
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005617772594073748}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &5369604597854916553
 GameObject:
   m_ObjectHideFlags: 0
@@ -5525,6 +5382,7 @@ MonoBehaviour:
   valeur: 7
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &7092835856437951351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5664,6 +5522,7 @@ MonoBehaviour:
   valeur: 9
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &7782756828279861520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5856,8 +5715,8 @@ GameObject:
   - component: {fileID: 2999587026431742099}
   - component: {fileID: 7079447650890368706}
   - component: {fileID: 7575958738114310890}
-  - component: {fileID: 5942374129059867667}
-  - component: {fileID: 9073559227941931080}
+  - component: {fileID: 6203394899983686723}
+  - component: {fileID: 6071861845190373369}
   m_Layer: 5
   m_Name: ButtonMusiqueDown
   m_TagString: Untagged
@@ -5922,7 +5781,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5942374129059867667
+--- !u!114 &6203394899983686723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5931,94 +5790,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 6104389663153758573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.78431374}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 7575958738114310890}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: DecreaseMusicVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 74938183914428457}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &9073559227941931080
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: -1
+  Name: 0
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &6071861845190373369
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6104389663153758573}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6131859524227081573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6392,6 +6217,7 @@ MonoBehaviour:
   valeur: 4
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &458294804807932566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6478,8 +6304,8 @@ GameObject:
   - component: {fileID: 5479692122756053015}
   - component: {fileID: 2833990870142402519}
   - component: {fileID: 8477975220793818856}
-  - component: {fileID: 933948619213208604}
-  - component: {fileID: 7911657736651809892}
+  - component: {fileID: 5635739771546467118}
+  - component: {fileID: 8771034366136154122}
   m_Layer: 5
   m_Name: ButtonMusiqueUp
   m_TagString: Untagged
@@ -6544,7 +6370,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &933948619213208604
+--- !u!114 &5635739771546467118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6553,82 +6379,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 6728853441410633198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 8477975220793818856}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: IncreaseSFXVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7911657736651809892
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: 1
+  Name: 1
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &8771034366136154122
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728853441410633198}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6824611276182108194
 GameObject:
   m_ObjectHideFlags: 0
@@ -6693,6 +6497,7 @@ MonoBehaviour:
   valeur: 6
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4286074440306155522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6832,6 +6637,7 @@ MonoBehaviour:
   valeur: 2
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &5741299636053281110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6918,8 +6724,8 @@ GameObject:
   - component: {fileID: 7970238739667817543}
   - component: {fileID: 6760916453481451749}
   - component: {fileID: 4341070335023900820}
-  - component: {fileID: 129178558110342098}
-  - component: {fileID: 2059913486571950632}
+  - component: {fileID: 8891075532634533470}
+  - component: {fileID: 1443872798932310410}
   m_Layer: 5
   m_Name: ButtonMusiqueUp
   m_TagString: Untagged
@@ -6984,7 +6790,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &129178558110342098
+--- !u!114 &8891075532634533470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6993,82 +6799,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 7236642833196513972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbbb9ced42a32d43bf2a6ae68288c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_HighlightedColor: {r: 0.98039216, g: 0.9607843, b: 0.7254902, a: 1}
-    m_PressedColor: {r: 1, g: 0.8553757, b: 0.5613208, a: 1}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.5882353}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4341070335023900820}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2789860507053716217}
-        m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
-        m_MethodName: IncreaseAmbianceVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2059913486571950632
-MonoBehaviour:
+  AudioClick:
+  - {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  valeur: 1
+  Name: 2
+  OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 1
+--- !u!61 &1443872798932310410
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7236642833196513972}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7bea721415a8740a41132e500988fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 1.05
-  pivotIntensity: 0
-  transitionSpeed: 10
-  zoomable: 1
-  outlineSprite: {fileID: 0}
-  caseBWRenderer: {fileID: 0}
-  caseRGBRenderer: {fileID: 0}
-  Buble: {fileID: 0}
-  fadePanel: {fileID: 0}
-  fadeInDuration: 0.8
-  fadeOutDuration: 1.2
-  fadeHoldDuration: 0.3
-  cameraTargetPosition: {x: 0, y: 0, z: 0}
-  Caneva: {fileID: 0}
-  baseRGBSortingOrder: 0
-  baseOutlineOrder: 0
-  baseBubleSortingOrder: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &7310253552657967661
 GameObject:
   m_ObjectHideFlags: 0
@@ -7133,6 +6917,7 @@ MonoBehaviour:
   valeur: 0
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &1898180007519389404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7272,6 +7057,7 @@ MonoBehaviour:
   valeur: 1
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8099366598760700019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7411,6 +7197,7 @@ MonoBehaviour:
   valeur: 1
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &3437660615131191168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7550,6 +7337,7 @@ MonoBehaviour:
   valeur: 7
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &8096474782254530654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7689,6 +7477,7 @@ MonoBehaviour:
   valeur: 6
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &6437418155878073789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7962,6 +7751,7 @@ MonoBehaviour:
   valeur: 5
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &751656293397079730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8101,6 +7891,7 @@ MonoBehaviour:
   valeur: 8
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &227054953896512849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8294,7 +8085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.47619057, y: -8.333328}
+  m_AnchoredPosition: {x: -0.47619057, y: 3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6464476486299683794
@@ -8484,6 +8275,7 @@ MonoBehaviour:
   valeur: 6
   Name: 2
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &1933371510232703363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8623,6 +8415,7 @@ MonoBehaviour:
   valeur: 3
   Name: 3
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4265627302338953146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8762,6 +8555,7 @@ MonoBehaviour:
   valeur: 0
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4509912047514562153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8901,6 +8695,7 @@ MonoBehaviour:
   valeur: 3
   Name: 1
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &7076378462808637865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9040,6 +8835,7 @@ MonoBehaviour:
   valeur: 9
   Name: 0
   OptionMenu: {fileID: 2789860507053716217}
+  SetOrAdd: 0
 --- !u!114 &4999076224396716874
 MonoBehaviour:
   m_ObjectHideFlags: 0
