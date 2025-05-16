@@ -175,5 +175,4 @@ public class GlobalSoundManager : MonoBehaviour
         return musicVolume;
     }
 
-
 }

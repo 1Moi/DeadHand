@@ -86,8 +86,11 @@ public class SlidingPuzzle : MonoBehaviour
         Vector2Int pieceGridPos = GetGridPosition(piece);
         List<Vector2Int> emptyAdjacents = GetAllAdjacentEmptySlots(pieceGridPos);
 
-        int indexAudio = Random.Range(0, audioPiece.Length);
-        GlobalSoundManager.PlaySFX(audioPiece[indexAudio]);
+        if (audioPiece != null && audioPiece.Length > 0)
+        {
+            int indexAudio = Random.Range(0, audioPiece.Length);
+            GlobalSoundManager.PlaySFX(audioPiece[indexAudio]);
+        }
 
         if (emptyAdjacents.Count > 0)
         {

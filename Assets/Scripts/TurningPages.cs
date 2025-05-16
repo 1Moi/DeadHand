@@ -38,6 +38,7 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
                 autoFlip.FlipRightPage();
             else
                 autoFlip.FlipLeftPage();
+
             if (audioPage.Length > 0)
             {
                 int index = Random.Range(0, audioPage.Length);

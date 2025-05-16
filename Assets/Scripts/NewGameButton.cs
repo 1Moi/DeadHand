@@ -68,9 +68,12 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
-        int index = Random.Range(0, AudioClick.Length);
-        GlobalSoundManager.PlayUI(AudioClick[index]);
+
+        if (AudioClick != null && AudioClick.Length > 0)
+        {
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlayUI(AudioClick[index]);
+        }
 
         if (isTransitioning) return;
         spriteRenderer.color = pressedColor;

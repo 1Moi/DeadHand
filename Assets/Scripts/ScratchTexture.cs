@@ -74,8 +74,11 @@ public class ScratchTexture : MonoBehaviour
         {
             maskTexture.SetPixels32(tempColorArray);
             maskTexture.Apply();
-            int index = Random.Range(0, AudioClick.Length);
-            GlobalSoundManager.PlaySFX(AudioClick[index]);
+            if (AudioClick != null && AudioClick.Length > 0)
+            {
+                int index = Random.Range(0, AudioClick.Length);
+                GlobalSoundManager.PlaySFX(AudioClick[index]);
+            }
         }
     }
 
@@ -142,9 +145,11 @@ public class ScratchTexture : MonoBehaviour
     IEnumerator ScratchFromCenterOutward()
     {
         //isScratchDisabled = true;
-
-        int indexAudio = Random.Range(0, AudioClean.Length);
-        GlobalSoundManager.PlaySFX(AudioClean[indexAudio]);
+        if (AudioClean != null && AudioClean.Length > 0)
+        {
+            int indexAudio = Random.Range(0, AudioClean.Length);
+            GlobalSoundManager.PlaySFX(AudioClean[indexAudio]);
+        }
 
         Color32[] pixels = maskTexture.GetPixels32();
         Vector2 center = new Vector2(width / 2, height / 2);

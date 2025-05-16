@@ -24,7 +24,7 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool isSelectedByDefault = false;
 
     [Header("Audio & Visuels")]
-    [SerializeField] private AudioClip audioClick;
+    [SerializeField] private AudioClip[] audioClick;
     [SerializeField] private float volume;
     public List<GameObject> comicCaseParents;
 
@@ -103,19 +103,26 @@ public class CharacterSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             int direction = eventData.button == PointerEventData.InputButton.Right ? -1 : 1;
             SwitchJob(direction);
 
-            // 🔄 Relancer clignotement au cas où il aurait été interrompu
             ShowArrows();
 
             if (puzzleManager != null && stepIndex >= 0 && stepIndex < puzzleManager.puzzleSteps.Count)
             {
                 puzzleManager.CheckSinglePuzzle(stepIndex);
-                GlobalSoundManager.PlaySFX(audioClick);
+                if (audioClick != null && audioClick.Length > 0)
+                {
+                    int indexAudio = Random.Range(0, audioClick.Length);
+                    GlobalSoundManager.PlaySFX(audioClick[indexAudio]);
+                }
             }
         }
 
         else
         {
-            GlobalSoundManager.PlaySFX(audioClick);
+            if (audioClick != null && audioClick.Length > 0)
+            {
+                int indexAudio = Random.Range(0, audioClick.Length);
+                GlobalSoundManager.PlaySFX(audioClick[indexAudio]);
+            }
             SelectThisSlot();
         }
     }

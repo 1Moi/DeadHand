@@ -90,8 +90,11 @@ public class PuzzleManager : MonoBehaviour
                     GoToCranCall.CallLanguetteGotoCran(0);
                     LanguetteGoToCall++;
 
-                    int indexAudio = Random.Range(0, AudioWin.Length);
-                    GlobalSoundManager.PlayUI(AudioWin[indexAudio]);
+                    if (AudioWin != null && AudioWin.Length > 0)
+                    {
+                        int indexAudio = Random.Range(0, AudioWin.Length);
+                        GlobalSoundManager.PlaySFX(AudioWin[indexAudio]);
+                    }
                 }
             }
 
@@ -115,8 +118,11 @@ public class PuzzleManager : MonoBehaviour
 
             if (isCurrentlySolved && Enviro != null)
             {
-                int indexAudio = Random.Range(0, AudioWin.Length);
-                GlobalSoundManager.PlayUI(AudioWin[indexAudio]);
+                if (AudioWin != null && AudioWin.Length > 0)
+                {
+                    int indexAudio = Random.Range(0, AudioWin.Length);
+                    GlobalSoundManager.PlaySFX(AudioWin[indexAudio]);
+                }
 
                 isSolved = true;
                 Debug.Log("Énigme résolue : " + stepName);

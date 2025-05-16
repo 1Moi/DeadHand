@@ -76,10 +76,13 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         {
             if (!dragAudioSource.isPlaying && AudioDrag.Length > 0)
             {
-                int index = Random.Range(0, AudioDrag.Length);
-                dragAudioSource.clip = AudioDrag[index];
-                dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
-                dragAudioSource.Play();
+                if (AudioDrag != null && AudioDrag.Length > 0)
+                {
+                    int index = Random.Range(0, AudioDrag.Length);
+                    dragAudioSource.clip = AudioDrag[index];
+                    dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+                    dragAudioSource.Play();
+                }
             }
 
             Vector3 worldPoint = ray.GetPoint(distance);

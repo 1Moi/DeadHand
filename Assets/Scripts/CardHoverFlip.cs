@@ -55,8 +55,11 @@ public class CardHoverFlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (!isFlipping)
         {
             StartCoroutine(FlipCard());
-            int index = Random.Range(0, AudioClick.Length);
-            GlobalSoundManager.PlaySFX(AudioClick[index]);
+            if (AudioClick != null && AudioClick.Length > 0)
+            {
+                int index = Random.Range(0, AudioClick.Length);
+                GlobalSoundManager.PlaySFX(AudioClick[index]);
+            }
         }
     }
 
