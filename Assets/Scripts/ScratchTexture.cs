@@ -19,9 +19,11 @@ public class ScratchTexture : MonoBehaviour
     private Coroutine autoScratchCoroutine;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip[] AudioClick;
+    [SerializeField] private AudioClip[] AudioScrub;
     [SerializeField] private AudioClip[] AudioClean;
-    [SerializeField] private float volume;
+
+    private AudioSource scratchAudioSource;
+
 
     private void Start()
     {
@@ -66,18 +68,27 @@ public class ScratchTexture : MonoBehaviour
                 yPos = yVal + yOffsetPos;
 
                 if (CheckForScratch(xPos, yPos, tempColorArray))
-                    ischangedpixel = true;
-
+                    ischangedpixel = true;                
             }
         }
         if (ischangedpixel)
         {
             maskTexture.SetPixels32(tempColorArray);
             maskTexture.Apply();
-            if (AudioClick != null && AudioClick.Length > 0)
+            if (AudioScrub != null && AudioScrub.Length > 0)
             {
-                int index = Random.Range(0, AudioClick.Length);
-                GlobalSoundManager.PlaySFX(AudioClick[index]);
+                if (scratchAudioSource == null)
+                {
+                    scratchAudioSource = gameObject.AddComponent<AudioSource>();
+                    scratchAudioSource.loop = false; // ou true si tu veux un son en boucle
+                }
+
+                if (!scratchAudioSource.isPlaying)
+                {
+                    int index = Random.Range(0, AudioScrub.Length);
+                    scratchAudioSource.clip = AudioScrub[index];
+                    scratchAudioSource.Play();
+                }
             }
         }
     }
@@ -107,6 +118,14 @@ public class ScratchTexture : MonoBehaviour
                 ScratchAccordingToMousePosition((int)localPos.x, (int)localPos.y);
             }
         }
+
+        if (Input.GetMouseButtonUp(0)) // Clic gauche relâché
+        {
+            if (scratchAudioSource != null && scratchAudioSource.isPlaying)
+            {
+                scratchAudioSource.Stop();
+            }
+        }   
 
         // Vérifie le pourcentage gratté
         if (!autoScratchTriggered)
@@ -145,11 +164,20 @@ public class ScratchTexture : MonoBehaviour
     IEnumerator ScratchFromCenterOutward()
     {
         //isScratchDisabled = true;
+        if (scratchAudioSource != null && scratchAudioSource.isPlaying)
+        {
+            scratchAudioSource.Stop();
+        }
+
         if (AudioClean != null && AudioClean.Length > 0)
         {
             int indexAudio = Random.Range(0, AudioClean.Length);
             GlobalSoundManager.PlaySFX(AudioClean[indexAudio]);
         }
+
+        //Je veut arrêter le Son de grattage ici
+
+
 
         Color32[] pixels = maskTexture.GetPixels32();
         Vector2 center = new Vector2(width / 2, height / 2);

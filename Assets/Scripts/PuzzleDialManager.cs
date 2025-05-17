@@ -26,6 +26,12 @@ public class PuzzleDialManager : MonoBehaviour
     public float fadeOutDuration = 1f;
     public float fadeHoldDuration = 0.5f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip AudioClick;
+    [SerializeField] private AudioClip AudioWin;
+    [SerializeField] private AudioClip AudioAmbiance;
+
+
     private bool combinationValidated = false;
 
     public void CheckCombination()
@@ -49,7 +55,12 @@ public class PuzzleDialManager : MonoBehaviour
 
         Debug.Log("Bonne combinaison !");
         combinationValidated = true;
+        if (AudioClick != null)
+            GlobalSoundManager.PlaySFX(AudioWin);
         StartCoroutine(SequenceDeFin());
+        if (AudioAmbiance != null)
+            GlobalSoundManager.PlaySFX(AudioAmbiance);
+        GlobalSoundManager.FadeOutMenuMusic(0.2f);
     }
 
     private IEnumerator SequenceDeFin()
@@ -98,6 +109,7 @@ public class PuzzleDialManager : MonoBehaviour
             continueText.gameObject.SetActive(false);
 
         yield return StartCoroutine(FadeOut());
+        GlobalSoundManager.PlaySFX(AudioClick);
     }
 
     private IEnumerator FadeIn()

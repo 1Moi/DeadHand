@@ -21,6 +21,10 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
     [Header("Page qui peut maintenant tourner")]
     public GameObject pageToTurn;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip AudioLock;
+    [SerializeField] private AudioClip AudioOpen;
+
     private bool isUnlocked = false;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -35,6 +39,8 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
         if (puzzleManager.HasKey(requiredKey))
         {
             isUnlocked = true;
+            if (AudioOpen != null)
+                GlobalSoundManager.PlaySFX(AudioOpen);
 
             if (objectToUnlock != null)
                 objectToUnlock.SetActive(true);
@@ -59,6 +65,8 @@ public class LockScript : MonoBehaviour, IPointerDownHandler
         else
         {
             Debug.Log("Clé manquante : " + requiredKey);
+            if (AudioLock != null)
+                GlobalSoundManager.PlaySFX(AudioLock);
         }
     }
 }

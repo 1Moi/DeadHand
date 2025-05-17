@@ -26,6 +26,9 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public float fadeHoldDuration = 0.3f;
     public Vector3 cameraTargetPosition;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+
     public GameObject Caneva;
 
     private Vector3 originalScale;
@@ -109,6 +112,12 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (caseRGBRenderer != null && caseRGBRenderer.gameObject.activeSelf)
         {
             StartCoroutine(FadeAndTeleport());
+
+            if (AudioClick != null && AudioClick.Length > 0)
+            {
+                int index = Random.Range(0, AudioClick.Length);
+                GlobalSoundManager.PlaySFX(AudioClick[index]);
+            }
         }
     }
 

@@ -24,7 +24,6 @@ public class CardHoverFlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [Header("Audio")]
     [SerializeField] private AudioClip[] AudioClick;
-    [SerializeField] private float volume;
 
     void Start()
     {

@@ -20,6 +20,9 @@ public class LeaveCase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool hovering = false;
     private Vector3 originalScale;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+
     void Start()
     {
         originalScale = transform.localScale;
@@ -48,6 +51,11 @@ public class LeaveCase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(FadeAndTeleport());
+        if (AudioClick != null && AudioClick.Length > 0)
+        {
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
+        }
     }
 
     private IEnumerator FadeAndTeleport()

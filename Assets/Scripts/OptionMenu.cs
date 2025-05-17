@@ -8,6 +8,7 @@ public class OptionMenu : MonoBehaviour
 {
     [Header("Audio")]
     public AudioClip Clickage;
+    public AudioClip RetourBouton;
     public float volume;
 
     [Range(0f, 1f)] public float musicVolume = 1f;
@@ -100,6 +101,11 @@ public class OptionMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    public void RetourSon()
+    {
+        GlobalSoundManager.PlaySFX(RetourBouton);
     }
 
     public float GetSFXVolume() => sfxVolume;

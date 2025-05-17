@@ -39,7 +39,7 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     [Header("Audio")]
     [SerializeField] private AudioClip[] AudioClick;
-    [SerializeField] private float volume;
+    [SerializeField] private AudioClip AudioMenu;
 
     private bool isTransitioning = false;
 
@@ -85,6 +85,7 @@ public class NewGameButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 break;
             case ButtonType.Option:
                 OptionMenu();
+                GlobalSoundManager.PlayUI(AudioMenu);
                 break;
             case ButtonType.Quit:
                 QuitGame();
