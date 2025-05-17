@@ -6,7 +6,9 @@ public class GridPattern
 {
     public string patternName;
     public List<Vector2Int> cells;
-    public bool isActivated = false;
+    public bool isActivated = false;    // Le pattern peut-il être détecté ?
+    public bool isSolved = false;       // A-t-il déjà été détecté ?
+    public bool parfaitement = false;   // Doit-il correspondre parfaitement (pas de cases en trop) ?
 }
 
 public class GridManager : MonoBehaviour
@@ -91,6 +93,7 @@ public class GridManager : MonoBehaviour
             validators[coord] = go;
         }
 
+        Debug.Log("Cellule activée : " + coord);
         CheckPatterns();
         return validators.ContainsKey(coord);
     }
@@ -99,9 +102,12 @@ public class GridManager : MonoBehaviour
     {
         foreach (var pattern in patterns)
         {
-            if (pattern.isActivated) continue;
+            if (!pattern.isActivated || pattern.isSolved)
+                continue;
 
             bool match = true;
+
+            // 1. Toutes les cellules du pattern doivent être actives
             foreach (var cell in pattern.cells)
             {
                 if (!validators.ContainsKey(cell))
@@ -111,9 +117,22 @@ public class GridManager : MonoBehaviour
                 }
             }
 
+            // 2. Si le mode "parfaitement" est activé : il ne doit pas y avoir d'autres cellules actives
+            if (match && pattern.parfaitement)
+            {
+                foreach (var activeCell in validators.Keys)
+                {
+                    if (!pattern.cells.Contains(activeCell))
+                    {
+                        match = false;
+                        break;
+                    }
+                }
+            }
+
             if (match)
             {
-                pattern.isActivated = true;
+                pattern.isSolved = true;
                 HandlePatternActivation(pattern.patternName);
             }
         }
@@ -126,12 +145,21 @@ public class GridManager : MonoBehaviour
         switch (name)
         {
             case "Losange":
-                Debug.Log("Ligne du haut complétée !");
+                Debug.LogWarning("LOSANGE");
+                PatternIsSolved(name);
+
+                // Tourner la page Automatiquement ICI
+                
                 ActivatePattern("Coeur");
                 break;
 
             case "Coeur":
-                Debug.Log("Croix au centre activée !");
+                Debug.LogWarning("COEUR");
+                PatternIsSolved(name);
+                break;
+
+            case "BLOODBOUND!!!!!!!!":
+                Debug.LogWarning("BLOODBOUND!!!!!!!!!");
                 break;
 
             default:
@@ -143,25 +171,18 @@ public class GridManager : MonoBehaviour
     public void ActivatePattern(string name)
     {
         GridPattern pattern = patterns.Find(p => p.patternName == name);
-        if (pattern == null || pattern.isActivated) return;
-
-        foreach (var cell in pattern.cells)
-        {
-            if (!validators.ContainsKey(cell))
-            {
-                Vector3 pos = new Vector3(
-                    origin.x + cell.x * cellWidth + cellWidth / 2f,
-                    origin.y + (rows - 1 - cell.y) * cellHeight + cellHeight / 2f,
-                    0
-                );
-
-                GameObject go = Instantiate(validationPrefab, pos, Quaternion.identity, validationContainer);
-                validators[cell] = go;
-            }
-        }
+        if (pattern == null) return;
 
         pattern.isActivated = true;
-        HandlePatternActivation(name); // peut déclencher une cascade
+        Debug.Log($"Pattern {name} autorisé pour vérification.");
+    }
+
+    public void PatternIsSolved(string name)
+    {
+        GridPattern pattern = patterns.Find(p => p.patternName == name);
+        if (pattern == null) return;
+
+        pattern.isSolved = true;
     }
 
     private void OnDrawGizmos()
