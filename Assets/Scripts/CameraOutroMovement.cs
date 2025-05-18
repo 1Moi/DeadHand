@@ -15,6 +15,7 @@ public class CameraOutroMovement : MonoBehaviour
     [Header("UI Finale")]
     public GameObject finalUI;                 // UI finale à activer à la fin
     public float finalUIFadeDuration = 1.5f;  // Durée du fade in de l'UI finale
+    public float delayBeforeFinalUI = 1f; // Nouveau délai avant apparition de l'UI finale
 
     private int currentIndex = 0;
     private float timer = 0f;
@@ -98,12 +99,20 @@ public class CameraOutroMovement : MonoBehaviour
 
     void ActivateFinalUI()
     {
+        StartCoroutine(DelayedActivateFinalUI());
+    }
+
+    IEnumerator DelayedActivateFinalUI()
+    {
+        yield return new WaitForSeconds(delayBeforeFinalUI);
+
         if (finalUI != null)
         {
             finalUI.SetActive(true);
             StartCoroutine(FadeCanvasGroup(finalUICanvasGroup, 0f, 1f, finalUIFadeDuration));
         }
     }
+
 
     IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float duration)
     {

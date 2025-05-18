@@ -1277,9 +1277,9 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 876316956}
-  AudioDrag:
-  - {fileID: 8300000, guid: f7f8fcd9bb156af41bcd7cb8e68984b1, type: 3}
-  - {fileID: 8300000, guid: bbdb462375c4ad7469b73be6bc8f023f, type: 3}
+  audioStartDrag: {fileID: 8300000, guid: 760c70d078eb5be42a79853a4a8cf1f3, type: 3}
+  audioLoopDrag: {fileID: 8300000, guid: 5bffd4eb0abcc7042a1bc67cbca4857d, type: 3}
+  audioEndDrag: {fileID: 8300000, guid: 7c148ca110a798449a5aeb546366dd80, type: 3}
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -2196,9 +2196,9 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1711365722}
-  AudioDrag:
-  - {fileID: 8300000, guid: f7f8fcd9bb156af41bcd7cb8e68984b1, type: 3}
-  - {fileID: 8300000, guid: bbdb462375c4ad7469b73be6bc8f023f, type: 3}
+  audioStartDrag: {fileID: 8300000, guid: 760c70d078eb5be42a79853a4a8cf1f3, type: 3}
+  audioLoopDrag: {fileID: 8300000, guid: 5bffd4eb0abcc7042a1bc67cbca4857d, type: 3}
+  audioEndDrag: {fileID: 8300000, guid: 7c148ca110a798449a5aeb546366dd80, type: 3}
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 2
@@ -8070,7 +8070,9 @@ MonoBehaviour:
   fadeOutDuration: 1.2
   fadeHoldDuration: 0.3
   cameraTargetPosition: {x: 0, y: 0, z: 0}
-  AudioClick: []
+  AudioClick:
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   Caneva: {fileID: 0}
   baseRGBSortingOrder: 0
   baseOutlineOrder: 0
@@ -10360,9 +10362,9 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1553683030}
-  AudioDrag:
-  - {fileID: 8300000, guid: f7f8fcd9bb156af41bcd7cb8e68984b1, type: 3}
-  - {fileID: 8300000, guid: bbdb462375c4ad7469b73be6bc8f023f, type: 3}
+  audioStartDrag: {fileID: 8300000, guid: 760c70d078eb5be42a79853a4a8cf1f3, type: 3}
+  audioLoopDrag: {fileID: 8300000, guid: 5bffd4eb0abcc7042a1bc67cbca4857d, type: 3}
+  audioEndDrag: {fileID: 8300000, guid: 7c148ca110a798449a5aeb546366dd80, type: 3}
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -11597,8 +11599,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &623882699
 MonoBehaviour:
@@ -11961,8 +11963,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &629674147
 MonoBehaviour:
@@ -18668,8 +18670,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &1001595070
 MonoBehaviour:
@@ -19760,7 +19762,9 @@ MonoBehaviour:
   fadeOutDuration: 1.2
   fadeHoldDuration: 0.3
   cameraTargetPosition: {x: 0, y: 0, z: 0}
-  AudioClick: []
+  AudioClick:
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   Caneva: {fileID: 0}
   baseRGBSortingOrder: 0
   baseOutlineOrder: 0
@@ -19904,8 +19908,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!1 &1068956244
 GameObject:
@@ -23788,7 +23792,9 @@ MonoBehaviour:
   fadeOutDuration: 1.2
   fadeHoldDuration: 0.3
   cameraTargetPosition: {x: 0, y: 0, z: 0}
-  AudioClick: []
+  AudioClick:
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   Caneva: {fileID: 0}
   baseRGBSortingOrder: 0
   baseOutlineOrder: 0
@@ -24176,9 +24182,9 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 1795862963}
-  AudioDrag:
-  - {fileID: 8300000, guid: f7f8fcd9bb156af41bcd7cb8e68984b1, type: 3}
-  - {fileID: 8300000, guid: bbdb462375c4ad7469b73be6bc8f023f, type: 3}
+  audioStartDrag: {fileID: 8300000, guid: 760c70d078eb5be42a79853a4a8cf1f3, type: 3}
+  audioLoopDrag: {fileID: 8300000, guid: 5bffd4eb0abcc7042a1bc67cbca4857d, type: 3}
+  audioEndDrag: {fileID: 8300000, guid: 7c148ca110a798449a5aeb546366dd80, type: 3}
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -28500,8 +28506,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &1646681328
 MonoBehaviour:
@@ -33791,8 +33797,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &1964636674
 MonoBehaviour:
@@ -34219,8 +34225,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &1984738824
 MonoBehaviour:
@@ -35645,9 +35651,9 @@ MonoBehaviour:
   resistanceFactor: 0.2
   hasAttachedImage: 1
   "imageAttach\xE9e": {fileID: 702668042}
-  AudioDrag:
-  - {fileID: 8300000, guid: f7f8fcd9bb156af41bcd7cb8e68984b1, type: 3}
-  - {fileID: 8300000, guid: bbdb462375c4ad7469b73be6bc8f023f, type: 3}
+  audioStartDrag: {fileID: 8300000, guid: 760c70d078eb5be42a79853a4a8cf1f3, type: 3}
+  audioLoopDrag: {fileID: 8300000, guid: 5bffd4eb0abcc7042a1bc67cbca4857d, type: 3}
+  audioEndDrag: {fileID: 8300000, guid: 7c148ca110a798449a5aeb546366dd80, type: 3}
   volume: 1
   puzzleManager: {fileID: 796221715}
   puzzleStepIndex: 0
@@ -35971,8 +35977,8 @@ MonoBehaviour:
   ClickBlocker: {fileID: 0}
   collidersToDisable: []
   AudioClick:
-  - {fileID: 8300000, guid: d2c2a649aee6ce144a92c2e8a7f6a473, type: 3}
-  - {fileID: 8300000, guid: d97148f91f669b64ca41b244141efab3, type: 3}
+  - {fileID: 8300000, guid: b164ae73cf736f44eaf295baee1f9ca2, type: 3}
+  - {fileID: 8300000, guid: c1fb2392ac80fcd4e9ec2912bf638c25, type: 3}
   AudioMenu: {fileID: 8300000, guid: 5573751fc43af504f8e4a2a4acd3fda1, type: 3}
 --- !u!114 &2104567683
 MonoBehaviour:

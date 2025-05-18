@@ -23,8 +23,10 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
     public Transform imageAttachée;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip[] AudioDrag;
-    [SerializeField] private float volume;
+    [SerializeField] private AudioClip audioStartDrag;
+    [SerializeField] private AudioClip audioLoopDrag;
+    [SerializeField] private AudioClip audioEndDrag;
+    [SerializeField] private float volume = 1f;
     private AudioSource dragAudioSource;
 
     [Header("Puzzle Manager")]
@@ -54,16 +56,16 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         startPos = transform.localPosition;
 
         dragAudioSource = gameObject.AddComponent<AudioSource>();
-        dragAudioSource.loop = true;
         dragAudioSource.playOnAwake = false;
-        dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+        dragAudioSource.loop = false;
+        dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : volume;
     }
 
     private void Update()
     {
-        if (dragAudioSource != null && dragAudioSource.isPlaying)
+        if (dragAudioSource != null && dragAudioSource.isPlaying && dragAudioSource.loop)
         {
-            dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
+            dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : volume;
         }
     }
 
@@ -74,19 +76,23 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
 
         if (plane.Raycast(ray, out float distance))
         {
-            if (!dragAudioSource.isPlaying && AudioDrag.Length > 0)
-            {
-                if (AudioDrag != null && AudioDrag.Length > 0)
-                {
-                    int index = Random.Range(0, AudioDrag.Length);
-                    dragAudioSource.clip = AudioDrag[index];
-                    dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : 1f;
-                    dragAudioSource.Play();
-                }
-            }
-
             Vector3 worldPoint = ray.GetPoint(distance);
             offset = transform.position - worldPoint;
+
+            // Son de début
+            if (audioStartDrag != null)
+            {
+                dragAudioSource.PlayOneShot(audioStartDrag, volume);
+            }
+
+            // Son en boucle pendant le drag
+            if (audioLoopDrag != null)
+            {
+                dragAudioSource.clip = audioLoopDrag;
+                dragAudioSource.loop = true;
+                dragAudioSource.volume = GlobalSoundManager.Instance != null ? GlobalSoundManager.Instance.sfxVolume : volume;
+                dragAudioSource.Play();
+            }
         }
     }
 
@@ -135,9 +141,17 @@ public class LanguetteCrantee : MonoBehaviour, IPointerDownHandler, IDragHandler
         StopAllCoroutines();
         StartCoroutine(SnapToCran(cranLePlusProcheIndex));
 
-        if (dragAudioSource != null && dragAudioSource.isPlaying)
+        // Arrêter le son de boucle
+        if (dragAudioSource != null && dragAudioSource.isPlaying && dragAudioSource.loop)
         {
             dragAudioSource.Stop();
+        }
+
+        // Son de fin
+        if (audioEndDrag != null)
+        {
+            dragAudioSource.loop = false;
+            dragAudioSource.PlayOneShot(audioEndDrag, volume);
         }
 
         if (puzzleManager != null)
