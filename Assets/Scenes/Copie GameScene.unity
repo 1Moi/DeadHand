@@ -4150,7 +4150,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8cde704d7524e4a45b2354c4a679ec25, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbc987fc78c436548999bff7221d04b1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -14233,7 +14233,7 @@ MonoBehaviour:
     GoToCranCall: {fileID: 0}
     AudioWin:
     - {fileID: 8300000, guid: 6c7865fde1c09e14ba6f1748e1bf61df, type: 3}
-  cheatMode: 0
+  cheatMode: 1
   keysToCheatUnlock:
   - RedKey
   - BlueKey
@@ -21532,8 +21532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 961739753}
   menuMusicClip: {fileID: 8300000, guid: 8cde704d7524e4a45b2354c4a679ec25, type: 3}
-  chapter1Clip: {fileID: 8300000, guid: c5bfcdbc41c85e9488b23291ccd5e468, type: 3}
-  chapter2Clip: {fileID: 8300000, guid: 8cde704d7524e4a45b2354c4a679ec25, type: 3}
+  chapter1Clip: {fileID: 8300000, guid: d7338fcb10417bb4ba24807af65bf91a, type: 3}
+  chapter2Clip: {fileID: 8300000, guid: fbc987fc78c436548999bff7221d04b1, type: 3}
   chapter3Clip: {fileID: 8300000, guid: c5bfcdbc41c85e9488b23291ccd5e468, type: 3}
 --- !u!114 &1152968389 stripped
 MonoBehaviour:
@@ -24880,7 +24880,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c5bfcdbc41c85e9488b23291ccd5e468, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d7338fcb10417bb4ba24807af65bf91a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

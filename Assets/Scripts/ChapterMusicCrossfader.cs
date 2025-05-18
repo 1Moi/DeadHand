@@ -37,22 +37,29 @@ public class ChapterMusicCrossfader : MonoBehaviour
     {
         float camX = cameraTransform.position.x;
 
-        float volume1 = 0f;
-        float volume2 = 0f;
-        float volume3 = 0f;
+        float target1 = 0f;
+        float target2 = 0f;
+        float target3 = 0f;
 
         if (camX < 200f)
         {
-            volume1 = 1f;
+            target1 = 1f;
         }
         else if (camX >= 200f && camX < 400f)
         {
-            volume2 = 1f;
+            target2 = 1f;
         }
         else if (camX >= 400f)
         {
-            volume3 = 1f;
+            target3 = 1f;
         }
+
+        // Smoothly interpolate current volumes toward target values
+        float speed = 1.5f; // ajustable
+
+        volume1 = Mathf.MoveTowards(volume1, target1, Time.deltaTime * speed);
+        volume2 = Mathf.MoveTowards(volume2, target2, Time.deltaTime * speed);
+        volume3 = Mathf.MoveTowards(volume3, target3, Time.deltaTime * speed);
 
         GlobalSoundManager.Instance.chapter1MusicTargetVolume = volume1;
         GlobalSoundManager.Instance.chapter2MusicTargetVolume = volume2;
@@ -66,4 +73,5 @@ public class ChapterMusicCrossfader : MonoBehaviour
 
         GlobalSoundManager.SetMusicVolume(GlobalSoundManager.Instance.GetCurrentMusicVolume());
     }
+
 }
