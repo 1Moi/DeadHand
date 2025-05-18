@@ -37,6 +37,10 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2Int, GameObject> validators = new();
 
+    [Header ("Fade Settings")]
+    public FadeManager fadeManager = null;
+    public string TexteVika = "Oui Oui";
+
     private void Start()
     {
         currentX = 0;
@@ -93,7 +97,7 @@ public class GridManager : MonoBehaviour
             validators[coord] = go;
         }
 
-        Debug.Log("Cellule activée : " + coord);
+        //Debug.Log("Cellule activée : " + coord);
         CheckPatterns();
         return validators.ContainsKey(coord);
     }
@@ -148,14 +152,20 @@ public class GridManager : MonoBehaviour
                 Debug.LogWarning("LOSANGE");
                 PatternIsSolved(name);
 
-                // Tourner la page Automatiquement ICI
-                
+                // activation Fade In
+                fadeManager.StartFadeIn(true, TexteVika, 1f, 0f, 1f);
+                // Drop la languette
+
+
                 ActivatePattern("Coeur");
                 break;
 
             case "Coeur":
                 Debug.LogWarning("COEUR");
                 PatternIsSolved(name);
+
+                // Tourner la page Automatiquement ICI
+
                 break;
 
             case "BLOODBOUND!!!!!!!!":
@@ -174,7 +184,7 @@ public class GridManager : MonoBehaviour
         if (pattern == null) return;
 
         pattern.isActivated = true;
-        Debug.Log($"Pattern {name} autorisé pour vérification.");
+        //Debug.Log($"Pattern {name} autorisé pour vérification.");
     }
 
     public void PatternIsSolved(string name)
@@ -207,4 +217,17 @@ public class GridManager : MonoBehaviour
             Gizmos.DrawLine(from, to);
         }
     }
+
+    public void ClearGrid()
+    {
+        foreach (var kvp in validators)
+        {
+            if (kvp.Value != null)
+                Destroy(kvp.Value);
+        }
+
+        validators.Clear();
+        Debug.Log(" Grille nettoyée !");
+    }
+
 }
