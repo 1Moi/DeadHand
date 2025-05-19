@@ -48,6 +48,11 @@ public class LeaveCase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         hovering = false;
     }
 
+    public void LEAVE()
+    {
+        StartCoroutine(FadeAndTeleport());
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         StartCoroutine(FadeAndTeleport());
@@ -58,7 +63,7 @@ public class LeaveCase : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
-    private IEnumerator FadeAndTeleport()
+    public IEnumerator FadeAndTeleport()
     {
         if (fadePanel == null)
         {

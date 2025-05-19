@@ -29,26 +29,7 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (canTurnPage)
-        {
-            pageCamera.transform.position += new Vector3(pageTurnDistance * direction, 0, 0);
-            Debug.Log("Page tourn�e.");
-
-            if (direction > 0)
-                autoFlip.FlipRightPage();
-            else
-                autoFlip.FlipLeftPage();
-
-            if (audioPage.Length > 0)
-            {
-                int index = Random.Range(0, audioPage.Length);
-                GlobalSoundManager.PlaySFX(audioPage[index]);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Impossible de tourner la page.");
-        }
+        TurningPage();
     }
 
     void OnMouseOver()
@@ -71,5 +52,29 @@ public class TurningPages : MonoBehaviour, IPointerDownHandler
             
         }
         
+    }
+
+    public void TurningPage()
+    {
+        if (canTurnPage)
+        {
+            pageCamera.transform.position += new Vector3(pageTurnDistance * direction, 0, 0);
+            Debug.Log("Page tourn�e.");
+
+            if (direction > 0)
+                autoFlip.FlipRightPage();
+            else
+                autoFlip.FlipLeftPage();
+
+            if (audioPage.Length > 0)
+            {
+                int index = Random.Range(0, audioPage.Length);
+                GlobalSoundManager.PlaySFX(audioPage[index]);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Impossible de tourner la page.");
+        }
     }
 }

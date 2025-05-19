@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -36,6 +37,14 @@ public class GridManager : MonoBehaviour
     private int currentY = 0;
 
     private Dictionary<Vector2Int, GameObject> validators = new();
+
+    [Header ("Fade Settings")]
+    public FadeManager fadeManager = null;
+    public string TexteVika = "Oui Oui";
+
+    public TurningPages TurningPages;
+    public GameObject TurningPageObject;
+    public GameObject CLICKBLOCKER;
 
     private void Start()
     {
@@ -93,7 +102,7 @@ public class GridManager : MonoBehaviour
             validators[coord] = go;
         }
 
-        Debug.Log("Cellule activée : " + coord);
+        //Debug.Log("Cellule activée : " + coord);
         CheckPatterns();
         return validators.ContainsKey(coord);
     }
@@ -148,14 +157,21 @@ public class GridManager : MonoBehaviour
                 Debug.LogWarning("LOSANGE");
                 PatternIsSolved(name);
 
-                // Tourner la page Automatiquement ICI
-                
+                // activation Fade In / Fade Out
+                fadeManager.StartFadeIn(true, TexteVika, 1f, 0f, 1f);
+                // Drop la languette
+
+
                 ActivatePattern("Coeur");
                 break;
 
             case "Coeur":
                 Debug.LogWarning("COEUR");
                 PatternIsSolved(name);
+
+                // Tourner la page Automatiquement ICI
+                StartCoroutine(Chap3AutoTurnPage1to2());
+
                 break;
 
             case "BLOODBOUND!!!!!!!!":
@@ -174,7 +190,7 @@ public class GridManager : MonoBehaviour
         if (pattern == null) return;
 
         pattern.isActivated = true;
-        Debug.Log($"Pattern {name} autorisé pour vérification.");
+        //Debug.Log($"Pattern {name} autorisé pour vérification.");
     }
 
     public void PatternIsSolved(string name)
@@ -207,4 +223,26 @@ public class GridManager : MonoBehaviour
             Gizmos.DrawLine(from, to);
         }
     }
+
+    public void ClearGrid()
+    {
+        foreach (var kvp in validators)
+        {
+            if (kvp.Value != null)
+                Destroy(kvp.Value);
+        }
+
+        validators.Clear();
+        Debug.Log(" Grille nettoyée !");
+    }
+
+    public IEnumerator Chap3AutoTurnPage1to2()
+    {
+        CLICKBLOCKER.SetActive(true);
+        TurningPageObject.SetActive(true);
+        TurningPages.TurningPage();
+        yield return new WaitForSeconds(2f);
+        CLICKBLOCKER.SetActive(false);
+    }
+
 }
