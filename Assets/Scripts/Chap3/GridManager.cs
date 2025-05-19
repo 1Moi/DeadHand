@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -40,6 +41,10 @@ public class GridManager : MonoBehaviour
     [Header ("Fade Settings")]
     public FadeManager fadeManager = null;
     public string TexteVika = "Oui Oui";
+
+    public TurningPages TurningPages;
+    public GameObject TurningPageObject;
+    public GameObject CLICKBLOCKER;
 
     private void Start()
     {
@@ -152,7 +157,7 @@ public class GridManager : MonoBehaviour
                 Debug.LogWarning("LOSANGE");
                 PatternIsSolved(name);
 
-                // activation Fade In
+                // activation Fade In / Fade Out
                 fadeManager.StartFadeIn(true, TexteVika, 1f, 0f, 1f);
                 // Drop la languette
 
@@ -165,6 +170,7 @@ public class GridManager : MonoBehaviour
                 PatternIsSolved(name);
 
                 // Tourner la page Automatiquement ICI
+                StartCoroutine(Chap3AutoTurnPage1to2());
 
                 break;
 
@@ -228,6 +234,15 @@ public class GridManager : MonoBehaviour
 
         validators.Clear();
         Debug.Log(" Grille nettoyée !");
+    }
+
+    public IEnumerator Chap3AutoTurnPage1to2()
+    {
+        CLICKBLOCKER.SetActive(true);
+        TurningPageObject.SetActive(true);
+        TurningPages.TurningPage();
+        yield return new WaitForSeconds(2f);
+        CLICKBLOCKER.SetActive(false);
     }
 
 }
