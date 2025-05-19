@@ -17,6 +17,9 @@ public class PuzzleButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [Header("Comportement spécial")]
     public bool isResetButton = false;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+
     void Start()
     {
         if (spriteRenderer == null)
@@ -41,6 +44,12 @@ public class PuzzleButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             return;
 
         spriteRenderer.color = pressedColor;
+
+        if (AudioClick != null && AudioClick.Length > 0)
+        {
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
+        }
 
         if (isResetButton)
         {

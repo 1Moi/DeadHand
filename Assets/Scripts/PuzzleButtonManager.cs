@@ -30,6 +30,10 @@ public class PuzzleButtonManager : MonoBehaviour
     public TurningPages TurningPages2;
     public GameObject Caneva;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip AudioWin;
+    [SerializeField] private AudioClip AudioError;
+
     void Awake()
     {
         allSequences.Clear();
@@ -103,6 +107,8 @@ public class PuzzleButtonManager : MonoBehaviour
                 currentSequence.isSolved = true;
                 Debug.Log("Bonne combinaison pour : " + currentSequence.sequenceName);
 
+                GlobalSoundManager.PlaySFX(AudioWin);
+
                 HandleSequenceAction(currentSequence.sequenceName); // Appel de la logique personnalisée
 
                 // Passe automatiquement à la séquence suivante
@@ -118,6 +124,7 @@ public class PuzzleButtonManager : MonoBehaviour
             else
             {
                 Debug.Log("Mauvaise combinaison !");
+                GlobalSoundManager.PlaySFX(AudioError);
                 StartCoroutine(FlashAllError());
             }
         }

@@ -199,7 +199,7 @@ public class PuzzleManager : MonoBehaviour
 
             if (step.unlocksKey && !string.IsNullOrEmpty(step.unlockKey))
             {
-                GlobalSoundManager.PlayUI(AudioWinKey);
+                GlobalSoundManager.PlaySFX(AudioWinKey);
 
                 keysObtained[step.unlockKey] = true;
                 Debug.LogWarning("Clef obtenue : " + step.unlockKey);

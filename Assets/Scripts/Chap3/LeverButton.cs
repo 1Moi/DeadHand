@@ -11,6 +11,9 @@ public class LeverButton : MonoBehaviour, IPointerDownHandler
     public SpriteRenderer spriteRenderer;
     public GridManager gridManager;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
+
     private bool isAnimating = false;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -18,6 +21,12 @@ public class LeverButton : MonoBehaviour, IPointerDownHandler
         if (isAnimating || spriteRenderer == null || gridManager == null) return;
 
         StartCoroutine(LeverAnimation());
+
+        if (AudioClick != null && AudioClick.Length > 0)
+        {
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
+        }
 
         bool activated = gridManager.ToggleValidator();
         Debug.Log(activated ? "Case validée" : "Case désactivée");

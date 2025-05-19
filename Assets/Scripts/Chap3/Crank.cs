@@ -8,22 +8,34 @@ public class Crank : MonoBehaviour, IPointerDownHandler
     public CrankType crankDirection;
 
     [Header("Logique")]
-    public bool inverse = false;            // Inverse le déplacement logique
+    public bool inverse = false;
 
     [Header("Visuel")]
-    public bool inverseVisual = false;      // Inverse uniquement la rotation de la manivelle
+    public bool inverseVisual = false;
     public float rotationAmount = 15f;
     public float rotationDuration = 0.2f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] AudioClick;
 
     public GridManager gridManager;
 
     private bool isRotating = false;
+    private bool canPlaySound = true; // 
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (isRotating) return;
 
         int deltaX = 0, deltaY = 0;
+
+        // Jouer le son avec un délai minimum de 1 seconde
+        if (canPlaySound && AudioClick != null && AudioClick.Length > 0)
+        {
+            int index = Random.Range(0, AudioClick.Length);
+            GlobalSoundManager.PlaySFX(AudioClick[index]);
+            StartCoroutine(SoundCooldown()); // 
+        }
 
         if (crankDirection == CrankType.Horizontal)
             deltaX = inverse ? -1 : 1;
@@ -53,5 +65,12 @@ public class Crank : MonoBehaviour, IPointerDownHandler
 
         transform.rotation = endRotation;
         isRotating = false;
+    }
+
+    private IEnumerator SoundCooldown()
+    {
+        canPlaySound = false;
+        yield return new WaitForSeconds(0.75f); // 
+        canPlaySound = true;
     }
 }
