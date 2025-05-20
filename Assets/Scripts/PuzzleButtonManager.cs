@@ -33,6 +33,10 @@ public class PuzzleButtonManager : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip AudioWin;
     [SerializeField] private AudioClip AudioError;
+    [SerializeField] private AudioClip AudioNoir;
+
+    public BlackHoleAnimator blackHoleAnimator;
+
 
     void Awake()
     {
@@ -108,7 +112,7 @@ public class PuzzleButtonManager : MonoBehaviour
                 Debug.Log("Bonne combinaison pour : " + currentSequence.sequenceName);
 
                 GlobalSoundManager.PlaySFX(AudioWin);
-
+                                
                 HandleSequenceAction(currentSequence.sequenceName); // Appel de la logique personnalisée
 
                 // Passe automatiquement à la séquence suivante
@@ -201,7 +205,11 @@ public class PuzzleButtonManager : MonoBehaviour
     {
 
         // Activer l'animation du trou noir
+        blackHoleAnimator.PlayBlackHole();
         // Son Activation Machine
+        GlobalSoundManager.PlaySFX(AudioNoir);
+        yield return new WaitForSeconds(2f);
+        
 
         yield return StartCoroutine(LeaveCase.FadeAndTeleport());
 
@@ -212,7 +220,7 @@ public class PuzzleButtonManager : MonoBehaviour
 
         // AUTO FLIP (vers la double page 2 du chap 2)
         TurningPages1.TurningPage();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         // AUTO FLIP (vers la double page 1 du chap 3)
         TurningPages2.TurningPage();
         yield return new WaitForSeconds(1f);
