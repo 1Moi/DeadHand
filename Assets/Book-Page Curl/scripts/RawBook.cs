@@ -344,6 +344,7 @@ public class RawBook : MonoBehaviour {
         if (interactable)
             ReleasePage();
     }
+
     public void ReleasePage()
     {
         if (pageDragging)
@@ -359,6 +360,8 @@ public class RawBook : MonoBehaviour {
                 TweenForward();
         }
     }
+
+
     Coroutine currentCoroutine;
     void UpdateSprites()
     {
