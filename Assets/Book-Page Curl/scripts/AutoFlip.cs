@@ -134,6 +134,9 @@ public class AutoFlip : MonoBehaviour
         for (int i = 0; i < AnimationFramesCount; i++)
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
+
+            Debug.Log($"FlipRTL frame {i} x={x}, y={y} currentPage={ControledBook.currentPage}");
+
             // Mise à jour de la position de la page à chaque frame
             ControledBook.DragRightPageToPoint(new Vector3(x, y, 0));
             ControledBook.UpdateBookRTLToPoint(new Vector3(x, y, 0));

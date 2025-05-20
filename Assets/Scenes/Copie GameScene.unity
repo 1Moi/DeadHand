@@ -2218,6 +2218,8 @@ MonoBehaviour:
   MauvaisePosition: {x: 6.64, y: 5, z: 0}
   lalou: {fileID: 796221719}
   RewardRec: {fileID: 1874379249}
+  AudioWin: []
+  AudioPage: []
 --- !u!1 &176721244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,6 +2757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 180032, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 11411488, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_RaycastTarget
       value: 0
@@ -3197,6 +3203,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 199556629}
   manager: {fileID: 1747630728}
   isResetButton: 0
+  AudioClick: []
 --- !u!212 &199556629
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5139,6 +5146,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 324686352}
   manager: {fileID: 1747630728}
   isResetButton: 0
+  AudioClick: []
 --- !u!212 &324686352
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9143,6 +9151,7 @@ MonoBehaviour:
   inverseVisual: 1
   rotationAmount: 36
   rotationDuration: 0.2
+  AudioClick: []
   gridManager: {fileID: 1663055148}
 --- !u!212 &501233533
 SpriteRenderer:
@@ -9527,6 +9536,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 533015787}
   manager: {fileID: 1747630728}
   isResetButton: 0
+  AudioClick: []
 --- !u!212 &533015787
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11151,6 +11161,81 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &591090318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591090321}
+  - component: {fileID: 591090320}
+  - component: {fileID: 591090319}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &591090319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591090318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.02745098}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &591090320
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591090318}
+  m_CullTransparentMesh: 1
+--- !u!224 &591090321
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591090318}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1659038346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &592413200
 GameObject:
   m_ObjectHideFlags: 0
@@ -16447,6 +16532,7 @@ MonoBehaviour:
   inverseVisual: 1
   rotationAmount: 72
   rotationDuration: 0.2
+  AudioClick: []
   gridManager: {fileID: 1663055148}
 --- !u!212 &907657609
 SpriteRenderer:
@@ -19962,6 +20048,7 @@ MonoBehaviour:
   downDuration: 0.3
   spriteRenderer: {fileID: 1068956247}
   gridManager: {fileID: 1663055148}
+  AudioClick: []
 --- !u!212 &1068956247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21534,7 +21621,7 @@ MonoBehaviour:
   menuMusicClip: {fileID: 8300000, guid: 8cde704d7524e4a45b2354c4a679ec25, type: 3}
   chapter1Clip: {fileID: 8300000, guid: d7338fcb10417bb4ba24807af65bf91a, type: 3}
   chapter2Clip: {fileID: 8300000, guid: fbc987fc78c436548999bff7221d04b1, type: 3}
-  chapter3Clip: {fileID: 8300000, guid: c5bfcdbc41c85e9488b23291ccd5e468, type: 3}
+  chapter3Clip: {fileID: 8300000, guid: 0e3dad90549b4494da79eb42524baf42, type: 3}
 --- !u!114 &1152968389 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11435694, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -27196,6 +27283,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 881881990}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1592163421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592163423}
+  - component: {fileID: 1592163422}
+  m_Layer: 0
+  m_Name: FlipEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1592163422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592163421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec43bd0fa3175a5478592ab1913fa18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoFlip: {fileID: 1630953157}
+  pageCamera: {fileID: 961739752}
+--- !u!4 &1592163423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592163421}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.64842, y: 0.39619905, z: -1.2237917}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592908418
 GameObject:
   m_ObjectHideFlags: 0
@@ -28187,7 +28320,7 @@ MonoBehaviour:
   AutoStartFlip: 0
   AnimationFramesCount: 20
   ControledBook: {fileID: 1630953158}
-  MangeClick: {fileID: 646661522}
+  MangeClick: {fileID: 591090318}
 --- !u!114 &1630953158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28202,7 +28335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 1659038345}
   BookPanel: {fileID: 1630953154}
-  background: {fileID: 21300000, guid: 1ad237c0b7789834ea00e672d8367fc7, type: 3}
+  background: {fileID: 21300000, guid: e78ded166e936f74e88061eee99e9d78, type: 3}
   bookPages:
   - {fileID: 8400000, guid: 6ed4f372236076e4fbf52f6c10b618ae, type: 2}
   - {fileID: 8400000, guid: b6591223a6c94b24d92d8d4d8be4d234, type: 2}
@@ -29261,6 +29394,7 @@ RectTransform:
   m_Children:
   - {fileID: 1630953154}
   - {fileID: 646661523}
+  - {fileID: 591090321}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -29339,6 +29473,11 @@ MonoBehaviour:
     isSolved: 0
     parfaitement: 0
   showGridGizmos: 1
+  fadeManager: {fileID: 0}
+  TexteVika: Oui Oui
+  TurningPages: {fileID: 212401454}
+  TurningPageObject: {fileID: 949440992}
+  CLICKBLOCKER: {fileID: 974496998}
 --- !u!4 &1663055149
 Transform:
   m_ObjectHideFlags: 0
@@ -30952,18 +31091,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequencesInspector:
-  - buttons:
+  - sequenceName: 
+    isActive: 1
+    isSolved: 0
+    buttons:
     - {fileID: 324686351}
     - {fileID: 533015786}
     - {fileID: 199556628}
     - {fileID: 1908731405}
-  - buttons:
+  - sequenceName: 
+    isActive: 1
+    isSolved: 0
+    buttons:
     - {fileID: 324686351}
     - {fileID: 324686351}
     - {fileID: 1908731405}
     - {fileID: 1908731405}
     - {fileID: 1908731405}
     - {fileID: 1908731405}
+  ClickBlocker: {fileID: 0}
+  LeaveCase: {fileID: 0}
+  ButtonPage: {fileID: 0}
+  TurningPages1: {fileID: 0}
+  TurningPages2: {fileID: 0}
+  Caneva: {fileID: 0}
+  AudioWin: {fileID: 0}
+  AudioError: {fileID: 0}
 --- !u!4 &1747630729
 Transform:
   m_ObjectHideFlags: 0
@@ -33217,6 +33370,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1908731406}
   manager: {fileID: 1747630728}
   isResetButton: 0
+  AudioClick: []
 --- !u!212 &1908731406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36185,6 +36339,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2121498702}
   manager: {fileID: 1747630728}
   isResetButton: 1
+  AudioClick: []
 --- !u!212 &2121498702
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36977,3 +37132,4 @@ SceneRoots:
   - {fileID: 1099251241}
   - {fileID: 1122005096068803822}
   - {fileID: 1199106152}
+  - {fileID: 1592163423}
