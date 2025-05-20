@@ -17,6 +17,9 @@ public class AutoFlip : MonoBehaviour
     [SerializeField] private RawBook ControledBook;
     [SerializeField] private GameObject MangeClick;
 
+    private bool pageFlipCompleted = false;
+
+
     void Start()
     {
         if (!ControledBook)
@@ -29,11 +32,13 @@ public class AutoFlip : MonoBehaviour
     void PageFlipped()
     {
         isFlipping = false;
+        pageFlipCompleted = true; // <== nouveau
         if (IsFlipToEnd == false)
         {
             MangeClick.SetActive(false);
-        }        
+        }
     }
+
 
     public void StartFlipping()
     {
@@ -88,7 +93,7 @@ public class AutoFlip : MonoBehaviour
         switch (Mode)
         {
             case FlipMode.RightToLeft:
-                while (ControledBook.currentPage < ControledBook.TotalPageCount - 3)
+                while (ControledBook.currentPage < ControledBook.TotalPageCount - 2)
                 {
                     if (isFlipping)
                     {
@@ -96,15 +101,21 @@ public class AutoFlip : MonoBehaviour
                         continue;
                     }
                     isFlipping = true;
+                    pageFlipCompleted = false; // Reset flag
                     MangeClick.SetActive(true);
                     yield return StartCoroutine(FlipRTL(xc, xl, h, frameTime, dx));
-                    
-                    isFlipping = false;
+
+                    //  ATTEND que la page soit entièrement terminée
+                    yield return new WaitUntil(() => pageFlipCompleted);
+
                     yield return new WaitForSeconds(TimeBetweenPages);
-                }                
+
+                }
                 IsFlipToEnd = false;
+                MangeClick.SetActive(false); // <-- important
                 yield break;
-                
+
+
 
             case FlipMode.LeftToRight:
                 while (ControledBook.currentPage > 1)
@@ -115,14 +126,16 @@ public class AutoFlip : MonoBehaviour
                         continue;
                     }
                     isFlipping = true;
+                    pageFlipCompleted = false;
                     MangeClick.SetActive(true);
                     yield return StartCoroutine(FlipLTR(xc, xl, h, frameTime, dx));
-                    MangeClick.SetActive(false);
-                    isFlipping = false;
+                    yield return new WaitUntil(() => pageFlipCompleted);
                     yield return new WaitForSeconds(TimeBetweenPages);
+
                 }
                 yield break;
         }
+
     }
 
 
@@ -135,7 +148,6 @@ public class AutoFlip : MonoBehaviour
         {
             y = (-h / (xl * xl)) * (x - xc) * (x - xc);
 
-            Debug.Log($"FlipRTL frame {i} x={x}, y={y} currentPage={ControledBook.currentPage}");
 
             // Mise à jour de la position de la page à chaque frame
             ControledBook.DragRightPageToPoint(new Vector3(x, y, 0));
