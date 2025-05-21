@@ -269,27 +269,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'bibibibibibibigbar
-
-    nhteq
-
-    jhntqe
-
-    ujtjv
-
-
-    gjjkyrskekz
-
-    yj
-
-    yrsksr
-
-
-    sjiytrkjyrskys
-
-    tsjzsjkarimjtjqt
-
-    gerajq<qteqj'
+  m_text: "Et \nHomer Gaspard\nLouren\xE7o Mathis\nDuclos Yann\nJoubert Mathis"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -423,7 +403,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Blablablablabla \nhgiujtd th\nhjitsjnhpodtjh\ntjhoidsgtjnhoitsnhoigrs\nqrjhifdohjotgh\ntdsoijhtnhoidsj\n"
+  m_text: "Par \nAwaida Laurice\nTerriere Ana\xE9\nZeghlache Dina\nMbow Serigne\nVernet
+    Lou"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
