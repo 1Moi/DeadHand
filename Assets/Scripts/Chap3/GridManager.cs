@@ -38,9 +38,11 @@ public class GridManager : MonoBehaviour
 
     private Dictionary<Vector2Int, GameObject> validators = new();
 
-    [Header ("Fade Settings")]
+    [Header("Fade Settings")]
     public FadeManager fadeManager = null;
     public string TexteVika = "Oui Oui";
+
+    public LanguetteCrantee LanguetteCrantee;
 
     public TurningPages TurningPages;
     public GameObject TurningPageObject;
@@ -159,6 +161,7 @@ public class GridManager : MonoBehaviour
 
                 // activation Fade In / Fade Out
                 fadeManager.StartFadeIn(true, TexteVika, 1f, 0f, 1f);
+                StartCoroutine(Wait2Seconds(1f));
                 // Drop la languette
 
 
@@ -245,4 +248,9 @@ public class GridManager : MonoBehaviour
         CLICKBLOCKER.SetActive(false);
     }
 
+    public IEnumerator Wait2Seconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        LanguetteCrantee.GoToCran(1);
+    }
 }
