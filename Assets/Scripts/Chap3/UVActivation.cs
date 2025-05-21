@@ -1,25 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UVActivation : MonoBehaviour, IPointerDownHandler
 {
-    public GameObject UVLight;
-    public GameObject NightScreen;
-    public GameObject ButtonPage1;
-    public GameObject ButtonPage2;
+    public List<GameObject> ObjectToSetActive;
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (UVLight != null)
-            UVLight.SetActive(true);
-
-        if (NightScreen != null)
-            NightScreen.SetActive(true);
-
-        if (ButtonPage1 != null)
-            ButtonPage1.SetActive(true);
-
-        if (ButtonPage2 != null)
-            ButtonPage2.SetActive(true);
+        for (int i = 0; i < ObjectToSetActive.Count; i++)
+        {
+            GameObject obj = ObjectToSetActive[i];
+            if (obj != null)
+                obj.SetActive(true);
+        }
     }
 }

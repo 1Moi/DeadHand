@@ -15,16 +15,14 @@ public class FadeManager : MonoBehaviour
     public float defaultHold = 1f;
     public float defaultFadeOut = 1f;
 
+    [Header("Typing Settings")]
+    public float typingSpeed = 0.05f;
+
     private bool waitingForClick = false;
 
     /// <summary>
-    /// Lance un écran de transition.
+    /// Lance un écran de transition avec option de texte affiché lettre par lettre.
     /// </summary>
-    /// <param name="hasText">Affiche un texte et attend un clic si true</param>
-    /// <param name="message">Texte à afficher</param>
-    /// <param name="fadeIn">Durée du fade-in</param>
-    /// <param name="hold">Durée du hold si pas de texte</param>
-    /// <param name="fadeOut">Durée du fade-out</param>
     public void StartFadeIn(bool hasText, string message = "", float fadeIn = -1, float hold = -1, float fadeOut = -1)
     {
         float fi = fadeIn >= 0 ? fadeIn : defaultFadeIn;
@@ -37,10 +35,11 @@ public class FadeManager : MonoBehaviour
 
     private IEnumerator FadeSequence(bool hasText, string message, float fadeIn, float hold, float fadeOut)
     {
-        // Préparation
+        // Setup
         if (fadeImage == null) yield break;
+
         fadeImage.enabled = true;
-        fadeImage.color = new Color(0, 0, 0, 0); // transparent
+        fadeImage.color = new Color(0, 0, 0, 0);
 
         if (mainText != null) mainText.gameObject.SetActive(false);
         if (continueText != null) continueText.gameObject.SetActive(false);
@@ -56,14 +55,22 @@ public class FadeManager : MonoBehaviour
             yield return null;
         }
 
-        // === Si du texte, on affiche + attend le clic ===
         if (hasText && mainText != null)
         {
-            mainText.text = message;
+            mainText.text = "";
+            mainText.color = Color.white;
             mainText.gameObject.SetActive(true);
+
+            // Typing effet lettre par lettre
+            foreach (char c in message)
+            {
+                mainText.text += c;
+                yield return new WaitForSeconds(typingSpeed);
+            }
 
             if (continueText != null)
             {
+                continueText.color = Color.white;
                 continueText.gameObject.SetActive(true);
                 StartCoroutine(BlinkContinueText());
             }
@@ -76,13 +83,11 @@ public class FadeManager : MonoBehaviour
 
             if (continueText != null)
                 continueText.gameObject.SetActive(false);
-
             if (mainText != null)
-                mainText.gameObject.SetActive(false);
+                StartCoroutine(FadeOutText(mainText));
         }
         else
         {
-            // === Pas de texte : on attend un temps fixe ===
             yield return new WaitForSeconds(hold);
         }
 
@@ -114,5 +119,24 @@ public class FadeManager : MonoBehaviour
 
         if (continueText != null)
             continueText.color = baseColor;
+    }
+
+    private IEnumerator FadeOutText(TMP_Text text)
+    {
+        float duration = 0.5f;
+        float elapsed = 0f;
+        Color originalColor = text.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = 1f - Mathf.Clamp01(elapsed / duration);
+            text.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+
+        text.text = "";
+        text.color = originalColor;
+        text.gameObject.SetActive(false);
     }
 }

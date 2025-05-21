@@ -177,6 +177,16 @@ public class GridManager : MonoBehaviour
 
                 break;
 
+            case "Water":
+                Debug.LogWarning("WATER");
+                PatternIsSolved(name);
+
+                // ICI TU MET TON CODE
+                // LA
+                // ET LA
+
+                break;
+
             case "BLOODBOUND!!!!!!!!":
                 Debug.LogWarning("BLOODBOUND!!!!!!!!!");
                 break;
