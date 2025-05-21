@@ -6258,6 +6258,7 @@ GameObject:
   - component: {fileID: 367608875}
   - component: {fileID: 367608874}
   - component: {fileID: 367608873}
+  - component: {fileID: 367608876}
   m_Layer: 0
   m_Name: Vika
   m_TagString: Untagged
@@ -6393,7 +6394,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 37bc786230a6f284ba6858b30d9ded88, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6413,7 +6414,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0566e613a45d08a44a071efa22ac8eb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6425,6 +6426,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &367608876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367608871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e447da7d61dbaa4ebd116501ecee1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: -876546973899608171, guid: 37bc786230a6f284ba6858b30d9ded88, type: 3}
 --- !u!1 &371571526
 GameObject:
   m_ObjectHideFlags: 0
@@ -6783,6 +6797,7 @@ GameObject:
   - component: {fileID: 382339440}
   - component: {fileID: 382339439}
   - component: {fileID: 382339438}
+  - component: {fileID: 382339441}
   m_Layer: 0
   m_Name: Sergei
   m_TagString: Untagged
@@ -6932,7 +6947,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: c0ff604c68e9fb54fb55c7589da53337, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6964,6 +6979,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &382339441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382339436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e447da7d61dbaa4ebd116501ecee1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: -876546973899608171, guid: c0ff604c68e9fb54fb55c7589da53337, type: 3}
 --- !u!1 &385751058
 GameObject:
   m_ObjectHideFlags: 0
@@ -19196,6 +19224,7 @@ GameObject:
   - component: {fileID: 1028824539}
   - component: {fileID: 1028824538}
   - component: {fileID: 1028824537}
+  - component: {fileID: 1028824540}
   m_Layer: 0
   m_Name: Vera
   m_TagString: Untagged
@@ -19213,7 +19242,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.96, y: 0, z: 0}
-  m_LocalScale: {x: 0.43, y: 0.43, z: 0.43}
+  m_LocalScale: {x: 0.43, y: 0.42999998, z: 0.43}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1377241671}
@@ -19415,7 +19444,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 709455a22834c1f478f2917456886ec5, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19435,7 +19464,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: d4bdfdebba1acc04f95cda645a2b9d74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19447,6 +19476,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1028824540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028824535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e447da7d61dbaa4ebd116501ecee1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: -876546973899608171, guid: 709455a22834c1f478f2917456886ec5, type: 3}
 --- !u!1 &1031525960
 GameObject:
   m_ObjectHideFlags: 0
@@ -31117,6 +31159,8 @@ MonoBehaviour:
   Caneva: {fileID: 0}
   AudioWin: {fileID: 0}
   AudioError: {fileID: 0}
+  AudioNoir: {fileID: 0}
+  blackHoleAnimator: {fileID: 0}
 --- !u!4 &1747630729
 Transform:
   m_ObjectHideFlags: 0
