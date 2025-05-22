@@ -5,6 +5,9 @@ public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private AudioClip AudioWinKey;
 
+    [Header("Effet spécifique OnlyVika")]
+    public GameObject OnlyVikaSpecialObject;
+
     [System.Serializable]
     public class PuzzleStep
     {
@@ -18,7 +21,6 @@ public class PuzzleManager : MonoBehaviour
         public List<LanguetteCrantee> languettePuzzles;
         public List<int> cransCorrects;
 
-        
         [Header("Puzzle Métiers")]
         public List<CharacterSlot> characterSlots;
         public List<int> correctJobIndexes;
@@ -45,40 +47,11 @@ public class PuzzleManager : MonoBehaviour
 
         [Header("Audio")]
         [SerializeField] private AudioClip[] AudioWin;
-        
-
-        public void UpdateLockState()
-        {
-            if (lockVisual != null)
-                lockVisual.SetActive(!isUnlocked);
-
-            if (slidingPuzzle != null)
-                slidingPuzzle.canMovePieces = isUnlocked;
-
-            foreach (var languettePuzzle in languettePuzzles)
-            {
-                if (languettePuzzle != null)
-                    languettePuzzle.enabled = isUnlocked;
-            }
-
-            foreach (var character in characterSlots)
-            {
-                if (character != null)
-                    return;
-            }
-
-            foreach (var panel in comicPanels)
-            {
-                if (panel != null)
-                    panel.SetActive(false);
-            }
-        }
 
         public bool CheckIfSolved()
         {
             if (!canCheckIfSolved || isSolved)
                 return false;
-            
 
             bool isCurrentlySolved = true;
 
@@ -86,7 +59,7 @@ public class PuzzleManager : MonoBehaviour
             {
                 isCurrentlySolved &= slidingPuzzle.IsPuzzleSolved(correctTilePositions);
                 if (isCurrentlySolved && GoToCranCall != null && LanguetteGoToCall == 0)
-                { 
+                {
                     GoToCranCall.CallLanguetteGotoCran(0);
                     LanguetteGoToCall++;
 
@@ -116,36 +89,73 @@ public class PuzzleManager : MonoBehaviour
                 }
             }
 
-            if (isCurrentlySolved && Enviro != null)
+            if (isCurrentlySolved)
             {
+                isSolved = true;
+                Debug.Log("Énigme résolue : " + stepName);
+
                 if (AudioWin != null && AudioWin.Length > 0)
                 {
                     int indexAudio = Random.Range(0, AudioWin.Length);
                     GlobalSoundManager.PlaySFX(AudioWin[indexAudio]);
                 }
 
-                isSolved = true;
-                Debug.Log("Énigme résolue : " + stepName);
-
                 foreach (var slot in characterSlots)
                 {
                     if (slot != null)
-                    {
                         slot.DeselectFinal();
+                }
+
+                if (Enviro != null)
+                {
+                    foreach (Transform child in Enviro.transform)
+                    {
+                        if (child.name.Contains("Case0BW"))
+                            child.gameObject.SetActive(false);
+                        else if (child.name.Contains("Case0RGB"))
+                            child.gameObject.SetActive(true);
                     }
                 }
 
-                // Désactiver les enfants nommés Case0BW et activer ceux nommés Case0RGB
-                foreach (Transform child in Enviro.transform)
+                // Appel spécifique pour OnlyVika
+                if (stepName == "OnlyVika")
                 {
-                    if (child.name.Contains("Case0BW"))
-                        child.gameObject.SetActive(false);
-                    else if (child.name.Contains("Case0RGB"))
-                        child.gameObject.SetActive(true);
+                    PuzzleManager manager = GameObject.FindObjectOfType<PuzzleManager>();
+                    if (manager != null)
+                    {
+                        manager.OnlyVika();
+                    }
                 }
             }
 
             return isCurrentlySolved;
+        }
+
+        public void UpdateLockState()
+        {
+            if (lockVisual != null)
+                lockVisual.SetActive(!isUnlocked);
+
+            if (slidingPuzzle != null)
+                slidingPuzzle.canMovePieces = isUnlocked;
+
+            foreach (var languettePuzzle in languettePuzzles)
+            {
+                if (languettePuzzle != null)
+                    languettePuzzle.enabled = isUnlocked;
+            }
+
+            foreach (var character in characterSlots)
+            {
+                if (character != null)
+                    return;
+            }
+
+            foreach (var panel in comicPanels)
+            {
+                if (panel != null)
+                    panel.SetActive(false);
+            }
         }
     }
 
@@ -159,7 +169,7 @@ public class PuzzleManager : MonoBehaviour
     public bool cheatMode = false;
     public List<string> keysToCheatUnlock;
 
-    [Header("animation de recompense")]
+    [Header("animation de récompense")]
     public RewardAnimator rewardAnimator;
 
     void Start()
@@ -209,6 +219,18 @@ public class PuzzleManager : MonoBehaviour
                 else
                     Debug.LogError("RewardAnimator non assigné !");
             }
+
+            // 🔄 Hack : si c’est la step 0, rediriger les languettes vers la step 4
+            if (puzzleStepIndex == 0)
+            {
+                foreach (var lang in step.languettePuzzles)
+                {
+                    if (lang != null)
+                        lang.puzzleStepIndex = 4;
+                }
+
+                Debug.Log("🔁 Les languettes ont été redirigées vers la PuzzleStep 4 !");
+            }
         }
         else if (step.isUnlocked && !step.isSolved)
         {
@@ -220,4 +242,14 @@ public class PuzzleManager : MonoBehaviour
     {
         return keysObtained.ContainsKey(key) && keysObtained[key];
     }
+
+    public void OnlyVika()
+    {
+        Debug.Log(" Méthode OnlyVika() appelée — Fin de jeu !");
+        // ➕ Ici, tu mets ta logique de fin de jeu : UI, cinématique, etc.
+
+    }
+
+
+
 }
