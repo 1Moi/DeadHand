@@ -32,8 +32,9 @@ public class PuzzleDialManager : MonoBehaviour
     [SerializeField] private AudioClip AudioAmbiance;
     [SerializeField] private AudioClip[] audioType;
 
-
     private bool combinationValidated = false;
+
+    public GameObject CardHolder;
 
     public void CheckCombination()
     {
@@ -104,6 +105,9 @@ public class PuzzleDialManager : MonoBehaviour
 
         if (canvasToActivate != null)
             canvasToActivate.SetActive(true);
+
+        if (CardHolder != null)
+            CardHolder.SetActive(true);
 
         if (dialogueText != null)
         {

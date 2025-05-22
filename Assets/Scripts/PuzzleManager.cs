@@ -224,6 +224,7 @@ public class PuzzleManager : MonoBehaviour
                     Debug.LogError("RewardAnimator non assigné !");
             }
 
+            /*
             // 🔄 Hack : si c’est la step 0, rediriger les languettes vers la step 4
             if (puzzleStepIndex == 0)
             {
@@ -235,6 +236,7 @@ public class PuzzleManager : MonoBehaviour
 
                 Debug.Log("🔁 Les languettes ont été redirigées vers la PuzzleStep 4 !");
             }
+            */
         }
         else if (step.isUnlocked && !step.isSolved)
         {

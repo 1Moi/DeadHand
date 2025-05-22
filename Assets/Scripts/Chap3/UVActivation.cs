@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class UVActivation : MonoBehaviour, IPointerDownHandler
 {
     public List<GameObject> ObjectToSetActive;
+    public List<LanguetteCrantee> languetteCrantees;
     public GameObject Lampe;
 
     [Header("Audio")]
@@ -23,6 +24,13 @@ public class UVActivation : MonoBehaviour, IPointerDownHandler
 
             GlobalSoundManager.PlaySFX(AudioClick);
             GlobalSoundManager.PlayAmbiance(AudioLoop);
+        }
+
+        for (int i = 0; i < languetteCrantees.Count; i++)
+        {
+            LanguetteCrantee languetteCrantee = languetteCrantees[i];
+            if (languetteCrantee != null)
+                languetteCrantee.puzzleStepIndex = 4;
         }
     }
 }

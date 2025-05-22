@@ -20,7 +20,7 @@ public class FinDuJeu : MonoBehaviour
         yield return autoFlip.FlipToEnd();
         pageCamera.transform.position = new Vector3(600, 0, -18);
         NewBehaviourScript.IsDissolving = true;
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(6.5f);
         CanvaLivre.gameObject.SetActive(false);
 
         // Démarrer fondu au noir avant le chargement
