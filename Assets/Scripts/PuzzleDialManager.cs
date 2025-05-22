@@ -30,6 +30,7 @@ public class PuzzleDialManager : MonoBehaviour
     [SerializeField] private AudioClip AudioClick;
     [SerializeField] private AudioClip AudioWin;
     [SerializeField] private AudioClip AudioAmbiance;
+    [SerializeField] private AudioClip[] audioType;
 
 
     private bool combinationValidated = false;
@@ -76,6 +77,11 @@ public class PuzzleDialManager : MonoBehaviour
             foreach (char c in message)
             {
                 dialogueText.text += c;
+                if (audioType != null && audioType.Length > 0)
+                {
+                    int indexAudio = Random.Range(0, audioType.Length);
+                    GlobalSoundManager.PlaySFX(audioType[indexAudio]);
+                }
                 yield return new WaitForSeconds(typingSpeed);
             }
         }

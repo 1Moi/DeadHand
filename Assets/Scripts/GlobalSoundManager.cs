@@ -170,6 +170,17 @@ public class GlobalSoundManager : MonoBehaviour
             instance.chapter3MusicSource.volume = volume * instance.chapter3MusicTargetVolume;
     }
 
+    public static void PlaySFXUnique(AudioClip sfxClip)
+    {
+        if (instance.sfxAudioSource.isPlaying) return;
+
+        instance.sfxAudioSource.clip = sfxClip;
+        instance.sfxAudioSource.volume = instance.sfxVolume;
+        instance.sfxAudioSource.loop = false;
+        instance.sfxAudioSource.Play();
+    }
+
+
     public float GetMusicVolume()
     {
         return musicVolume;

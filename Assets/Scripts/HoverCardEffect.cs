@@ -101,7 +101,6 @@ public class HoverCardEffect : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (outlineSprite != null && outlineRenderer != null)
         {
-            outlineSprite.SetActive(false);
             outlineRenderer.sortingOrder = baseOutlineOrder;
         }
     }

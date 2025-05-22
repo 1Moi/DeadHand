@@ -12,28 +12,29 @@ public class FinDuJeu : MonoBehaviour
     public GameObject ClickBlocker;
     public Canvas CanvaLivre;
 
+    public SceneFader sceneFader; // Référence au SceneFader dans l’inspecteur
+
     public IEnumerator AnimationFinal()
     {
         ClickBlocker.SetActive(true);
         yield return autoFlip.FlipToEnd();
         pageCamera.transform.position = new Vector3(600, 0, -18);
         NewBehaviourScript.IsDissolving = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
         CanvaLivre.gameObject.SetActive(false);
-        SceneManager.LoadScene("Outro", LoadSceneMode.Additive);
-        yield return new WaitForSeconds(14f);
+
+        // Démarrer fondu au noir avant le chargement
+        yield return sceneFader.FadeOut();
+
+        // Charger la nouvelle scène
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Outro", LoadSceneMode.Additive);
+        while (!asyncLoad.isDone)
+            yield return null;
+
+        // Faire apparaître progressivement la nouvelle scène
+        yield return sceneFader.FadeIn();
+
         ClickBlocker.SetActive(false);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

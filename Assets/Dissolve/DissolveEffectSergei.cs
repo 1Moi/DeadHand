@@ -10,50 +10,62 @@ public class DissolveEffectSergei : MonoBehaviour
     private Material runtimeMaterial;
     private Renderer rend;
 
-
-    private float DissolveAmount;
+    private float DissolveAmount = 0f;
     public bool IsDissolvingSergei;
+    private bool wasDissolving = false;
+    private bool hasBeenHidden = false;
+
     public GameObject Sergei;
 
     [Header("Audio")]
     [SerializeField] private AudioClip AudioFeu;
 
-
     void Start()
     {
         rend = GetComponent<Renderer>();
-        runtimeMaterial = rend.material; // instancie le matériau à runtime
+        runtimeMaterial = rend.material;
     }
-
 
     private void Update()
     {
         if (IsDissolvingSergei)
         {
+            if (!wasDissolving)
+            {
+                GlobalSoundManager.PlaySFX(AudioFeu);
+                wasDissolving = true;
+                hasBeenHidden = false;
+                UnityEngine.Debug.Log("SON LANCÉ !");
+            }
+
             DissolveAmount = Mathf.Clamp01(DissolveAmount + Time.deltaTime);
             runtimeMaterial.SetFloat("_DissolveAmount", DissolveAmount);
-            GlobalSoundManager.PlaySFX(AudioFeu);
-            Sergei.SetActive(false);
-        }
 
+            // Désactive l'objet seulement quand l'effet est terminé
+            if (DissolveAmount >= 1f && !hasBeenHidden)
+            {
+                Sergei.SetActive(false);
+                hasBeenHidden = true;
+            }
+        }
         else
         {
+            wasDissolving = false;
+            hasBeenHidden = false;
+
             DissolveAmount = Mathf.Clamp01(DissolveAmount - Time.deltaTime);
             runtimeMaterial.SetFloat("_DissolveAmount", DissolveAmount);
 
+            if (DissolveAmount <= 0f)
+            {
+                Sergei.SetActive(true);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             IsDissolvingSergei = true;
-                UnityEngine.Debug.Log("DIssolve COMMENCE");
+            UnityEngine.Debug.Log("Dissolve COMMENCE");
         }
-
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            IsDissolvingSergei = false;
-            UnityEngine.Debug.Log("DIssolve RETREAT");
-        }
-
     }
 }

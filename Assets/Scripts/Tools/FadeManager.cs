@@ -18,6 +18,9 @@ public class FadeManager : MonoBehaviour
     [Header("Typing Settings")]
     public float typingSpeed = 0.05f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] audioType;
+
     private bool waitingForClick = false;
 
     /// <summary>
@@ -65,7 +68,12 @@ public class FadeManager : MonoBehaviour
             foreach (char c in message)
             {
                 mainText.text += c;
-                yield return new WaitForSeconds(typingSpeed);
+                if (audioType != null && audioType.Length > 0)
+                {
+                    int indexAudio = Random.Range(0, audioType.Length);
+                    GlobalSoundManager.PlaySFX(audioType[indexAudio]);
+                }
+                yield return new WaitForSeconds(typingSpeed);               
             }
 
             if (continueText != null)
