@@ -2256,7 +2256,7 @@ MonoBehaviour:
     du calibrage de la machine, je vais faire en sorte de d\xE9tourner comme je peux
     les cibles vis\xE9es.\n\nHonn\xEAtement je ne sais pas si tout ce travail va
     servir \xE0 quelque chose mais je refuse de laisser \xE7a tel quel. nous avons
-    particip\xE9 \xE0 un projet dangereux pour tous je me dois de rattraper mes erreurs.\n\nAllumer
+    particip\xE9 \xE0 un projet dangereux, je me dois de rattraper mes erreurs.\n\nAllumer
     les cases : A5 | A6 | B4 |B7 | C2 | C9 | D3 | D8 | E5 | E6"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f4e7c56710cc7a47bb848e699b19264, type: 2}
@@ -6751,10 +6751,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212572bb0c800234b9a37219fdb4124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: 197.1
-  maxX: 206.9
-  minY: -100.3
-  maxY: -97.6
+  minX: 193.2
+  maxX: 211.5
+  minY: -102.1
+  maxY: -93
 --- !u!1 &262139507
 GameObject:
   m_ObjectHideFlags: 0
@@ -13394,7 +13394,7 @@ PrefabInstance:
     - target: {fileID: 1558994836708299921, guid: af7d409841b746f489afc1b6bb806143, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fa25b2dd6a283d84a96c52879ce814b2, type: 3}
+      objectReference: {fileID: 21300000, guid: 30dfe02007e51864f9801388a2a66b80, type: 3}
     - target: {fileID: 1558994836708299921, guid: af7d409841b746f489afc1b6bb806143, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -14125,6 +14125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDissolvingSergei: 0
+  Sergei: {fileID: 1844988563}
   AudioFeu: {fileID: 8300000, guid: ef94abb7f42ef4e4e9c3ee4b83c98880, type: 3}
 --- !u!61 &384212267
 BoxCollider2D:
@@ -20854,7 +20855,7 @@ MonoBehaviour:
     - {fileID: 1842744560}
     - {fileID: 1173168765}
   - sequenceName: TentativeDesamorcage
-    isActive: 0
+    isActive: 1
     isSolved: 0
     buttons:
     - {fileID: 398678839}
@@ -20862,6 +20863,7 @@ MonoBehaviour:
     - {fileID: 1842744560}
     - {fileID: 398678839}
     - {fileID: 1850844488}
+    - {fileID: 1842744560}
     - {fileID: 1842744560}
   ClickBlocker: {fileID: 1398418916}
   LeaveCase: {fileID: 349698064}
@@ -28987,7 +28989,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsDissolvingVera: 0
-  AudioFeu: {fileID: 0}
+  Sergei: {fileID: 1454128032}
+  AudioFeu: {fileID: 8300000, guid: ef94abb7f42ef4e4e9c3ee4b83c98880, type: 3}
 --- !u!60 &1038143034
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -30972,10 +30975,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212572bb0c800234b9a37219fdb4124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: 197.1
-  maxX: 206.9
-  minY: -100.3
-  maxY: -97.6
+  minX: 193.2
+  maxX: 211.5
+  minY: -102.1
+  maxY: -93
 --- !u!60 &1138062166
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -33615,8 +33618,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c0e79f961c3a6ea46984a6f219f760ee, type: 3}
   - {fileID: 8300000, guid: 81f6157509cd82e488ddab059cd0f84f, type: 3}
   gridManager: {fileID: 940998786}
---- !u!58 &1218913543
-CircleCollider2D:
+--- !u!61 &1218913543
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -33647,9 +33650,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00048828125, y: 0}
+  m_Offset: {x: 1.2857008, y: -18.751247}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16.36, y: 14.96}
+    newSize: {x: 16.36, y: 14.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 8.179999
+  m_Size: {x: 46.584656, y: 58.14795}
+  m_EdgeRadius: 0
 --- !u!1 &1221775314
 GameObject:
   m_ObjectHideFlags: 0
@@ -34312,10 +34325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 212572bb0c800234b9a37219fdb4124f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: 193.4
-  maxX: 208.7
-  minY: -102.7
-  maxY: -95.5
+  minX: 193.2
+  maxX: 211.5
+  minY: -102.1
+  maxY: -93
 --- !u!60 &1267593027
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -34589,7 +34602,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274121719}
-  - component: {fileID: 1274121718}
   - component: {fileID: 1274121720}
   m_Layer: 0
   m_Name: EZ
@@ -34598,20 +34610,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1274121718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274121717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec43bd0fa3175a5478592ab1913fa18f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autoFlip: {fileID: 724629618}
-  pageCamera: {fileID: 125724341}
 --- !u!4 &1274121719
 Transform:
   m_ObjectHideFlags: 0
@@ -37759,7 +37757,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.3034325, y: -5.6230826}
+  m_Offset: {x: 4.2508707, y: -5.6905966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -37770,7 +37768,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5254154, y: 1.9304743}
+  m_Size: {x: 2.8935356, y: 2.6439586}
   m_EdgeRadius: 0
 --- !u!114 &1380491054
 MonoBehaviour:
@@ -38808,7 +38806,7 @@ GameObject:
   - component: {fileID: 1454128034}
   - component: {fileID: 1454128037}
   m_Layer: 0
-  m_Name: Vera
+  m_Name: VeraC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41319,6 +41317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1562361484}
   - component: {fileID: 1562361485}
+  - component: {fileID: 1562361486}
   m_Layer: 0
   m_Name: Livre
   m_TagString: Untagged
@@ -41398,6 +41397,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1562361486
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562361483}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.32802486, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 38.399998, y: 21.599998}
+    newSize: {x: 38.399998, y: 21.599998}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16.730253, y: 21.599998}
+  m_EdgeRadius: 0
 --- !u!1 &1564712531
 GameObject:
   m_ObjectHideFlags: 0
@@ -46829,7 +46873,7 @@ GameObject:
   - component: {fileID: 1844988568}
   - component: {fileID: 1844988569}
   m_Layer: 0
-  m_Name: Sergei
+  m_Name: SergeiC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51664,7 +51708,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 250
-  m_Sprite: {fileID: 21300000, guid: efd2555248eb4df48a8619a50a048d06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0af284ffd187624a834ee7925efd55e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -51685,8 +51729,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0234, y: 2.0131, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.3, y: 3.2832012, z: 1.6309181}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 350973039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

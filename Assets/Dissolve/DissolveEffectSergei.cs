@@ -13,6 +13,7 @@ public class DissolveEffectSergei : MonoBehaviour
 
     private float DissolveAmount;
     public bool IsDissolvingSergei;
+    public GameObject Sergei;
 
     [Header("Audio")]
     [SerializeField] private AudioClip AudioFeu;
@@ -32,6 +33,7 @@ public class DissolveEffectSergei : MonoBehaviour
             DissolveAmount = Mathf.Clamp01(DissolveAmount + Time.deltaTime);
             runtimeMaterial.SetFloat("_DissolveAmount", DissolveAmount);
             GlobalSoundManager.PlaySFX(AudioFeu);
+            Sergei.SetActive(false);
         }
 
         else
