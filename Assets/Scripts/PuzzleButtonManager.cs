@@ -29,11 +29,13 @@ public class PuzzleButtonManager : MonoBehaviour
     public TurningPages TurningPages1;
     public TurningPages TurningPages2;
     public GameObject Caneva;
+    public MoveAndDissolveTrigger MoveAndDissolveTrigger;
 
     [Header("Audio")]
     [SerializeField] private AudioClip AudioWin;
     [SerializeField] private AudioClip AudioError;
     [SerializeField] private AudioClip AudioNoir;
+    [SerializeField] private AudioClip AudioAlarm;
 
     public BlackHoleAnimator blackHoleAnimator;
 
@@ -153,9 +155,9 @@ public class PuzzleButtonManager : MonoBehaviour
             case "TentativeDesamorcage":
                 Debug.Log("Tentative Desamorcage");
 
-                // Son Alarme
-                // YANN JE TE LAISSE FAIRE
-                // Carte qui brule
+                ClickBlocker.SetActive(true);
+                //Yann
+                StartCoroutine(Chap3brule());
 
                 break;
 
@@ -206,9 +208,9 @@ public class PuzzleButtonManager : MonoBehaviour
     {
 
         // Activer l'animation du trou noir
-        blackHoleAnimator.PlayBlackHole();
-        // Son Activation Machine
         GlobalSoundManager.PlaySFX(AudioNoir);
+        blackHoleAnimator.PlayBlackHole();
+                
         yield return new WaitForSeconds(2f);
         
 
@@ -225,6 +227,21 @@ public class PuzzleButtonManager : MonoBehaviour
         // AUTO FLIP (vers la double page 1 du chap 3)
         TurningPages2.TurningPage();
         yield return new WaitForSeconds(1f);
+        
+        ClickBlocker.SetActive(false);
+    }
+
+
+    public IEnumerator Chap3brule()
+    {
+
+        GlobalSoundManager.PlaySFX(AudioAlarm);
+
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(LeaveCase.FadeAndTeleport());
+
+        yield return StartCoroutine(MoveAndDissolveTrigger.MoveThenDissolve());
         
         ClickBlocker.SetActive(false);
     }

@@ -47,6 +47,7 @@ public class GridManager : MonoBehaviour
     public TurningPages TurningPages;
     public GameObject TurningPageObject;
     public GameObject CLICKBLOCKER;
+    public MoveAndDissolveTriggerVera MoveAndDissolveTriggerVera;
 
     private void Start()
     {
@@ -181,9 +182,8 @@ public class GridManager : MonoBehaviour
                 Debug.LogWarning("WATER");
                 PatternIsSolved(name);
 
-                // ICI TU MET TON CODE
-                // LA
-                // ET LA
+                //Yann
+                StartCoroutine(MoveAndDissolveTriggerVera.MoveThenDissolve());
 
                 break;
 
@@ -194,6 +194,7 @@ public class GridManager : MonoBehaviour
             default:
                 Debug.LogWarning("Pattern inconnu : " + name);
                 break;
+
         }
     }
 

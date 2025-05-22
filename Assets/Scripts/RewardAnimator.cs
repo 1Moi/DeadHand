@@ -33,28 +33,23 @@ public class RewardAnimator : MonoBehaviour
         greenKey.SetActive(false);
         blueKey.SetActive(false);
 
-        string displayText = "";
 
         switch (keyName)
         {
             case "RedKey":
                 redKey.SetActive(true);
-                displayText = "la clef rouge";
                 break;
             case "GreenKey":
                 greenKey.SetActive(true);
-                displayText = "la clef verte";
                 break;
             case "BlueKey":
                 blueKey.SetActive(true);
-                displayText = "la clef bleue";
                 break;
             default:
                 Debug.LogWarning("Nom de clef inconnu : " + keyName);
                 yield break;
         }
 
-        rewardText.text = $"Vous avez obtenu {displayText} !";
 
         yield return new WaitForSeconds(autoCloseDelay);
 
