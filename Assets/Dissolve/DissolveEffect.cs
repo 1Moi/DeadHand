@@ -9,7 +9,7 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private Material material;
 
     private float DissolveAmount;
-    private bool IsDissolving;
+    public bool IsDissolving;
 
     private void Update()
     {

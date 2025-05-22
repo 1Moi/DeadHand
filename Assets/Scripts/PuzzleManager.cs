@@ -8,6 +8,8 @@ public class PuzzleManager : MonoBehaviour
     [Header("Effet spécifique OnlyVika")]
     public GameObject OnlyVikaSpecialObject;
 
+    public FinDuJeu FinDuJeu;
+
     [System.Serializable]
     public class PuzzleStep
     {
@@ -47,6 +49,8 @@ public class PuzzleManager : MonoBehaviour
 
         [Header("Audio")]
         [SerializeField] private AudioClip[] AudioWin;
+
+        
 
         public bool CheckIfSolved()
         {
@@ -247,7 +251,7 @@ public class PuzzleManager : MonoBehaviour
     {
         Debug.Log(" Méthode OnlyVika() appelée — Fin de jeu !");
         // ➕ Ici, tu mets ta logique de fin de jeu : UI, cinématique, etc.
-
+        StartCoroutine(FinDuJeu.AnimationFinal());
     }
 
 
