@@ -2088,8 +2088,6 @@ MonoBehaviour:
   - {fileID: 1351129113}
   - {fileID: 1351129113}
   - {fileID: 1351129113}
-  - {fileID: 1351129113}
-  - {fileID: 1351129113}
   transitionDuration: 6
   texts:
   - {fileID: 537009731}
@@ -2111,9 +2109,9 @@ MonoBehaviour:
   - {fileID: 1950258806}
   - {fileID: 194118316}
   - {fileID: 383575831}
+  - {fileID: 413620824}
   - {fileID: 626384508}
-  - {fileID: 413620824}
-  - {fileID: 413620824}
+  - {fileID: 626384508}
   textFadeDuration: 1
   finalUI: {fileID: 1936936927}
   finalUIFadeDuration: 2
