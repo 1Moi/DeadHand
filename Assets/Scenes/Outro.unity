@@ -299,7 +299,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "3C\r\nMathis JOUBERT\r"
+  m_text: '3C
+
+    Mathis JOUBERT
+
+    Yann DUCLOS'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -936,7 +940,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "UX\r\nMathis JOUBERT\r"
+  m_text: 'UX
+
+    Mathis JOUBERT
+
+    Yann DUCLOS'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -3698,7 +3706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Documentation\r\nMathis JOUBERT\r\nYann DUCLOS\r"
+  m_text: "Documentation\r\nMathis JOUBERT\r\nMathis LOURENCO\nYann DUCLOS\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
@@ -4512,7 +4520,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "SFX et Music\r\nKarim GUENOUN SANZ\r\nYann DUCLOS\r"
+  m_text: 'SFX et Music
+
+    Karim GUENOUN SANZ
+
+    Mathis LOURENCO
+
+    Yann
+    DUCLOS
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
   m_sharedMaterial: {fileID: 7408436980840055850, guid: 474b15ddc3c2c3941b2202cafcf941f4, type: 2}
