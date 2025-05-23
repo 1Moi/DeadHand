@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clickage: {fileID: 8300000, guid: 527bfda7182de77479b5d904e64de6b7, type: 3}
+  RetourBouton: {fileID: 0}
   volume: 100
   musicVolume: 1
   sfxVolume: 1
@@ -2575,7 +2576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3b3a5296c5c35d43bf2beb81c33173e, type: 2}
   m_sharedMaterial: {fileID: 521510184196779936, guid: f3b3a5296c5c35d43bf2beb81c33173e, type: 2}
@@ -6002,6 +6003,7 @@ MonoBehaviour:
   fadeOutDuration: 1.2
   fadeHoldDuration: 0.3
   cameraTargetPosition: {x: 0, y: 0, z: 0}
+  AudioClick: []
   Caneva: {fileID: 0}
   baseRGBSortingOrder: 0
   baseOutlineOrder: 0
@@ -8207,6 +8209,7 @@ MonoBehaviour:
   fadeOutDuration: 1.2
   fadeHoldDuration: 0.3
   cameraTargetPosition: {x: 0, y: 0, z: 0}
+  AudioClick: []
   Caneva: {fileID: 0}
   baseRGBSortingOrder: 0
   baseOutlineOrder: 0
